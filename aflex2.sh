@@ -2,10 +2,10 @@
 
 # fichier bash
 
-wget "http://...."
+wget "http://cmspc46.epfl.ch/20112012Data/Exercices/20112012semesters.xml"
 
 
-progenc "fichier.xml" > sortie.bash
+progenc "20112012semesters.xml" > sortie.bash
 
 bash sortie.bash
 
