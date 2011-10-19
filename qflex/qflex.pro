@@ -18,3 +18,7 @@ SOURCES += main.cpp\
 HEADERS  += mainwindow.h
 
 FORMS    += mainwindow.ui
+
+INCLUDEPATH  += /usr/include/poppler/qt4
+
+LIBS         += -L/usr/lib -lpoppler-qt4

@@ -21,7 +21,9 @@ public:
 private slots:
     void update();
     void itemChanged();
+    void itemDoubleClick(QTreeWidgetItem*,int);
     void replyFinished(QNetworkReply*);
+    void documentDownloaded(QNetworkReply*);
     void nextDocument();
     void previousDocument();
 
@@ -34,6 +36,7 @@ private:
 
     QNetworkAccessManager qnam;
     QXmlStreamReader xml;
+    QImage image;
 };
 
 #endif // MAINWINDOW_H

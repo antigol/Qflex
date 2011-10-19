@@ -1,5 +1,7 @@
 #include "mainwindow.h"
 #include "ui_mainwindow.h"
+#include <QDesktopServices>
+#include <poppler-qt4.h>
 
 MainWindow::MainWindow(QWidget *parent) :
     QMainWindow(parent),
@@ -15,7 +17,10 @@ MainWindow::MainWindow(QWidget *parent) :
     connect(ui->action_Suivant, SIGNAL(triggered()), this, SLOT(nextDocument()));
     connect(ui->action_Pr_c_dant, SIGNAL(triggered()), this, SLOT(previousDocument()));
     connect(ui->treeWidget, SIGNAL(itemSelectionChanged()), this, SLOT(itemChanged()));
-    connect(&qnam, SIGNAL(finished(QNetworkReply*)), SLOT(replyFinished(QNetworkReply*)));
+    connect(ui->treeWidget, SIGNAL(itemDoubleClicked(QTreeWidgetItem*,int)), this, SLOT(itemDoubleClick(QTreeWidgetItem*,int)));
+    connect(&qnam, SIGNAL(finished(QNetworkReply*)), this, SLOT(documentDownloaded(QNetworkReply*)));
+
+    update();
 }
 
 MainWindow::~MainWindow()
@@ -25,6 +30,8 @@ MainWindow::~MainWindow()
 
 void MainWindow::update()
 {
+    disconnect(&qnam, SIGNAL(finished(QNetworkReply*)), this, SLOT(documentDownloaded(QNetworkReply*)));
+    connect(&qnam, SIGNAL(finished(QNetworkReply*)), this, SLOT(replyFinished(QNetworkReply*)));
     qnam.get(QNetworkRequest(QUrl("http://cmspc46.epfl.ch/20112012Data/Exercices/20112012semesters.xml")));
     /*
     QFile file("20112012semesters.xml");
@@ -41,6 +48,9 @@ void MainWindow::update()
 
 void MainWindow::replyFinished(QNetworkReply *reply)
 {
+    disconnect(&qnam, SIGNAL(finished(QNetworkReply*)), this, SLOT(replyFinished(QNetworkReply*)));
+    connect(&qnam, SIGNAL(finished(QNetworkReply*)), this, SLOT(documentDownloaded(QNetworkReply*)));
+
     xml.addData(reply->readAll());
 
     if (xml.readNextStartElement()) {
@@ -89,7 +99,8 @@ void MainWindow::readAll(QTreeWidgetItem *item)
         } else if (xml.name() == "address") {
             branch->setData(0, Qt::UserRole + 1, xml.readElementText());
         } else if (xml.name() == "type") {
-            branch->setData(0, Qt::UserRole + 2, xml.readElementText()); //! FIXME : UserRole + 2 ne fonctionne pas
+            branch->setData(0, Qt::UserRole + 2, xml.attributes().value("name").toString());
+            xml.skipCurrentElement();
         } else {
             readAll(branch);
         }
@@ -99,7 +110,41 @@ void MainWindow::readAll(QTreeWidgetItem *item)
 void MainWindow::itemChanged()
 {
     QTreeWidgetItem *item = ui->treeWidget->currentItem();
-    ui->labelAddress->setText(item->data(0, Qt::UserRole + 1).toString());
+    //ui->label->setText(item->data(0, Qt::UserRole + 1).toString() + "(" + item->data(0, Qt::UserRole + 2).toString() + ")");
+
+    QUrl url("http://cmspc46.epfl.ch/20112012Data/Exercices/" + item->data(0, Qt::UserRole + 1).toString());
+    qnam.get(QNetworkRequest(url));
+}
+
+void MainWindow::documentDownloaded(QNetworkReply *reply)
+{
+    QString extention = reply->url().toString().section('.', -1);
+
+    qDebug("Download finished, extention = %s", extention.toAscii().data());
+
+    if (extention.compare("pdf", Qt::CaseInsensitive) == 0) {
+        QFile file(QDir::homePath() + "/.qflex.pdf");
+        if (file.open(QIODevice::ReadWrite)) {
+            file.write(reply->readAll());
+            file.close();
+            Poppler::Document *doc = Poppler::Document::load(QDir::homePath() + "/.qflex.pdf");
+                image = doc->page(0)->renderToImage(
+                            1.0 * physicalDpiX(),
+                            1.0 * physicalDpiY());
+                ui->label->setPixmap(QPixmap::fromImage(image));
+        }
+    } else if (extention.compare("html", Qt::CaseInsensitive) == 0) {
+
+    } else {
+        image.load(reply, extention.toAscii().data());
+
+        ui->label->setPixmap(QPixmap::fromImage(image));
+    }
+}
+
+void MainWindow::itemDoubleClick(QTreeWidgetItem *item,int)
+{
+    QDesktopServices::openUrl(QUrl(QString("http://cmspc46.epfl.ch/20112012Data/Exercices/%1").arg(item->data(0, Qt::UserRole + 1).toString())));
 }
 
 void MainWindow::nextDocument()
