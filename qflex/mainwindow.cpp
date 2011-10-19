@@ -134,7 +134,10 @@ void MainWindow::previousDocument()
 
     QTreeWidgetItem *above = ui->treeWidget->itemAbove(item);
     if (above != 0 && item->parent() != above && above->childCount() != 0) {
-        item = above->child(above->childCount() - 1);
+        while (above->childCount() != 0) {
+            above = above->child(above->childCount() - 1);
+        }
+        item = above;
     } else {
         item = above;
     }
@@ -145,11 +148,16 @@ void MainWindow::previousDocument()
             return;
         }
 
+        QTreeWidgetItem *above = ui->treeWidget->itemAbove(item);
         if (above != 0 && item->parent() != above && above->childCount() != 0) {
-            item = above->child(above->childCount() - 1);
+            while (above->childCount() != 0) {
+                above = above->child(above->childCount() - 1);
+            }
+            item = above;
         } else {
             item = above;
         }
+
     }
 }
 
