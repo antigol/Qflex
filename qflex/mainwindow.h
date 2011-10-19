@@ -19,20 +19,16 @@ public:
     ~MainWindow();
 
 private slots:
-    void on_actionMettre_jour_triggered();
-
-    void on_treeWidget_itemClicked(QTreeWidgetItem *item, int column);
-
+    void update();
+    void itemChanged();
     void replyFinished(QNetworkReply*);
+    void nextDocument();
+    void previousDocument();
 
 private:
     QTreeWidgetItem *createChildItem(QTreeWidgetItem *item);
     void readSemesters();
-    void readSemesterentry(QTreeWidgetItem *item);
-    void readLectureentry(QTreeWidgetItem *item);
-    void readSeriesentry(QTreeWidgetItem *item);
-    void readExercice(QTreeWidgetItem *item);
-    void readMethod(QTreeWidgetItem *item);
+    void readAll(QTreeWidgetItem *item);
 
     Ui::MainWindow *ui;
 

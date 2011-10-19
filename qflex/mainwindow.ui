@@ -48,7 +48,15 @@
     </property>
     <addaction name="actionMettre_jour"/>
    </widget>
+   <widget class="QMenu" name="menu_Navigation">
+    <property name="title">
+     <string>&amp;Navigation</string>
+    </property>
+    <addaction name="action_Suivant"/>
+    <addaction name="action_Pr_c_dant"/>
+   </widget>
    <addaction name="menu_Fichier"/>
+   <addaction name="menu_Navigation"/>
   </widget>
   <widget class="QToolBar" name="mainToolBar">
    <attribute name="toolBarArea">
@@ -62,6 +70,16 @@
   <action name="actionMettre_jour">
    <property name="text">
     <string>Mettre à &amp;jour...</string>
+   </property>
+  </action>
+  <action name="action_Suivant">
+   <property name="text">
+    <string>&amp;Suivant</string>
+   </property>
+  </action>
+  <action name="action_Pr_c_dant">
+   <property name="text">
+    <string>&amp;Précédant</string>
    </property>
   </action>
  </widget>

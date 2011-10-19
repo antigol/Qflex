@@ -1,0 +1,2551 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<semesters xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="aflex.xsd">
+	<semesterentry>
+		<name>Semestre d'automne</name>
+		<address></address>
+		<type name=""></type>
+		<lectureentry>
+			<name>Analyse 1</name>
+			<address></address>
+			<type name=""></type>
+			<seriesentry>
+				<name>Série 1</name>
+				<address></address>
+				<type name=""></type>
+				<exerciceentry>
+					<name>Exercice 1</name>
+					<address>SemAut_Analyse1_s01_Exercice001/donnee/donnee.pdf</address>
+					<type name="Pdf"></type>
+					<methodentry>
+						<name>Méthode 1</name>
+						<address>SemAut_Analyse1_s01_Exercice001/choix1/choix.pdf</address>
+						<type name="Pdf"></type>
+						<stepentry>
+							<name>Etape 1</name>
+							<address>SemAut_Analyse1_s01_Exercice001/sol1/Step1</address>
+							<type name="null"></type>
+							<solentry>
+								<name>Solution</name>
+								<address>SemAut_Analyse1_s01_Exercice001/sol1/Step1/sol.pdf</address>
+								<type name="Pdf"></type>
+							</solentry>
+						</stepentry>
+						<stepentry>
+							<name>Etape 2</name>
+							<address>SemAut_Analyse1_s01_Exercice001/sol1/Step2</address>
+							<type name="null"></type>
+							<solentry>
+								<name>Solution</name>
+								<address>SemAut_Analyse1_s01_Exercice001/sol1/Step2/sol.pdf</address>
+								<type name="Pdf"></type>
+							</solentry>
+						</stepentry>
+						<stepentry>
+							<name>Etape 3</name>
+							<address>SemAut_Analyse1_s01_Exercice001/sol1/Step3</address>
+							<type name="null"></type>
+							<solentry>
+								<name>Solution</name>
+								<address>SemAut_Analyse1_s01_Exercice001/sol1/Step3/sol.pdf</address>
+								<type name="Pdf"></type>
+							</solentry>
+						</stepentry>
+					</methodentry>
+					<methodentry>
+						<name>Méthode 2</name>
+						<address>SemAut_Analyse1_s01_Exercice001/choix2/choix.pdf</address>
+						<type name="Pdf"></type>
+						<stepentry>
+							<name>Etape 1</name>
+							<address>SemAut_Analyse1_s01_Exercice001/sol2/Step1</address>
+							<type name="null"></type>
+							<solentry>
+								<name>Solution</name>
+								<address>SemAut_Analyse1_s01_Exercice001/sol2/Step1/sol.pdf</address>
+								<type name="Pdf"></type>
+							</solentry>
+						</stepentry>
+						<stepentry>
+							<name>Etape 2</name>
+							<address>SemAut_Analyse1_s01_Exercice001/sol2/Step2</address>
+							<type name="null"></type>
+							<solentry>
+								<name>Solution</name>
+								<address>SemAut_Analyse1_s01_Exercice001/sol2/Step2/sol.pdf</address>
+								<type name="Pdf"></type>
+							</solentry>
+						</stepentry>
+						<stepentry>
+							<name>Etape 3</name>
+							<address>SemAut_Analyse1_s01_Exercice001/sol2/Step3</address>
+							<type name="null"></type>
+							<solentry>
+								<name>Solution</name>
+								<address>SemAut_Analyse1_s01_Exercice001/sol2/Step3/sol.pdf</address>
+								<type name="Pdf"></type>
+							</solentry>
+						</stepentry>
+						<stepentry>
+							<name>Etape 4</name>
+							<address>SemAut_Analyse1_s01_Exercice001/sol2/Step4</address>
+							<type name="null"></type>
+							<solentry>
+								<name>Solution</name>
+								<address>SemAut_Analyse1_s01_Exercice001/sol2/Step4/sol.pdf</address>
+								<type name="Pdf"></type>
+							</solentry>
+						</stepentry>
+						<stepentry>
+							<name>Etape 5</name>
+							<address>SemAut_Analyse1_s01_Exercice001/sol2/Step5</address>
+							<type name="null"></type>
+							<solentry>
+								<name>Solution</name>
+								<address>SemAut_Analyse1_s01_Exercice001/sol2/Step5/sol.pdf</address>
+								<type name="Pdf"></type>
+							</solentry>
+							<rementry>
+								<name>REMARQUE</name>
+								<address>SemAut_Analyse1_s01_Exercice001/sol2/Step5/rem.pdf</address>
+								<type name="Pdf"></type>
+							</rementry>
+						</stepentry>
+					</methodentry>
+				</exerciceentry>
+				<exerciceentry>
+					<name>Exercice 2</name>
+					<address>SemAut_Analyse1_s01_Exercice002/donnee/donnee.pdf</address>
+					<type name="Pdf"></type>
+					<methodentry>
+						<name>Méthode 1</name>
+						<address>SemAut_Analyse1_s01_Exercice002/choix1/choix.pdf</address>
+						<type name="Pdf"></type>
+						<stepentry>
+							<name>Etape 1</name>
+							<address>SemAut_Analyse1_s01_Exercice002/sol1/Step1</address>
+							<type name="null"></type>
+							<solentry>
+								<name>Solution</name>
+								<address>SemAut_Analyse1_s01_Exercice002/sol1/Step1/sol.pdf</address>
+								<type name="Pdf"></type>
+							</solentry>
+						</stepentry>
+					</methodentry>
+				</exerciceentry>
+				<exerciceentry>
+					<name>Exercice 5</name>
+					<address>SemAut_Analyse1_s01_Exercice005/donnee/donnee.pdf</address>
+					<type name="Pdf"></type>
+					<methodentry>
+						<name>Méthode 1</name>
+						<address>SemAut_Analyse1_s01_Exercice005/choix1/methode.pdf</address>
+						<type name="Pdf"></type>
+						<stepentry>
+							<name>Etape 1</name>
+							<address>SemAut_Analyse1_s01_Exercice005/sol1/Step1</address>
+							<type name="null"></type>
+							<solentry>
+								<name>Solution</name>
+								<address>SemAut_Analyse1_s01_Exercice005/sol1/Step1/sol.pdf</address>
+								<type name="Pdf"></type>
+							</solentry>
+						</stepentry>
+						<stepentry>
+							<name>Etape 2</name>
+							<address>SemAut_Analyse1_s01_Exercice005/sol1/Step2</address>
+							<type name="null"></type>
+							<solentry>
+								<name>Solution</name>
+								<address>SemAut_Analyse1_s01_Exercice005/sol1/Step2/sol.pdf</address>
+								<type name="Pdf"></type>
+							</solentry>
+						</stepentry>
+						<stepentry>
+							<name>Etape 3</name>
+							<address>SemAut_Analyse1_s01_Exercice005/sol1/Step3</address>
+							<type name="null"></type>
+							<solentry>
+								<name>Solution</name>
+								<address>SemAut_Analyse1_s01_Exercice005/sol1/Step3/sol.pdf</address>
+								<type name="Pdf"></type>
+							</solentry>
+						</stepentry>
+						<stepentry>
+							<name>Etape 4</name>
+							<address>SemAut_Analyse1_s01_Exercice005/sol1/Step4</address>
+							<type name="null"></type>
+							<solentry>
+								<name>Solution</name>
+								<address>SemAut_Analyse1_s01_Exercice005/sol1/Step4/sol.pdf</address>
+								<type name="Pdf"></type>
+							</solentry>
+						</stepentry>
+						<stepentry>
+							<name>Etape 5</name>
+							<address>SemAut_Analyse1_s01_Exercice005/sol1/Step5</address>
+							<type name="null"></type>
+							<solentry>
+								<name>Solution</name>
+								<address>SemAut_Analyse1_s01_Exercice005/sol1/Step5/sol.pdf</address>
+								<type name="Pdf"></type>
+							</solentry>
+						</stepentry>
+					</methodentry>
+				</exerciceentry>
+			</seriesentry>
+			<seriesentry>
+				<name>Série 2</name>
+				<address></address>
+				<type name=""></type>
+				<exerciceentry>
+					<name>Exercice 1</name>
+					<address>SemAut_Analyse1_s02_Exercice001/donnee/donnee.pdf</address>
+					<type name="Pdf"></type>
+					<complemententry>
+								<name>Complément</name>
+								<address>SemAut_Analyse1_s02_Exercice001/donneecomplementaire/donnee.pdf</address>
+								<type name="Pdf"></type>
+							</complemententry>
+							<methodentry>
+						<name>Méthode 1</name>
+						<address>SemAut_Analyse1_s02_Exercice001/choix1/choix.pdf</address>
+						<type name="Pdf"></type>
+						<stepentry>
+							<name>Etape 1</name>
+							<address>SemAut_Analyse1_s02_Exercice001/sol1/Step1</address>
+							<type name="null"></type>
+							<solentry>
+								<name>Solution</name>
+								<address>SemAut_Analyse1_s02_Exercice001/sol1/Step1/sol.pdf</address>
+								<type name="Pdf"></type>
+							</solentry>
+						</stepentry>
+					</methodentry>
+					<methodentry>
+						<name>Méthode 2</name>
+						<address>SemAut_Analyse1_s02_Exercice001/choix2/choix.pdf</address>
+						<type name="Pdf"></type>
+						<stepentry>
+							<name>Etape 1</name>
+							<address>SemAut_Analyse1_s02_Exercice001/sol2/Step1</address>
+							<type name="null"></type>
+							<solentry>
+								<name>Solution</name>
+								<address>SemAut_Analyse1_s02_Exercice001/sol2/Step1/sol.pdf</address>
+								<type name="Pdf"></type>
+							</solentry>
+						</stepentry>
+						<stepentry>
+							<name>Etape 2</name>
+							<address>SemAut_Analyse1_s02_Exercice001/sol2/Step2</address>
+							<type name="null"></type>
+							<solentry>
+								<name>Solution</name>
+								<address>SemAut_Analyse1_s02_Exercice001/sol2/Step2/sol.pdf</address>
+								<type name="Pdf"></type>
+							</solentry>
+						</stepentry>
+						<stepentry>
+							<name>Etape 3</name>
+							<address>SemAut_Analyse1_s02_Exercice001/sol2/Step3</address>
+							<type name="null"></type>
+							<solentry>
+								<name>Solution</name>
+								<address>SemAut_Analyse1_s02_Exercice001/sol2/Step3/sol.pdf</address>
+								<type name="Pdf"></type>
+							</solentry>
+						</stepentry>
+						<stepentry>
+							<name>Etape 4</name>
+							<address>SemAut_Analyse1_s02_Exercice001/sol2/Step4</address>
+							<type name="null"></type>
+							<solentry>
+								<name>Solution</name>
+								<address>SemAut_Analyse1_s02_Exercice001/sol2/Step4/sol.pdf</address>
+								<type name="Pdf"></type>
+							</solentry>
+						</stepentry>
+					</methodentry>
+					<methodentry>
+						<name>Méthode 3</name>
+						<address>SemAut_Analyse1_s02_Exercice001/choix3/choix.pdf</address>
+						<type name="Pdf"></type>
+						<stepentry>
+							<name>Etape 1</name>
+							<address>SemAut_Analyse1_s02_Exercice001/sol3/Step1</address>
+							<type name="null"></type>
+							<solentry>
+								<name>Solution</name>
+								<address>SemAut_Analyse1_s02_Exercice001/sol3/Step1/sol.pdf</address>
+								<type name="Pdf"></type>
+							</solentry>
+						</stepentry>
+						<stepentry>
+							<name>Etape 2</name>
+							<address>SemAut_Analyse1_s02_Exercice001/sol3/Step2</address>
+							<type name="null"></type>
+							<solentry>
+								<name>Solution</name>
+								<address>SemAut_Analyse1_s02_Exercice001/sol3/Step2/sol.pdf</address>
+								<type name="Pdf"></type>
+							</solentry>
+						</stepentry>
+						<stepentry>
+							<name>Etape 3</name>
+							<address>SemAut_Analyse1_s02_Exercice001/sol3/Step3</address>
+							<type name="null"></type>
+							<solentry>
+								<name>Solution</name>
+								<address>SemAut_Analyse1_s02_Exercice001/sol3/Step3/sol.pdf</address>
+								<type name="Pdf"></type>
+							</solentry>
+						</stepentry>
+					</methodentry>
+					<methodentry>
+						<name>Méthode 4</name>
+						<address>SemAut_Analyse1_s02_Exercice001/choix4/choix.pdf</address>
+						<type name="Pdf"></type>
+						<stepentry>
+							<name>Etape 1</name>
+							<address>SemAut_Analyse1_s02_Exercice001/sol4/Step1</address>
+							<type name="null"></type>
+							<solentry>
+								<name>Solution</name>
+								<address>SemAut_Analyse1_s02_Exercice001/sol4/Step1/sol.pdf</address>
+								<type name="Pdf"></type>
+							</solentry>
+						</stepentry>
+						<stepentry>
+							<name>Etape 2</name>
+							<address>SemAut_Analyse1_s02_Exercice001/sol4/Step2</address>
+							<type name="null"></type>
+							<solentry>
+								<name>Solution</name>
+								<address>SemAut_Analyse1_s02_Exercice001/sol4/Step2/sol.pdf</address>
+								<type name="Pdf"></type>
+							</solentry>
+							<rementry>
+								<name>REMARQUE</name>
+								<address>SemAut_Analyse1_s02_Exercice001/sol4/Step2/rem.pdf</address>
+								<type name="Pdf"></type>
+							</rementry>
+						</stepentry>
+					</methodentry>
+				</exerciceentry>
+				<exerciceentry>
+					<name>Exercice 2</name>
+					<address>SemAut_Analyse1_s02_Exercice002/donnee/donnee.pdf</address>
+					<type name="Pdf"></type>
+					<partieentry>
+					<name>Partie 1</name>
+					<address></address>
+					<type name="null"></type>
+					<methodentry>
+						<name>Méthode 1</name>
+						<address>SemAut_Analyse1_s02_Exercice002/part01/choix1/choix.pdf</address>
+						<type name="Pdf"></type>
+						<stepentry>
+							<name>Etape 1</name>
+							<address>SemAut_Analyse1_s02_Exercice002/part01/sol1/Step1</address>
+							<type name="null"></type>
+							<solentry>
+								<name>Solution</name>
+								<address>SemAut_Analyse1_s02_Exercice002/part01/sol1/Step1/sol.pdf</address>
+								<type name="Pdf"></type>
+							</solentry>
+						</stepentry>
+						<stepentry>
+							<name>Etape 2</name>
+							<address>SemAut_Analyse1_s02_Exercice002/part01/sol1/Step2</address>
+							<type name="null"></type>
+							<solentry>
+								<name>Solution</name>
+								<address>SemAut_Analyse1_s02_Exercice002/part01/sol1/Step2/sol.pdf</address>
+								<type name="Pdf"></type>
+							</solentry>
+						</stepentry>
+						<stepentry>
+							<name>Etape 3</name>
+							<address>SemAut_Analyse1_s02_Exercice002/part01/sol1/Step3</address>
+							<type name="null"></type>
+							<solentry>
+								<name>Solution</name>
+								<address>SemAut_Analyse1_s02_Exercice002/part01/sol1/Step3/sol.pdf</address>
+								<type name="Pdf"></type>
+							</solentry>
+						</stepentry>
+						<stepentry>
+							<name>Etape 4</name>
+							<address>SemAut_Analyse1_s02_Exercice002/part01/sol1/Step4</address>
+							<type name="null"></type>
+							<solentry>
+								<name>Solution</name>
+								<address>SemAut_Analyse1_s02_Exercice002/part01/sol1/Step4/sol.pdf</address>
+								<type name="Pdf"></type>
+							</solentry>
+						</stepentry>
+					</methodentry>
+				</partieentry>
+				<partieentry>
+					<name>Partie 2</name>
+					<address></address>
+					<type name="null"></type>
+					<methodentry>
+						<name>Méthode 1</name>
+						<address>SemAut_Analyse1_s02_Exercice002/part02/choix1/choix.pdf</address>
+						<type name="Pdf"></type>
+						<stepentry>
+							<name>Etape 1</name>
+							<address>SemAut_Analyse1_s02_Exercice002/part02/sol1/Step1</address>
+							<type name="null"></type>
+							<solentry>
+								<name>Solution</name>
+								<address>SemAut_Analyse1_s02_Exercice002/part02/sol1/Step1/sol.pdf</address>
+								<type name="Pdf"></type>
+							</solentry>
+						</stepentry>
+						<stepentry>
+							<name>Etape 2</name>
+							<address>SemAut_Analyse1_s02_Exercice002/part02/sol1/Step2</address>
+							<type name="null"></type>
+							<solentry>
+								<name>Solution</name>
+								<address>SemAut_Analyse1_s02_Exercice002/part02/sol1/Step2/sol.pdf</address>
+								<type name="Pdf"></type>
+							</solentry>
+						</stepentry>
+					</methodentry>
+				</partieentry>
+				</exerciceentry>
+			</seriesentry>
+			<seriesentry>
+				<name>Série 3</name>
+				<address></address>
+				<type name=""></type>
+				<exerciceentry>
+					<name>Exercice 1</name>
+					<address>SemAut_Analyse1_s03_Exercice001/donnee/donnee.pdf</address>
+					<type name="Pdf"></type>
+					<methodentry>
+						<name>Méthode 1</name>
+						<address>SemAut_Analyse1_s03_Exercice001/choix1/choix.pdf</address>
+						<type name="Pdf"></type>
+						<stepentry>
+							<name>Etape 1</name>
+							<address>SemAut_Analyse1_s03_Exercice001/sol1/Step1</address>
+							<type name="null"></type>
+							<solentry>
+								<name>Solution</name>
+								<address>SemAut_Analyse1_s03_Exercice001/sol1/Step1/sol.pdf</address>
+								<type name="Pdf"></type>
+							</solentry>
+						</stepentry>
+						<stepentry>
+							<name>Etape 2</name>
+							<address>SemAut_Analyse1_s03_Exercice001/sol1/Step2</address>
+							<type name="null"></type>
+							<solentry>
+								<name>Solution</name>
+								<address>SemAut_Analyse1_s03_Exercice001/sol1/Step2/sol.pdf</address>
+								<type name="Pdf"></type>
+							</solentry>
+						</stepentry>
+						<stepentry>
+							<name>Etape 3</name>
+							<address>SemAut_Analyse1_s03_Exercice001/sol1/Step3</address>
+							<type name="null"></type>
+							<solentry>
+								<name>Solution</name>
+								<address>SemAut_Analyse1_s03_Exercice001/sol1/Step3/sol.pdf</address>
+								<type name="Pdf"></type>
+							</solentry>
+						</stepentry>
+						<stepentry>
+							<name>Etape 4</name>
+							<address>SemAut_Analyse1_s03_Exercice001/sol1/Step4</address>
+							<type name="null"></type>
+							<solentry>
+								<name>Solution</name>
+								<address>SemAut_Analyse1_s03_Exercice001/sol1/Step4/sol.pdf</address>
+								<type name="Pdf"></type>
+							</solentry>
+						</stepentry>
+					</methodentry>
+				</exerciceentry>
+			</seriesentry>
+			<seriesentry>
+				<name>Série 4</name>
+				<address></address>
+				<type name=""></type>
+				<exerciceentry>
+					<name>Exercice 1</name>
+					<address>SemAut_Analyse1_s04_Exercice001/donnee/donnee.pdf</address>
+					<type name="Pdf"></type>
+					<methodentry>
+						<name>Méthode 1</name>
+						<address>SemAut_Analyse1_s04_Exercice001/choix1/choix.pdf</address>
+						<type name="Pdf"></type>
+						<stepentry>
+							<name>Etape 1</name>
+							<address>SemAut_Analyse1_s04_Exercice001/sol1/Step1</address>
+							<type name="null"></type>
+							<solentry>
+								<name>Solution</name>
+								<address>SemAut_Analyse1_s04_Exercice001/sol1/Step1/sol.pdf</address>
+								<type name="Pdf"></type>
+							</solentry>
+						</stepentry>
+						<stepentry>
+							<name>Etape 2</name>
+							<address>SemAut_Analyse1_s04_Exercice001/sol1/Step2</address>
+							<type name="null"></type>
+							<solentry>
+								<name>Solution</name>
+								<address>SemAut_Analyse1_s04_Exercice001/sol1/Step2/sol.pdf</address>
+								<type name="Pdf"></type>
+							</solentry>
+						</stepentry>
+						<stepentry>
+							<name>Etape 3</name>
+							<address>SemAut_Analyse1_s04_Exercice001/sol1/Step3</address>
+							<type name="null"></type>
+							<solentry>
+								<name>Solution</name>
+								<address>SemAut_Analyse1_s04_Exercice001/sol1/Step3/sol.pdf</address>
+								<type name="Pdf"></type>
+							</solentry>
+						</stepentry>
+						<stepentry>
+							<name>Etape 4</name>
+							<address>SemAut_Analyse1_s04_Exercice001/sol1/Step4</address>
+							<type name="null"></type>
+							<solentry>
+								<name>Solution</name>
+								<address>SemAut_Analyse1_s04_Exercice001/sol1/Step4/sol.pdf</address>
+								<type name="Pdf"></type>
+							</solentry>
+						</stepentry>
+					</methodentry>
+				</exerciceentry>
+			</seriesentry>
+		</lectureentry>
+		<lectureentry>
+			<name>Analyse 2</name>
+			<address></address>
+			<type name=""></type>
+			<seriesentry>
+				<name>Série 1</name>
+				<address></address>
+				<type name=""></type>
+				<exerciceentry>
+					<name>Exercice 1</name>
+					<address>SemAut_Analyse2_s01_Exercice001/donnee/donnee.pdf</address>
+					<type name="Pdf"></type>
+					<complemententry>
+								<name>Complément</name>
+								<address>SemAut_Analyse2_s01_Exercice001/donneecomplementaire/donnee.pdf</address>
+								<type name="Pdf"></type>
+							</complemententry>
+							<partieentry>
+					<name>Partie 1</name>
+					<address></address>
+					<type name="null"></type>
+					<methodentry>
+						<name>Méthode 1</name>
+						<address>SemAut_Analyse2_s01_Exercice001/part01/choix1/choix.pdf</address>
+						<type name="Pdf"></type>
+						<stepentry>
+							<name>Etape 1</name>
+							<address>SemAut_Analyse2_s01_Exercice001/part01/sol1/Step1</address>
+							<type name="null"></type>
+							<solentry>
+								<name>Solution</name>
+								<address>SemAut_Analyse2_s01_Exercice001/part01/sol1/Step1/sol.pdf</address>
+								<type name="Pdf"></type>
+							</solentry>
+						</stepentry>
+					</methodentry>
+				</partieentry>
+				<partieentry>
+					<name>Partie 2</name>
+					<address></address>
+					<type name="null"></type>
+					<methodentry>
+						<name>Méthode 1</name>
+						<address>SemAut_Analyse2_s01_Exercice001/part02/choix1/choix.pdf</address>
+						<type name="Pdf"></type>
+						<stepentry>
+							<name>Etape 1</name>
+							<address>SemAut_Analyse2_s01_Exercice001/part02/sol1/Step1</address>
+							<type name="null"></type>
+							<solentry>
+								<name>Solution</name>
+								<address>SemAut_Analyse2_s01_Exercice001/part02/sol1/Step1/sol.pdf</address>
+								<type name="Pdf"></type>
+							</solentry>
+						</stepentry>
+					</methodentry>
+				</partieentry>
+				</exerciceentry>
+			</seriesentry>
+			<seriesentry>
+				<name>Série 2</name>
+				<address></address>
+				<type name=""></type>
+				<exerciceentry>
+					<name>Exercice 1</name>
+					<address>SemAut_Analyse2_s02_Exercice001/donnee/donnee.pdf</address>
+					<type name="Pdf"></type>
+					<methodentry>
+						<name>Méthode 1</name>
+						<address>SemAut_Analyse2_s02_Exercice001/choix1/choix.pdf</address>
+						<type name="Pdf"></type>
+						<stepentry>
+							<name>Etape 1</name>
+							<address>SemAut_Analyse2_s02_Exercice001/sol1/Step1</address>
+							<type name="null"></type>
+							<solentry>
+								<name>Solution</name>
+								<address>SemAut_Analyse2_s02_Exercice001/sol1/Step1/sol.pdf</address>
+								<type name="Pdf"></type>
+							</solentry>
+						</stepentry>
+						<stepentry>
+							<name>Etape 2</name>
+							<address>SemAut_Analyse2_s02_Exercice001/sol1/Step2</address>
+							<type name="null"></type>
+							<solentry>
+								<name>Solution</name>
+								<address>SemAut_Analyse2_s02_Exercice001/sol1/Step2/sol.pdf</address>
+								<type name="Pdf"></type>
+							</solentry>
+						</stepentry>
+						<stepentry>
+							<name>Etape 3</name>
+							<address>SemAut_Analyse2_s02_Exercice001/sol1/Step3</address>
+							<type name="null"></type>
+							<solentry>
+								<name>Solution</name>
+								<address>SemAut_Analyse2_s02_Exercice001/sol1/Step3/sol.pdf</address>
+								<type name="Pdf"></type>
+							</solentry>
+						</stepentry>
+					</methodentry>
+					<methodentry>
+						<name>Méthode 2</name>
+						<address>SemAut_Analyse2_s02_Exercice001/choix2/choix.pdf</address>
+						<type name="Pdf"></type>
+						<stepentry>
+							<name>Etape 1</name>
+							<address>SemAut_Analyse2_s02_Exercice001/sol2/Step1</address>
+							<type name="null"></type>
+							<solentry>
+								<name>Solution</name>
+								<address>SemAut_Analyse2_s02_Exercice001/sol2/Step1/sol.pdf</address>
+								<type name="Pdf"></type>
+							</solentry>
+						</stepentry>
+						<stepentry>
+							<name>Etape 2</name>
+							<address>SemAut_Analyse2_s02_Exercice001/sol2/Step2</address>
+							<type name="null"></type>
+							<solentry>
+								<name>Solution</name>
+								<address>SemAut_Analyse2_s02_Exercice001/sol2/Step2/sol.pdf</address>
+								<type name="Pdf"></type>
+							</solentry>
+						</stepentry>
+						<stepentry>
+							<name>Etape 3</name>
+							<address>SemAut_Analyse2_s02_Exercice001/sol2/Step3</address>
+							<type name="null"></type>
+							<solentry>
+								<name>Solution</name>
+								<address>SemAut_Analyse2_s02_Exercice001/sol2/Step3/sol.pdf</address>
+								<type name="Pdf"></type>
+							</solentry>
+						</stepentry>
+					</methodentry>
+				</exerciceentry>
+			</seriesentry>
+			<seriesentry>
+				<name>Série 3</name>
+				<address></address>
+				<type name=""></type>
+				<exerciceentry>
+					<name>Exercice 1</name>
+					<address>SemAut_Analyse2_s03_Exercice001/donnee/donnee.pdf</address>
+					<type name="Pdf"></type>
+					<methodentry>
+						<name>Méthode 1</name>
+						<address>SemAut_Analyse2_s03_Exercice001/choix1/choix.pdf</address>
+						<type name="Pdf"></type>
+						<stepentry>
+							<name>Etape 1</name>
+							<address>SemAut_Analyse2_s03_Exercice001/sol1/Step1</address>
+							<type name="null"></type>
+							<solentry>
+								<name>Solution</name>
+								<address>SemAut_Analyse2_s03_Exercice001/sol1/Step1/sol.pdf</address>
+								<type name="Pdf"></type>
+							</solentry>
+						</stepentry>
+						<stepentry>
+							<name>Etape 2</name>
+							<address>SemAut_Analyse2_s03_Exercice001/sol1/Step2</address>
+							<type name="null"></type>
+							<solentry>
+								<name>Solution</name>
+								<address>SemAut_Analyse2_s03_Exercice001/sol1/Step2/sol.pdf</address>
+								<type name="Pdf"></type>
+							</solentry>
+						</stepentry>
+					</methodentry>
+				</exerciceentry>
+			</seriesentry>
+		</lectureentry>
+		<lectureentry>
+			<name>Algèbre Linéaire</name>
+			<address></address>
+			<type name=""></type>
+			<seriesentry>
+				<name>Langage ensembliste</name>
+				<address></address>
+				<type name=""></type>
+				<exerciceentry>
+					<name>Exercice 13</name>
+					<address>SemAut_Alglin_s01_Exercice013/donnee/donnee.pdf</address>
+					<type name="Pdf"></type>
+					<partieentry>
+					<name>Partie 1</name>
+					<address></address>
+					<type name="null"></type>
+					<methodentry>
+						<name>Méthode 1</name>
+						<address>SemAut_Alglin_s01_Exercice013/part01/choix1/choix.pdf</address>
+						<type name="Pdf"></type>
+						<stepentry>
+							<name>Etape 1</name>
+							<address>SemAut_Alglin_s01_Exercice013/part01/sol1/Step1</address>
+							<type name="null"></type>
+							<solentry>
+								<name>Solution</name>
+								<address>SemAut_Alglin_s01_Exercice013/part01/sol1/Step1/sol.pdf</address>
+								<type name="Pdf"></type>
+							</solentry>
+						</stepentry>
+					</methodentry>
+				</partieentry>
+				<partieentry>
+					<name>Partie 2</name>
+					<address></address>
+					<type name="null"></type>
+					<methodentry>
+						<name>Méthode 1</name>
+						<address>SemAut_Alglin_s01_Exercice013/part02/choix1/choix.pdf</address>
+						<type name="Pdf"></type>
+						<stepentry>
+							<name>Etape 1</name>
+							<address>SemAut_Alglin_s01_Exercice013/part02/sol1/Step1</address>
+							<type name="null"></type>
+							<solentry>
+								<name>Solution</name>
+								<address>SemAut_Alglin_s01_Exercice013/part02/sol1/Step1/sol.pdf</address>
+								<type name="Pdf"></type>
+							</solentry>
+						</stepentry>
+					</methodentry>
+				</partieentry>
+				<partieentry>
+					<name>Partie 3</name>
+					<address></address>
+					<type name="null"></type>
+					<methodentry>
+						<name>Méthode 1</name>
+						<address>SemAut_Alglin_s01_Exercice013/part03/choix1/choix.pdf</address>
+						<type name="Pdf"></type>
+						<stepentry>
+							<name>Etape 1</name>
+							<address>SemAut_Alglin_s01_Exercice013/part03/sol1/Step1</address>
+							<type name="null"></type>
+							<solentry>
+								<name>Solution</name>
+								<address>SemAut_Alglin_s01_Exercice013/part03/sol1/Step1/sol.pdf</address>
+								<type name="Pdf"></type>
+							</solentry>
+						</stepentry>
+					</methodentry>
+				</partieentry>
+				</exerciceentry>
+				<exerciceentry>
+					<name>Exercice 17</name>
+					<address>SemAut_Alglin_s01_Exercice017/donnee/donnee.pdf</address>
+					<type name="Pdf"></type>
+					<methodentry>
+						<name>Méthode 1</name>
+						<address>SemAut_Alglin_s01_Exercice017/choix1/choix.pdf</address>
+						<type name="Pdf"></type>
+						<stepentry>
+							<name>Etape 1</name>
+							<address>SemAut_Alglin_s01_Exercice017/sol1/Step1</address>
+							<type name="null"></type>
+							<solentry>
+								<name>Solution</name>
+								<address>SemAut_Alglin_s01_Exercice017/sol1/Step1/sol.pdf</address>
+								<type name="Pdf"></type>
+							</solentry>
+						</stepentry>
+						<stepentry>
+							<name>Etape 2</name>
+							<address>SemAut_Alglin_s01_Exercice017/sol1/Step2</address>
+							<type name="null"></type>
+							<solentry>
+								<name>Solution</name>
+								<address>SemAut_Alglin_s01_Exercice017/sol1/Step2/sol.pdf</address>
+								<type name="Pdf"></type>
+							</solentry>
+						</stepentry>
+						<stepentry>
+							<name>Etape 3</name>
+							<address>SemAut_Alglin_s01_Exercice017/sol1/Step3</address>
+							<type name="null"></type>
+							<solentry>
+								<name>Solution</name>
+								<address>SemAut_Alglin_s01_Exercice017/sol1/Step3/sol.pdf</address>
+								<type name="Pdf"></type>
+							</solentry>
+						</stepentry>
+					</methodentry>
+				</exerciceentry>
+			</seriesentry>
+			<seriesentry>
+				<name>Logique et méthode de preuve</name>
+				<address></address>
+				<type name=""></type>
+				<exerciceentry>
+					<name>Exercice 5</name>
+					<address>SemAut_Alglin_s02_Exercice005/donnee/donnee.pdf</address>
+					<type name="Pdf"></type>
+					<methodentry>
+						<name>Méthode 1</name>
+						<address>SemAut_Alglin_s02_Exercice005/choix1/choix.pdf</address>
+						<type name="Pdf"></type>
+						<stepentry>
+							<name>Etape 1</name>
+							<address>SemAut_Alglin_s02_Exercice005/sol1/Step1</address>
+							<type name="null"></type>
+							<solentry>
+								<name>Solution</name>
+								<address>SemAut_Alglin_s02_Exercice005/sol1/Step1/sol.pdf</address>
+								<type name="Pdf"></type>
+							</solentry>
+						</stepentry>
+						<stepentry>
+							<name>Etape 2</name>
+							<address>SemAut_Alglin_s02_Exercice005/sol1/Step2</address>
+							<type name="null"></type>
+							<solentry>
+								<name>Solution</name>
+								<address>SemAut_Alglin_s02_Exercice005/sol1/Step2/sol.pdf</address>
+								<type name="Pdf"></type>
+							</solentry>
+						</stepentry>
+					</methodentry>
+				</exerciceentry>
+				<exerciceentry>
+					<name>Exercice 6 b)</name>
+					<address>SemAut_Alglin_s02_Exercice006/donnee/donnee.pdf</address>
+					<type name="Pdf"></type>
+					<methodentry>
+						<name>Méthode 1</name>
+						<address>SemAut_Alglin_s02_Exercice006/choix1/choix.pdf</address>
+						<type name="Pdf"></type>
+						<stepentry>
+							<name>Etape 1</name>
+							<address>SemAut_Alglin_s02_Exercice006/sol1/Step1</address>
+							<type name="null"></type>
+							<solentry>
+								<name>Solution</name>
+								<address>SemAut_Alglin_s02_Exercice006/sol1/Step1/sol.pdf</address>
+								<type name="Pdf"></type>
+							</solentry>
+						</stepentry>
+						<stepentry>
+							<name>Etape 2</name>
+							<address>SemAut_Alglin_s02_Exercice006/sol1/Step2</address>
+							<type name="null"></type>
+							<solentry>
+								<name>Solution</name>
+								<address>SemAut_Alglin_s02_Exercice006/sol1/Step2/sol.pdf</address>
+								<type name="Pdf"></type>
+							</solentry>
+						</stepentry>
+					</methodentry>
+				</exerciceentry>
+				<exerciceentry>
+					<name>Exercice 13 c)</name>
+					<address>SemAut_Alglin_s02_Exercice012/donnee/donnee.pdf</address>
+					<type name="Pdf"></type>
+					<methodentry>
+						<name>Méthode 1</name>
+						<address>SemAut_Alglin_s02_Exercice012/choix1/choix.pdf</address>
+						<type name="Pdf"></type>
+						<stepentry>
+							<name>Etape 1</name>
+							<address>SemAut_Alglin_s02_Exercice012/sol1/Step1</address>
+							<type name="null"></type>
+							<solentry>
+								<name>Solution</name>
+								<address>SemAut_Alglin_s02_Exercice012/sol1/Step1/sol.pdf</address>
+								<type name="Pdf"></type>
+							</solentry>
+						</stepentry>
+						<stepentry>
+							<name>Etape 2</name>
+							<address>SemAut_Alglin_s02_Exercice012/sol1/Step2</address>
+							<type name="null"></type>
+							<solentry>
+								<name>Solution</name>
+								<address>SemAut_Alglin_s02_Exercice012/sol1/Step2/sol.pdf</address>
+								<type name="Pdf"></type>
+							</solentry>
+						</stepentry>
+					</methodentry>
+				</exerciceentry>
+				<exerciceentry>
+					<name>Exercice 13 d)</name>
+					<address>SemAut_Alglin_s02_Exercice013/donnee/donnee.pdf</address>
+					<type name="Pdf"></type>
+					<methodentry>
+						<name>Méthode 1</name>
+						<address>SemAut_Alglin_s02_Exercice013/choix1/choix.pdf</address>
+						<type name="Pdf"></type>
+						<stepentry>
+							<name>Etape 1</name>
+							<address>SemAut_Alglin_s02_Exercice013/sol1/Step1</address>
+							<type name="null"></type>
+							<solentry>
+								<name>Solution</name>
+								<address>SemAut_Alglin_s02_Exercice013/sol1/Step1/sol.pdf</address>
+								<type name="Pdf"></type>
+							</solentry>
+						</stepentry>
+						<stepentry>
+							<name>Etape 2</name>
+							<address>SemAut_Alglin_s02_Exercice013/sol1/Step2</address>
+							<type name="null"></type>
+							<solentry>
+								<name>Solution</name>
+								<address>SemAut_Alglin_s02_Exercice013/sol1/Step2/sol.pdf</address>
+								<type name="Pdf"></type>
+							</solentry>
+						</stepentry>
+					</methodentry>
+				</exerciceentry>
+				<exerciceentry>
+					<name>Exercice 14</name>
+					<address>SemAut_Alglin_s02_Exercice014/donnee/donnee.html</address>
+					<type name="Html"></type>
+					<methodentry>
+						<name>Méthode 1</name>
+						<address>SemAut_Alglin_s02_Exercice014/choix1/choix1.html</address>
+						<type name="Html"></type>
+						<stepentry>
+							<name>Etape 1</name>
+							<address>SemAut_Alglin_s02_Exercice014/sol1/Step1</address>
+							<type name="null"></type>
+							<hintentry>
+								<name>Aide</name>
+								<address>SemAut_Alglin_s02_Exercice014/sol1/Step1/hint1.html</address>
+								<type name="Html"></type>
+							</hintentry>
+							<solentry>
+								<name>Solution</name>
+								<address>SemAut_Alglin_s02_Exercice014/sol1/Step1/sol.gif</address>
+								<type name="Image"></type>
+							</solentry>
+							<rementry>
+								<name>REMARQUE</name>
+								<address>SemAut_Alglin_s02_Exercice014/sol1/Step1/rem.gif</address>
+								<type name="Image"></type>
+							</rementry>
+						</stepentry>
+					</methodentry>
+				</exerciceentry>
+				<exerciceentry>
+					<name>Exercice 17</name>
+					<address>SemAut_Alglin_s02_Exercice017/donnee/donnee.pdf</address>
+					<type name="Pdf"></type>
+					<partieentry>
+					<name>Partie 1</name>
+					<address></address>
+					<type name="null"></type>
+					<methodentry>
+						<name>Méthode 1</name>
+						<address>SemAut_Alglin_s02_Exercice017/part01/choix1/methode.pdf</address>
+						<type name="Pdf"></type>
+						<stepentry>
+							<name>Etape 1</name>
+							<address>SemAut_Alglin_s02_Exercice017/part01/sol1/Step1</address>
+							<type name="null"></type>
+							<solentry>
+								<name>Solution</name>
+								<address>SemAut_Alglin_s02_Exercice017/part01/sol1/Step1/sol.pdf</address>
+								<type name="Pdf"></type>
+							</solentry>
+						</stepentry>
+					</methodentry>
+				</partieentry>
+				<partieentry>
+					<name>Partie 2</name>
+					<address></address>
+					<type name="null"></type>
+					<methodentry>
+						<name>Méthode 1</name>
+						<address>SemAut_Alglin_s02_Exercice017/part02/choix1/methode.pdf</address>
+						<type name="Pdf"></type>
+						<stepentry>
+							<name>Etape 1</name>
+							<address>SemAut_Alglin_s02_Exercice017/part02/sol1/Step1</address>
+							<type name="null"></type>
+							<solentry>
+								<name>Solution</name>
+								<address>SemAut_Alglin_s02_Exercice017/part02/sol1/Step1/sol.pdf</address>
+								<type name="Pdf"></type>
+							</solentry>
+						</stepentry>
+						<stepentry>
+							<name>Etape 2</name>
+							<address>SemAut_Alglin_s02_Exercice017/part02/sol1/Step2</address>
+							<type name="null"></type>
+							<solentry>
+								<name>Solution</name>
+								<address>SemAut_Alglin_s02_Exercice017/part02/sol1/Step2/sol.pdf</address>
+								<type name="Pdf"></type>
+							</solentry>
+						</stepentry>
+					</methodentry>
+				</partieentry>
+				<partieentry>
+					<name>Partie 3</name>
+					<address></address>
+					<type name="null"></type>
+					<methodentry>
+						<name>Méthode 1</name>
+						<address>SemAut_Alglin_s02_Exercice017/part03/choix1/methode.pdf</address>
+						<type name="Pdf"></type>
+						<stepentry>
+							<name>Etape 1</name>
+							<address>SemAut_Alglin_s02_Exercice017/part03/sol1/Step1</address>
+							<type name="null"></type>
+							<solentry>
+								<name>Solution</name>
+								<address>SemAut_Alglin_s02_Exercice017/part03/sol1/Step1/sol.pdf</address>
+								<type name="Pdf"></type>
+							</solentry>
+						</stepentry>
+						<stepentry>
+							<name>Etape 2</name>
+							<address>SemAut_Alglin_s02_Exercice017/part03/sol1/Step2</address>
+							<type name="null"></type>
+							<solentry>
+								<name>Solution</name>
+								<address>SemAut_Alglin_s02_Exercice017/part03/sol1/Step2/sol.pdf</address>
+								<type name="Pdf"></type>
+							</solentry>
+						</stepentry>
+					</methodentry>
+				</partieentry>
+				</exerciceentry>
+			</seriesentry>
+			<seriesentry>
+				<name>Analyse combinatoire</name>
+				<address></address>
+				<type name=""></type>
+				<exerciceentry>
+					<name>Exercice 5</name>
+					<address>SemAut_Alglin_s03_Exercice005/donnee/donnee.pdf</address>
+					<type name="Pdf"></type>
+					<partieentry>
+					<name>Partie 1</name>
+					<address></address>
+					<type name="null"></type>
+					<methodentry>
+						<name>Méthode 1</name>
+						<address>SemAut_Alglin_s03_Exercice005/part01/choix1/choix.pdf</address>
+						<type name="Pdf"></type>
+						<stepentry>
+							<name>Etape 1</name>
+							<address>SemAut_Alglin_s03_Exercice005/part01/sol1/Step1</address>
+							<type name="null"></type>
+							<solentry>
+								<name>Solution</name>
+								<address>SemAut_Alglin_s03_Exercice005/part01/sol1/Step1/sol.pdf</address>
+								<type name="Pdf"></type>
+							</solentry>
+						</stepentry>
+					</methodentry>
+				</partieentry>
+				<partieentry>
+					<name>Partie 2</name>
+					<address></address>
+					<type name="null"></type>
+					<methodentry>
+						<name>Méthode 1</name>
+						<address>SemAut_Alglin_s03_Exercice005/part02/choix1/choix.pdf</address>
+						<type name="Pdf"></type>
+						<stepentry>
+							<name>Etape 1</name>
+							<address>SemAut_Alglin_s03_Exercice005/part02/sol1/Step1</address>
+							<type name="null"></type>
+							<solentry>
+								<name>Solution</name>
+								<address>SemAut_Alglin_s03_Exercice005/part02/sol1/Step1/sol.pdf</address>
+								<type name="Pdf"></type>
+							</solentry>
+						</stepentry>
+						<stepentry>
+							<name>Etape 2</name>
+							<address>SemAut_Alglin_s03_Exercice005/part02/sol1/Step2</address>
+							<type name="null"></type>
+							<solentry>
+								<name>Solution</name>
+								<address>SemAut_Alglin_s03_Exercice005/part02/sol1/Step2/sol.pdf</address>
+								<type name="Pdf"></type>
+							</solentry>
+						</stepentry>
+					</methodentry>
+				</partieentry>
+				</exerciceentry>
+				<exerciceentry>
+					<name>Exercice 7</name>
+					<address>SemAut_Alglin_s03_Exercice007/donnee/donnee.pdf</address>
+					<type name="Pdf"></type>
+					<partieentry>
+					<name>Partie 1</name>
+					<address></address>
+					<type name="null"></type>
+					<methodentry>
+						<name>Méthode 1</name>
+						<address>SemAut_Alglin_s03_Exercice007/part01/choix1/choix.pdf</address>
+						<type name="Pdf"></type>
+						<stepentry>
+							<name>Etape 1</name>
+							<address>SemAut_Alglin_s03_Exercice007/part01/sol1/Step1</address>
+							<type name="null"></type>
+							<solentry>
+								<name>Solution</name>
+								<address>SemAut_Alglin_s03_Exercice007/part01/sol1/Step1/sol.pdf</address>
+								<type name="Pdf"></type>
+							</solentry>
+						</stepentry>
+					</methodentry>
+				</partieentry>
+				<partieentry>
+					<name>Partie 2</name>
+					<address></address>
+					<type name="null"></type>
+					<methodentry>
+						<name>Méthode 1</name>
+						<address>SemAut_Alglin_s03_Exercice007/part02/choix1/choix.pdf</address>
+						<type name="Pdf"></type>
+						<stepentry>
+							<name>Etape 1</name>
+							<address>SemAut_Alglin_s03_Exercice007/part02/sol1/Step1</address>
+							<type name="null"></type>
+							<solentry>
+								<name>Solution</name>
+								<address>SemAut_Alglin_s03_Exercice007/part02/sol1/Step1/sol.pdf</address>
+								<type name="Pdf"></type>
+							</solentry>
+						</stepentry>
+					</methodentry>
+				</partieentry>
+				<partieentry>
+					<name>Partie 3</name>
+					<address></address>
+					<type name="null"></type>
+					<methodentry>
+						<name>Méthode 1</name>
+						<address>SemAut_Alglin_s03_Exercice007/part03/choix1/choix.pdf</address>
+						<type name="Pdf"></type>
+						<stepentry>
+							<name>Etape 1</name>
+							<address>SemAut_Alglin_s03_Exercice007/part03/sol1/Step1</address>
+							<type name="null"></type>
+							<solentry>
+								<name>Solution</name>
+								<address>SemAut_Alglin_s03_Exercice007/part03/sol1/Step1/sol.pdf</address>
+								<type name="Pdf"></type>
+							</solentry>
+						</stepentry>
+					</methodentry>
+				</partieentry>
+				<partieentry>
+					<name>Partie 4</name>
+					<address></address>
+					<type name="null"></type>
+					<methodentry>
+						<name>Méthode 1</name>
+						<address>SemAut_Alglin_s03_Exercice007/part04/choix1/choix.pdf</address>
+						<type name="Pdf"></type>
+						<stepentry>
+							<name>Etape 1</name>
+							<address>SemAut_Alglin_s03_Exercice007/part04/sol1/Step1</address>
+							<type name="null"></type>
+							<solentry>
+								<name>Solution</name>
+								<address>SemAut_Alglin_s03_Exercice007/part04/sol1/Step1/sol.pdf</address>
+								<type name="Pdf"></type>
+							</solentry>
+						</stepentry>
+					</methodentry>
+					<methodentry>
+						<name>Méthode 2</name>
+						<address>SemAut_Alglin_s03_Exercice007/part04/choix2/choix.pdf</address>
+						<type name="Pdf"></type>
+						<stepentry>
+							<name>Etape 1</name>
+							<address>SemAut_Alglin_s03_Exercice007/part04/sol2/Step1</address>
+							<type name="null"></type>
+							<solentry>
+								<name>Solution</name>
+								<address>SemAut_Alglin_s03_Exercice007/part04/sol2/Step1/sol.pdf</address>
+								<type name="Pdf"></type>
+							</solentry>
+						</stepentry>
+					</methodentry>
+				</partieentry>
+				<partieentry>
+					<name>Partie 5</name>
+					<address></address>
+					<type name="null"></type>
+					<methodentry>
+						<name>Méthode 1</name>
+						<address>SemAut_Alglin_s03_Exercice007/part05/choix1/choix.pdf</address>
+						<type name="Pdf"></type>
+						<stepentry>
+							<name>Etape 1</name>
+							<address>SemAut_Alglin_s03_Exercice007/part05/sol1/Step1</address>
+							<type name="null"></type>
+							<solentry>
+								<name>Solution</name>
+								<address>SemAut_Alglin_s03_Exercice007/part05/sol1/Step1/sol.pdf</address>
+								<type name="Pdf"></type>
+							</solentry>
+						</stepentry>
+					</methodentry>
+				</partieentry>
+				</exerciceentry>
+				<exerciceentry>
+					<name>Exercice 11</name>
+					<address>SemAut_Alglin_s03_Exercice011/donnee/donnee.pdf</address>
+					<type name="Pdf"></type>
+					<partieentry>
+					<name>Partie 1</name>
+					<address></address>
+					<type name="null"></type>
+					<methodentry>
+						<name>Méthode 1</name>
+						<address>SemAut_Alglin_s03_Exercice011/part01/choix1/choix.pdf</address>
+						<type name="Pdf"></type>
+						<stepentry>
+							<name>Etape 1</name>
+							<address>SemAut_Alglin_s03_Exercice011/part01/sol1/Step1</address>
+							<type name="null"></type>
+							<solentry>
+								<name>Solution</name>
+								<address>SemAut_Alglin_s03_Exercice011/part01/sol1/Step1/sol.pdf</address>
+								<type name="Pdf"></type>
+							</solentry>
+						</stepentry>
+					</methodentry>
+				</partieentry>
+				<partieentry>
+					<name>Partie 2</name>
+					<address></address>
+					<type name="null"></type>
+					<methodentry>
+						<name>Méthode 1</name>
+						<address>SemAut_Alglin_s03_Exercice011/part02/choix1/choix.pdf</address>
+						<type name="Pdf"></type>
+						<stepentry>
+							<name>Etape 1</name>
+							<address>SemAut_Alglin_s03_Exercice011/part02/sol1/Step1</address>
+							<type name="null"></type>
+							<solentry>
+								<name>Solution</name>
+								<address>SemAut_Alglin_s03_Exercice011/part02/sol1/Step1/sol.pdf</address>
+								<type name="Pdf"></type>
+							</solentry>
+						</stepentry>
+						<stepentry>
+							<name>Etape 2</name>
+							<address>SemAut_Alglin_s03_Exercice011/part02/sol1/Step2</address>
+							<type name="null"></type>
+							<solentry>
+								<name>Solution</name>
+								<address>SemAut_Alglin_s03_Exercice011/part02/sol1/Step2/sol.pdf</address>
+								<type name="Pdf"></type>
+							</solentry>
+						</stepentry>
+						<stepentry>
+							<name>Etape 3</name>
+							<address>SemAut_Alglin_s03_Exercice011/part02/sol1/Step3</address>
+							<type name="null"></type>
+							<solentry>
+								<name>Solution</name>
+								<address>SemAut_Alglin_s03_Exercice011/part02/sol1/Step3/sol.pdf</address>
+								<type name="Pdf"></type>
+							</solentry>
+						</stepentry>
+						<stepentry>
+							<name>Etape 4</name>
+							<address>SemAut_Alglin_s03_Exercice011/part02/sol1/Step4</address>
+							<type name="null"></type>
+							<solentry>
+								<name>Solution</name>
+								<address>SemAut_Alglin_s03_Exercice011/part02/sol1/Step4/sol.pdf</address>
+								<type name="Pdf"></type>
+							</solentry>
+						</stepentry>
+					</methodentry>
+				</partieentry>
+				</exerciceentry>
+			</seriesentry>
+			<seriesentry>
+				<name>Applications</name>
+				<address></address>
+				<type name=""></type>
+				<exerciceentry>
+					<name>Exercice 4</name>
+					<address>SemAut_Alglin_s04_Exercice004/donnee/donnee.pdf</address>
+					<type name="Pdf"></type>
+					<partieentry>
+					<name>Partie 1</name>
+					<address></address>
+					<type name="null"></type>
+					<methodentry>
+						<name>Méthode 1</name>
+						<address>SemAut_Alglin_s04_Exercice004/part01/choix1/choix.pdf</address>
+						<type name="Pdf"></type>
+						<stepentry>
+							<name>Etape 1</name>
+							<address>SemAut_Alglin_s04_Exercice004/part01/sol1/Step1</address>
+							<type name="null"></type>
+							<solentry>
+								<name>Solution</name>
+								<address>SemAut_Alglin_s04_Exercice004/part01/sol1/Step1/sol.pdf</address>
+								<type name="Pdf"></type>
+							</solentry>
+						</stepentry>
+					</methodentry>
+				</partieentry>
+				<partieentry>
+					<name>Partie 2</name>
+					<address></address>
+					<type name="null"></type>
+					<methodentry>
+						<name>Méthode 1</name>
+						<address>SemAut_Alglin_s04_Exercice004/part02/choix1/choix.pdf</address>
+						<type name="Pdf"></type>
+						<stepentry>
+							<name>Etape 1</name>
+							<address>SemAut_Alglin_s04_Exercice004/part02/sol1/Step1</address>
+							<type name="null"></type>
+							<solentry>
+								<name>Solution</name>
+								<address>SemAut_Alglin_s04_Exercice004/part02/sol1/Step1/sol.pdf</address>
+								<type name="Pdf"></type>
+							</solentry>
+						</stepentry>
+						<stepentry>
+							<name>Etape 2</name>
+							<address>SemAut_Alglin_s04_Exercice004/part02/sol1/Step2</address>
+							<type name="null"></type>
+							<solentry>
+								<name>Solution</name>
+								<address>SemAut_Alglin_s04_Exercice004/part02/sol1/Step2/sol.pdf</address>
+								<type name="Pdf"></type>
+							</solentry>
+						</stepentry>
+						<stepentry>
+							<name>Etape 3</name>
+							<address>SemAut_Alglin_s04_Exercice004/part02/sol1/Step3</address>
+							<type name="null"></type>
+							<solentry>
+								<name>Solution</name>
+								<address>SemAut_Alglin_s04_Exercice004/part02/sol1/Step3/sol.pdf</address>
+								<type name="Pdf"></type>
+							</solentry>
+						</stepentry>
+						<stepentry>
+							<name>Etape 4</name>
+							<address>SemAut_Alglin_s04_Exercice004/part02/sol1/Step4</address>
+							<type name="null"></type>
+							<solentry>
+								<name>Solution</name>
+								<address>SemAut_Alglin_s04_Exercice004/part02/sol1/Step4/sol.pdf</address>
+								<type name="Pdf"></type>
+							</solentry>
+						</stepentry>
+					</methodentry>
+				</partieentry>
+				<partieentry>
+					<name>Partie 3</name>
+					<address></address>
+					<type name="null"></type>
+					<methodentry>
+						<name>Méthode 1</name>
+						<address>SemAut_Alglin_s04_Exercice004/part03/choix1/choix.pdf</address>
+						<type name="Pdf"></type>
+						<stepentry>
+							<name>Etape 1</name>
+							<address>SemAut_Alglin_s04_Exercice004/part03/sol1/Step5</address>
+							<type name="null"></type>
+							<solentry>
+								<name>Solution</name>
+								<address>SemAut_Alglin_s04_Exercice004/part03/sol1/Step5/sol.pdf</address>
+								<type name="Pdf"></type>
+							</solentry>
+						</stepentry>
+						<stepentry>
+							<name>Etape 2</name>
+							<address>SemAut_Alglin_s04_Exercice004/part03/sol1/Step6</address>
+							<type name="null"></type>
+							<solentry>
+								<name>Solution</name>
+								<address>SemAut_Alglin_s04_Exercice004/part03/sol1/Step6/sol.pdf</address>
+								<type name="Pdf"></type>
+							</solentry>
+						</stepentry>
+					</methodentry>
+				</partieentry>
+				</exerciceentry>
+				<exerciceentry>
+					<name>Exercice 5</name>
+					<address>SemAut_Alglin_s04_Exercice005/donnee/donnee.html</address>
+					<type name="Html"></type>
+					<methodentry>
+						<name>Méthode 1</name>
+						<address>SemAut_Alglin_s04_Exercice005/choix1/choix1.html</address>
+						<type name="Html"></type>
+						<stepentry>
+							<name>Etape 1</name>
+							<address>SemAut_Alglin_s04_Exercice005/sol1/Step1</address>
+							<type name="null"></type>
+							<solentry>
+								<name>Solution</name>
+								<address>SemAut_Alglin_s04_Exercice005/sol1/Step1/sol.gif</address>
+								<type name="Image"></type>
+							</solentry>
+							<rementry>
+								<name>REMARQUE</name>
+								<address>SemAut_Alglin_s04_Exercice005/sol1/Step1/rem.html</address>
+								<type name="Html"></type>
+							</rementry>
+						</stepentry>
+						<stepentry>
+							<name>Etape 2</name>
+							<address>SemAut_Alglin_s04_Exercice005/sol1/Step2</address>
+							<type name="null"></type>
+							<solentry>
+								<name>Solution</name>
+								<address>SemAut_Alglin_s04_Exercice005/sol1/Step2/sol.gif</address>
+								<type name="Image"></type>
+							</solentry>
+						</stepentry>
+					</methodentry>
+				</exerciceentry>
+				<exerciceentry>
+					<name>Exercice 12</name>
+					<address>SemAut_Alglin_s04_Exercice012/donnee/donnee.html</address>
+					<type name="Html"></type>
+					<methodentry>
+						<name>Méthode 1</name>
+						<address>SemAut_Alglin_s04_Exercice012/choix1/choix1.html</address>
+						<type name="Html"></type>
+						<stepentry>
+							<name>Etape 1</name>
+							<address>SemAut_Alglin_s04_Exercice012/sol1/Step1</address>
+							<type name="null"></type>
+							<solentry>
+								<name>Solution</name>
+								<address>SemAut_Alglin_s04_Exercice012/sol1/Step1/sol.gif</address>
+								<type name="Image"></type>
+							</solentry>
+							<rementry>
+								<name>REMARQUE</name>
+								<address>SemAut_Alglin_s04_Exercice012/sol1/Step1/rem.html</address>
+								<type name="Html"></type>
+							</rementry>
+						</stepentry>
+						<stepentry>
+							<name>Etape 2</name>
+							<address>SemAut_Alglin_s04_Exercice012/sol1/Step2</address>
+							<type name="null"></type>
+							<solentry>
+								<name>Solution</name>
+								<address>SemAut_Alglin_s04_Exercice012/sol1/Step2/sol.gif</address>
+								<type name="Image"></type>
+							</solentry>
+						</stepentry>
+						<stepentry>
+							<name>Etape 3</name>
+							<address>SemAut_Alglin_s04_Exercice012/sol1/Step3</address>
+							<type name="null"></type>
+							<solentry>
+								<name>Solution</name>
+								<address>SemAut_Alglin_s04_Exercice012/sol1/Step3/sol.gif</address>
+								<type name="Image"></type>
+							</solentry>
+						</stepentry>
+						<stepentry>
+							<name>Etape 4</name>
+							<address>SemAut_Alglin_s04_Exercice012/sol1/Step4</address>
+							<type name="null"></type>
+							<solentry>
+								<name>Solution</name>
+								<address>SemAut_Alglin_s04_Exercice012/sol1/Step4/sol.gif</address>
+								<type name="Image"></type>
+							</solentry>
+						</stepentry>
+					</methodentry>
+				</exerciceentry>
+				<exerciceentry>
+					<name>Exercice 19 a)</name>
+					<address>SemAut_Alglin_s04_Exercice019/donnee/donnee.html</address>
+					<type name="Html"></type>
+					<partieentry>
+					<name>Partie 1</name>
+					<address></address>
+					<type name="null"></type>
+					<methodentry>
+						<name>Méthode 1</name>
+						<address>SemAut_Alglin_s04_Exercice019/part01/choix1/choix1.html</address>
+						<type name="Html"></type>
+						<stepentry>
+							<name>Etape 1</name>
+							<address>SemAut_Alglin_s04_Exercice019/part01/sol1/Step1</address>
+							<type name="null"></type>
+							<solentry>
+								<name>Solution</name>
+								<address>SemAut_Alglin_s04_Exercice019/part01/sol1/Step1/sol.gif</address>
+								<type name="Image"></type>
+							</solentry>
+							<rementry>
+								<name>REMARQUE</name>
+								<address>SemAut_Alglin_s04_Exercice019/part01/sol1/Step1/rem.html</address>
+								<type name="Html"></type>
+							</rementry>
+						</stepentry>
+					</methodentry>
+				</partieentry>
+				<partieentry>
+					<name>Partie 2</name>
+					<address></address>
+					<type name="null"></type>
+					<methodentry>
+						<name>Méthode 1</name>
+						<address>SemAut_Alglin_s04_Exercice019/part02/choix1/choix1.html</address>
+						<type name="Html"></type>
+						<stepentry>
+							<name>Etape 1</name>
+							<address>SemAut_Alglin_s04_Exercice019/part02/sol1/Step1</address>
+							<type name="null"></type>
+							<solentry>
+								<name>Solution</name>
+								<address>SemAut_Alglin_s04_Exercice019/part02/sol1/Step1/sol.gif</address>
+								<type name="Image"></type>
+							</solentry>
+							<rementry>
+								<name>REMARQUE</name>
+								<address>SemAut_Alglin_s04_Exercice019/part02/sol1/Step1/rem.html</address>
+								<type name="Html"></type>
+							</rementry>
+						</stepentry>
+					</methodentry>
+				</partieentry>
+				<partieentry>
+					<name>Partie 3</name>
+					<address></address>
+					<type name="null"></type>
+					<methodentry>
+						<name>Méthode 1</name>
+						<address>SemAut_Alglin_s04_Exercice019/part03/choix1/choix1.html</address>
+						<type name="Html"></type>
+						<stepentry>
+							<name>Etape 1</name>
+							<address>SemAut_Alglin_s04_Exercice019/part03/sol1/Step1</address>
+							<type name="null"></type>
+							<solentry>
+								<name>Solution</name>
+								<address>SemAut_Alglin_s04_Exercice019/part03/sol1/Step1/sol.gif</address>
+								<type name="Image"></type>
+							</solentry>
+							<rementry>
+								<name>REMARQUE</name>
+								<address>SemAut_Alglin_s04_Exercice019/part03/sol1/Step1/rem.html</address>
+								<type name="Html"></type>
+							</rementry>
+						</stepentry>
+					</methodentry>
+					<methodentry>
+						<name>Méthode 2</name>
+						<address>SemAut_Alglin_s04_Exercice019/part03/choix2/choix2.html</address>
+						<type name="Html"></type>
+						<stepentry>
+							<name>Etape 1</name>
+							<address>SemAut_Alglin_s04_Exercice019/part03/sol2/Step1</address>
+							<type name="null"></type>
+							<solentry>
+								<name>Solution</name>
+								<address>SemAut_Alglin_s04_Exercice019/part03/sol2/Step1/sol.gif</address>
+								<type name="Image"></type>
+							</solentry>
+							<rementry>
+								<name>REMARQUE</name>
+								<address>SemAut_Alglin_s04_Exercice019/part03/sol2/Step1/rem.html</address>
+								<type name="Html"></type>
+							</rementry>
+						</stepentry>
+					</methodentry>
+				</partieentry>
+				</exerciceentry>
+			</seriesentry>
+		</lectureentry>
+		<lectureentry>
+			<name>GA</name>
+			<address></address>
+			<type name=""></type>
+			<seriesentry>
+				<name>Série 1</name>
+				<address></address>
+				<type name=""></type>
+				<exerciceentry>
+					<name>Exercice 1</name>
+					<address>SemAut_GA_s01_Exercice001/donnee/donnee.pdf</address>
+					<type name="Pdf"></type>
+					<partieentry>
+					<name>Partie 1</name>
+					<address></address>
+					<type name="null"></type>
+					<methodentry>
+						<name>Méthode 1</name>
+						<address>SemAut_GA_s01_Exercice001/part01/choix1/choix.pdf</address>
+						<type name="Pdf"></type>
+						<stepentry>
+							<name>Etape 1</name>
+							<address>SemAut_GA_s01_Exercice001/part01/sol1/Step1</address>
+							<type name="null"></type>
+							<solentry>
+								<name>Solution</name>
+								<address>SemAut_GA_s01_Exercice001/part01/sol1/Step1/sol.pdf</address>
+								<type name="Pdf"></type>
+							</solentry>
+						</stepentry>
+						<stepentry>
+							<name>Etape 2</name>
+							<address>SemAut_GA_s01_Exercice001/part01/sol1/Step2</address>
+							<type name="null"></type>
+							<solentry>
+								<name>Solution</name>
+								<address>SemAut_GA_s01_Exercice001/part01/sol1/Step2/sol.pdf</address>
+								<type name="Pdf"></type>
+							</solentry>
+						</stepentry>
+					</methodentry>
+					<methodentry>
+						<name>Méthode 2</name>
+						<address>SemAut_GA_s01_Exercice001/part01/choix2/choix.pdf</address>
+						<type name="Pdf"></type>
+						<stepentry>
+							<name>Etape 1</name>
+							<address>SemAut_GA_s01_Exercice001/part01/sol2/Step1</address>
+							<type name="null"></type>
+							<solentry>
+								<name>Solution</name>
+								<address>SemAut_GA_s01_Exercice001/part01/sol2/Step1/sol.pdf</address>
+								<type name="Pdf"></type>
+							</solentry>
+						</stepentry>
+						<stepentry>
+							<name>Etape 2</name>
+							<address>SemAut_GA_s01_Exercice001/part01/sol2/Step2</address>
+							<type name="null"></type>
+							<solentry>
+								<name>Solution</name>
+								<address>SemAut_GA_s01_Exercice001/part01/sol2/Step2/sol.pdf</address>
+								<type name="Pdf"></type>
+							</solentry>
+						</stepentry>
+					</methodentry>
+				</partieentry>
+				<partieentry>
+					<name>Partie 2</name>
+					<address></address>
+					<type name="null"></type>
+					<methodentry>
+						<name>Méthode 1</name>
+						<address>SemAut_GA_s01_Exercice001/part02/choix1/choix.pdf</address>
+						<type name="Pdf"></type>
+						<stepentry>
+							<name>Etape 1</name>
+							<address>SemAut_GA_s01_Exercice001/part02/sol1/Step1</address>
+							<type name="null"></type>
+							<solentry>
+								<name>Solution</name>
+								<address>SemAut_GA_s01_Exercice001/part02/sol1/Step1/sol.pdf</address>
+								<type name="Pdf"></type>
+							</solentry>
+						</stepentry>
+					</methodentry>
+				</partieentry>
+				<partieentry>
+					<name>Partie 3</name>
+					<address></address>
+					<type name="null"></type>
+					<methodentry>
+						<name>Méthode 1</name>
+						<address>SemAut_GA_s01_Exercice001/part03/choix1/choix.pdf</address>
+						<type name="Pdf"></type>
+						<stepentry>
+							<name>Etape 1</name>
+							<address>SemAut_GA_s01_Exercice001/part03/sol1/Step1</address>
+							<type name="null"></type>
+							<solentry>
+								<name>Solution</name>
+								<address>SemAut_GA_s01_Exercice001/part03/sol1/Step1/sol.pdf</address>
+								<type name="Pdf"></type>
+							</solentry>
+						</stepentry>
+					</methodentry>
+					<methodentry>
+						<name>Méthode 2</name>
+						<address>SemAut_GA_s01_Exercice001/part03/choix2/choix.pdf</address>
+						<type name="Pdf"></type>
+						<stepentry>
+							<name>Etape 1</name>
+							<address>SemAut_GA_s01_Exercice001/part03/sol2/Step1</address>
+							<type name="null"></type>
+							<solentry>
+								<name>Solution</name>
+								<address>SemAut_GA_s01_Exercice001/part03/sol2/Step1/sol.pdf</address>
+								<type name="Pdf"></type>
+							</solentry>
+						</stepentry>
+					</methodentry>
+				</partieentry>
+				<partieentry>
+					<name>Partie 4</name>
+					<address></address>
+					<type name="null"></type>
+					<methodentry>
+						<name>Méthode 1</name>
+						<address>SemAut_GA_s01_Exercice001/part04/choix1/choix.pdf</address>
+						<type name="Pdf"></type>
+						<stepentry>
+							<name>Etape 1</name>
+							<address>SemAut_GA_s01_Exercice001/part04/sol1/Step1</address>
+							<type name="null"></type>
+							<solentry>
+								<name>Solution</name>
+								<address>SemAut_GA_s01_Exercice001/part04/sol1/Step1/sol.pdf</address>
+								<type name="Pdf"></type>
+							</solentry>
+						</stepentry>
+					</methodentry>
+					<methodentry>
+						<name>Méthode 2</name>
+						<address>SemAut_GA_s01_Exercice001/part04/choix2/choix.pdf</address>
+						<type name="Pdf"></type>
+						<stepentry>
+							<name>Etape 1</name>
+							<address>SemAut_GA_s01_Exercice001/part04/sol2/Step1</address>
+							<type name="null"></type>
+							<solentry>
+								<name>Solution</name>
+								<address>SemAut_GA_s01_Exercice001/part04/sol2/Step1/sol.pdf</address>
+								<type name="Pdf"></type>
+							</solentry>
+						</stepentry>
+					</methodentry>
+				</partieentry>
+				</exerciceentry>
+			</seriesentry>
+			<seriesentry>
+				<name>Série 2</name>
+				<address></address>
+				<type name=""></type>
+				<exerciceentry>
+					<name>Exercice 1</name>
+					<address>SemAut_GA_s02_Exercice001/donnee/donnee.pdf</address>
+					<type name="Pdf"></type>
+					<complemententry>
+								<name>Complément</name>
+								<address>SemAut_GA_s02_Exercice001/donneecomplementaire/donnee.pdf</address>
+								<type name="Pdf"></type>
+							</complemententry>
+							<methodentry>
+						<name>Méthode 1</name>
+						<address>SemAut_GA_s02_Exercice001/choix1/choix.pdf</address>
+						<type name="Pdf"></type>
+						<stepentry>
+							<name>Etape 1</name>
+							<address>SemAut_GA_s02_Exercice001/sol1/Step1</address>
+							<type name="null"></type>
+							<solentry>
+								<name>Solution</name>
+								<address>SemAut_GA_s02_Exercice001/sol1/Step1/sol.pdf</address>
+								<type name="Pdf"></type>
+							</solentry>
+						</stepentry>
+						<stepentry>
+							<name>Etape 2</name>
+							<address>SemAut_GA_s02_Exercice001/sol1/Step2</address>
+							<type name="null"></type>
+							<solentry>
+								<name>Solution</name>
+								<address>SemAut_GA_s02_Exercice001/sol1/Step2/sol.pdf</address>
+								<type name="Pdf"></type>
+							</solentry>
+						</stepentry>
+						<stepentry>
+							<name>Etape 3</name>
+							<address>SemAut_GA_s02_Exercice001/sol1/Step3</address>
+							<type name="null"></type>
+							<solentry>
+								<name>Solution</name>
+								<address>SemAut_GA_s02_Exercice001/sol1/Step3/sol.pdf</address>
+								<type name="Pdf"></type>
+							</solentry>
+						</stepentry>
+					</methodentry>
+				</exerciceentry>
+				<exerciceentry>
+					<name>Exercice 2</name>
+					<address>SemAut_GA_s02_Exercice002/donnee/donnee.pdf</address>
+					<type name="Pdf"></type>
+					<partieentry>
+					<name>Partie 1</name>
+					<address></address>
+					<type name="null"></type>
+					<methodentry>
+						<name>Méthode 1</name>
+						<address>SemAut_GA_s02_Exercice002/part01/choix1/choix.pdf</address>
+						<type name="Pdf"></type>
+						<stepentry>
+							<name>Etape 1</name>
+							<address>SemAut_GA_s02_Exercice002/part01/sol1/Step1</address>
+							<type name="null"></type>
+							<solentry>
+								<name>Solution</name>
+								<address>SemAut_GA_s02_Exercice002/part01/sol1/Step1/sol.pdf</address>
+								<type name="Pdf"></type>
+							</solentry>
+						</stepentry>
+						<stepentry>
+							<name>Etape 2</name>
+							<address>SemAut_GA_s02_Exercice002/part01/sol1/Step2</address>
+							<type name="null"></type>
+							<solentry>
+								<name>Solution</name>
+								<address>SemAut_GA_s02_Exercice002/part01/sol1/Step2/sol.pdf</address>
+								<type name="Pdf"></type>
+							</solentry>
+						</stepentry>
+					</methodentry>
+					<methodentry>
+						<name>Méthode 2</name>
+						<address>SemAut_GA_s02_Exercice002/part01/choix2/choix.pdf</address>
+						<type name="Pdf"></type>
+						<stepentry>
+							<name>Etape 1</name>
+							<address>SemAut_GA_s02_Exercice002/part01/sol2/Step1</address>
+							<type name="null"></type>
+							<solentry>
+								<name>Solution</name>
+								<address>SemAut_GA_s02_Exercice002/part01/sol2/Step1/sol.pdf</address>
+								<type name="Pdf"></type>
+							</solentry>
+						</stepentry>
+						<stepentry>
+							<name>Etape 2</name>
+							<address>SemAut_GA_s02_Exercice002/part01/sol2/Step2</address>
+							<type name="null"></type>
+							<solentry>
+								<name>Solution</name>
+								<address>SemAut_GA_s02_Exercice002/part01/sol2/Step2/sol.pdf</address>
+								<type name="Pdf"></type>
+							</solentry>
+						</stepentry>
+					</methodentry>
+				</partieentry>
+				<partieentry>
+					<name>Partie 2</name>
+					<address></address>
+					<type name="null"></type>
+					<methodentry>
+						<name>Méthode 1</name>
+						<address>SemAut_GA_s02_Exercice002/part02/choix1/choix.pdf</address>
+						<type name="Pdf"></type>
+						<stepentry>
+							<name>Etape 1</name>
+							<address>SemAut_GA_s02_Exercice002/part02/sol1/Step1</address>
+							<type name="null"></type>
+							<solentry>
+								<name>Solution</name>
+								<address>SemAut_GA_s02_Exercice002/part02/sol1/Step1/sol.pdf</address>
+								<type name="Pdf"></type>
+							</solentry>
+						</stepentry>
+						<stepentry>
+							<name>Etape 2</name>
+							<address>SemAut_GA_s02_Exercice002/part02/sol1/Step2</address>
+							<type name="null"></type>
+							<solentry>
+								<name>Solution</name>
+								<address>SemAut_GA_s02_Exercice002/part02/sol1/Step2/sol.pdf</address>
+								<type name="Pdf"></type>
+							</solentry>
+						</stepentry>
+					</methodentry>
+					<methodentry>
+						<name>Méthode 2</name>
+						<address>SemAut_GA_s02_Exercice002/part02/choix2/choix.pdf</address>
+						<type name="Pdf"></type>
+						<stepentry>
+							<name>Etape 1</name>
+							<address>SemAut_GA_s02_Exercice002/part02/sol2/Step1</address>
+							<type name="null"></type>
+							<solentry>
+								<name>Solution</name>
+								<address>SemAut_GA_s02_Exercice002/part02/sol2/Step1/sol.pdf</address>
+								<type name="Pdf"></type>
+							</solentry>
+						</stepentry>
+						<stepentry>
+							<name>Etape 2</name>
+							<address>SemAut_GA_s02_Exercice002/part02/sol2/Step2</address>
+							<type name="null"></type>
+							<solentry>
+								<name>Solution</name>
+								<address>SemAut_GA_s02_Exercice002/part02/sol2/Step2/sol.pdf</address>
+								<type name="Pdf"></type>
+							</solentry>
+						</stepentry>
+						<stepentry>
+							<name>Etape 3</name>
+							<address>SemAut_GA_s02_Exercice002/part02/sol2/Step3</address>
+							<type name="null"></type>
+							<solentry>
+								<name>Solution</name>
+								<address>SemAut_GA_s02_Exercice002/part02/sol2/Step3/sol.pdf</address>
+								<type name="Pdf"></type>
+							</solentry>
+						</stepentry>
+					</methodentry>
+				</partieentry>
+				</exerciceentry>
+			</seriesentry>
+			<seriesentry>
+				<name>Série 3</name>
+				<address></address>
+				<type name=""></type>
+				<exerciceentry>
+					<name>Exercice 1</name>
+					<address>SemAut_GA_s03_Exercice001/donnee/donnee.pdf</address>
+					<type name="Pdf"></type>
+					<complemententry>
+								<name>Complément</name>
+								<address>SemAut_GA_s03_Exercice001/donneecomplementaire/donnee.pdf</address>
+								<type name="Pdf"></type>
+							</complemententry>
+							<partieentry>
+					<name>Partie 1</name>
+					<address></address>
+					<type name="null"></type>
+					<methodentry>
+						<name>Méthode 1</name>
+						<address>SemAut_GA_s03_Exercice001/part01/choix1/choix.pdf</address>
+						<type name="Pdf"></type>
+						<stepentry>
+							<name>Etape 1</name>
+							<address>SemAut_GA_s03_Exercice001/part01/sol1/Step1</address>
+							<type name="null"></type>
+							<solentry>
+								<name>Solution</name>
+								<address>SemAut_GA_s03_Exercice001/part01/sol1/Step1/sol.pdf</address>
+								<type name="Pdf"></type>
+							</solentry>
+						</stepentry>
+						<stepentry>
+							<name>Etape 2</name>
+							<address>SemAut_GA_s03_Exercice001/part01/sol1/Step2</address>
+							<type name="null"></type>
+							<solentry>
+								<name>Solution</name>
+								<address>SemAut_GA_s03_Exercice001/part01/sol1/Step2/sol.pdf</address>
+								<type name="Pdf"></type>
+							</solentry>
+						</stepentry>
+					</methodentry>
+					<methodentry>
+						<name>Méthode 2</name>
+						<address>SemAut_GA_s03_Exercice001/part01/choix2/choix.pdf</address>
+						<type name="Pdf"></type>
+						<stepentry>
+							<name>Etape 1</name>
+							<address>SemAut_GA_s03_Exercice001/part01/sol2/Step1</address>
+							<type name="null"></type>
+							<solentry>
+								<name>Solution</name>
+								<address>SemAut_GA_s03_Exercice001/part01/sol2/Step1/sol.pdf</address>
+								<type name="Pdf"></type>
+							</solentry>
+						</stepentry>
+						<stepentry>
+							<name>Etape 2</name>
+							<address>SemAut_GA_s03_Exercice001/part01/sol2/Step2</address>
+							<type name="null"></type>
+							<solentry>
+								<name>Solution</name>
+								<address>SemAut_GA_s03_Exercice001/part01/sol2/Step2/sol.pdf</address>
+								<type name="Pdf"></type>
+							</solentry>
+						</stepentry>
+						<stepentry>
+							<name>Etape 3</name>
+							<address>SemAut_GA_s03_Exercice001/part01/sol2/Step3</address>
+							<type name="null"></type>
+							<solentry>
+								<name>Solution</name>
+								<address>SemAut_GA_s03_Exercice001/part01/sol2/Step3/sol.pdf</address>
+								<type name="Pdf"></type>
+							</solentry>
+						</stepentry>
+					</methodentry>
+				</partieentry>
+				<partieentry>
+					<name>Partie 2</name>
+					<address></address>
+					<type name="null"></type>
+					<methodentry>
+						<name>Méthode 1</name>
+						<address>SemAut_GA_s03_Exercice001/part02/choix1/choix.pdf</address>
+						<type name="Pdf"></type>
+						<stepentry>
+							<name>Etape 1</name>
+							<address>SemAut_GA_s03_Exercice001/part02/sol1/Step1</address>
+							<type name="null"></type>
+							<solentry>
+								<name>Solution</name>
+								<address>SemAut_GA_s03_Exercice001/part02/sol1/Step1/sol.pdf</address>
+								<type name="Pdf"></type>
+							</solentry>
+						</stepentry>
+					</methodentry>
+				</partieentry>
+				<partieentry>
+					<name>Partie 3</name>
+					<address></address>
+					<type name="null"></type>
+					<methodentry>
+						<name>Méthode 1</name>
+						<address>SemAut_GA_s03_Exercice001/part03/choix1/choix.pdf</address>
+						<type name="Pdf"></type>
+						<stepentry>
+							<name>Etape 1</name>
+							<address>SemAut_GA_s03_Exercice001/part03/sol1/Step1</address>
+							<type name="null"></type>
+							<solentry>
+								<name>Solution</name>
+								<address>SemAut_GA_s03_Exercice001/part03/sol1/Step1/sol.pdf</address>
+								<type name="Pdf"></type>
+							</solentry>
+						</stepentry>
+					</methodentry>
+				</partieentry>
+				</exerciceentry>
+			</seriesentry>
+			<seriesentry>
+				<name>Série 4</name>
+				<address></address>
+				<type name=""></type>
+				<exerciceentry>
+					<name>Exercice 5</name>
+					<address>SemAut_GA_s04_Exercice005/donnee/donnee.pdf</address>
+					<type name="Pdf"></type>
+					<complemententry>
+								<name>Complément</name>
+								<address>SemAut_GA_s04_Exercice005/donneecomplementaire/donnee.pdf</address>
+								<type name="Pdf"></type>
+							</complemententry>
+							<methodentry>
+						<name>Méthode 1</name>
+						<address>SemAut_GA_s04_Exercice005/choix1/choix.pdf</address>
+						<type name="Pdf"></type>
+						<stepentry>
+							<name>Etape 1</name>
+							<address>SemAut_GA_s04_Exercice005/sol1/Step1</address>
+							<type name="null"></type>
+							<solentry>
+								<name>Solution</name>
+								<address>SemAut_GA_s04_Exercice005/sol1/Step1/sol.pdf</address>
+								<type name="Pdf"></type>
+							</solentry>
+						</stepentry>
+						<stepentry>
+							<name>Etape 2</name>
+							<address>SemAut_GA_s04_Exercice005/sol1/Step2</address>
+							<type name="null"></type>
+							<solentry>
+								<name>Solution</name>
+								<address>SemAut_GA_s04_Exercice005/sol1/Step2/sol.pdf</address>
+								<type name="Pdf"></type>
+							</solentry>
+						</stepentry>
+						<stepentry>
+							<name>Etape 3</name>
+							<address>SemAut_GA_s04_Exercice005/sol1/Step3</address>
+							<type name="null"></type>
+							<solentry>
+								<name>Solution</name>
+								<address>SemAut_GA_s04_Exercice005/sol1/Step3/sol.pdf</address>
+								<type name="Pdf"></type>
+							</solentry>
+						</stepentry>
+						<stepentry>
+							<name>Etape 4</name>
+							<address>SemAut_GA_s04_Exercice005/sol1/Step4</address>
+							<type name="null"></type>
+							<solentry>
+								<name>Solution</name>
+								<address>SemAut_GA_s04_Exercice005/sol1/Step4/sol.pdf</address>
+								<type name="Pdf"></type>
+							</solentry>
+							<animationentry>
+								<name>Animation</name>
+								<address>../Animations/GA_triangle_lieu/animation.pdf</address>
+								<type name="Pdf">
+									<jarlocation>../Animations/GA_triangle_lieu/animation.pdf</jarlocation>
+									<jarname>null</jarname>
+								</type>
+							</animationentry>
+						</stepentry>
+					</methodentry>
+				</exerciceentry>
+				<exerciceentry>
+					<name>Exercice 6</name>
+					<address>SemAut_GA_s04_Exercice006/donnee/donnee.pdf</address>
+					<type name="Pdf"></type>
+					<complemententry>
+								<name>Complément</name>
+								<address>SemAut_GA_s04_Exercice006/donneecomplementaire/donnee.pdf</address>
+								<type name="Pdf"></type>
+							</complemententry>
+							<partieentry>
+					<name>Partie 1</name>
+					<address></address>
+					<type name="null"></type>
+					<methodentry>
+						<name>Méthode 1</name>
+						<address>SemAut_GA_s04_Exercice006/part01/choix1/choix.pdf</address>
+						<type name="Pdf"></type>
+						<stepentry>
+							<name>Etape 1</name>
+							<address>SemAut_GA_s04_Exercice006/part01/sol1/Step1</address>
+							<type name="null"></type>
+							<solentry>
+								<name>Solution</name>
+								<address>SemAut_GA_s04_Exercice006/part01/sol1/Step1/sol.pdf</address>
+								<type name="Pdf"></type>
+							</solentry>
+						</stepentry>
+						<stepentry>
+							<name>Etape 2</name>
+							<address>SemAut_GA_s04_Exercice006/part01/sol1/Step2</address>
+							<type name="null"></type>
+							<solentry>
+								<name>Solution</name>
+								<address>SemAut_GA_s04_Exercice006/part01/sol1/Step2/sol.pdf</address>
+								<type name="Pdf"></type>
+							</solentry>
+						</stepentry>
+						<stepentry>
+							<name>Etape 3</name>
+							<address>SemAut_GA_s04_Exercice006/part01/sol1/Step3</address>
+							<type name="null"></type>
+							<solentry>
+								<name>Solution</name>
+								<address>SemAut_GA_s04_Exercice006/part01/sol1/Step3/sol.pdf</address>
+								<type name="Pdf"></type>
+							</solentry>
+						</stepentry>
+					</methodentry>
+				</partieentry>
+				<partieentry>
+					<name>Partie 2</name>
+					<address></address>
+					<type name="null"></type>
+					<methodentry>
+						<name>Méthode 1</name>
+						<address>SemAut_GA_s04_Exercice006/part02/choix1/choix.pdf</address>
+						<type name="Pdf"></type>
+						<stepentry>
+							<name>Etape 1</name>
+							<address>SemAut_GA_s04_Exercice006/part02/sol1/Step1</address>
+							<type name="null"></type>
+							<solentry>
+								<name>Solution</name>
+								<address>SemAut_GA_s04_Exercice006/part02/sol1/Step1/sol.pdf</address>
+								<type name="Pdf"></type>
+							</solentry>
+						</stepentry>
+						<stepentry>
+							<name>Etape 2</name>
+							<address>SemAut_GA_s04_Exercice006/part02/sol1/Step2</address>
+							<type name="null"></type>
+							<solentry>
+								<name>Solution</name>
+								<address>SemAut_GA_s04_Exercice006/part02/sol1/Step2/sol.pdf</address>
+								<type name="Pdf"></type>
+							</solentry>
+						</stepentry>
+					</methodentry>
+					<methodentry>
+						<name>Méthode 2</name>
+						<address>SemAut_GA_s04_Exercice006/part02/choix2/choix.pdf</address>
+						<type name="Pdf"></type>
+						<stepentry>
+							<name>Etape 1</name>
+							<address>SemAut_GA_s04_Exercice006/part02/sol2/Step1</address>
+							<type name="null"></type>
+							<solentry>
+								<name>Solution</name>
+								<address>SemAut_GA_s04_Exercice006/part02/sol2/Step1/sol.pdf</address>
+								<type name="Pdf"></type>
+							</solentry>
+						</stepentry>
+						<stepentry>
+							<name>Etape 2</name>
+							<address>SemAut_GA_s04_Exercice006/part02/sol2/Step2</address>
+							<type name="null"></type>
+							<solentry>
+								<name>Solution</name>
+								<address>SemAut_GA_s04_Exercice006/part02/sol2/Step2/sol.pdf</address>
+								<type name="Pdf"></type>
+							</solentry>
+						</stepentry>
+					</methodentry>
+				</partieentry>
+				</exerciceentry>
+			</seriesentry>
+			<seriesentry>
+				<name>Série 5</name>
+				<address></address>
+				<type name=""></type>
+				<exerciceentry>
+					<name>Exercice 7</name>
+					<address>SemAut_GA_s07_Exercice001/donnee/donnee.pdf</address>
+					<type name="Pdf"></type>
+					<complemententry>
+								<name>Complément</name>
+								<address>SemAut_GA_s07_Exercice001/donneecomplementaire/donnee.pdf</address>
+								<type name="Pdf"></type>
+							</complemententry>
+							<partieentry>
+					<name>Partie 1</name>
+					<address></address>
+					<type name="null"></type>
+					<methodentry>
+						<name>Méthode 1</name>
+						<address>SemAut_GA_s07_Exercice001/part01/choix1/choix.pdf</address>
+						<type name="Pdf"></type>
+						<stepentry>
+							<name>Etape 1</name>
+							<address>SemAut_GA_s07_Exercice001/part01/sol1/Step1</address>
+							<type name="null"></type>
+							<solentry>
+								<name>Solution</name>
+								<address>SemAut_GA_s07_Exercice001/part01/sol1/Step1/sol.pdf</address>
+								<type name="Pdf"></type>
+							</solentry>
+						</stepentry>
+						<stepentry>
+							<name>Etape 2</name>
+							<address>SemAut_GA_s07_Exercice001/part01/sol1/Step2</address>
+							<type name="null"></type>
+							<solentry>
+								<name>Solution</name>
+								<address>SemAut_GA_s07_Exercice001/part01/sol1/Step2/sol.pdf</address>
+								<type name="Pdf"></type>
+							</solentry>
+						</stepentry>
+						<stepentry>
+							<name>Etape 3</name>
+							<address>SemAut_GA_s07_Exercice001/part01/sol1/Step3</address>
+							<type name="null"></type>
+							<solentry>
+								<name>Solution</name>
+								<address>SemAut_GA_s07_Exercice001/part01/sol1/Step3/sol.pdf</address>
+								<type name="Pdf"></type>
+							</solentry>
+						</stepentry>
+					</methodentry>
+				</partieentry>
+				<partieentry>
+					<name>Partie 2</name>
+					<address></address>
+					<type name="null"></type>
+					<methodentry>
+						<name>Méthode 1</name>
+						<address>SemAut_GA_s07_Exercice001/part02/choix1/choix.pdf</address>
+						<type name="Pdf"></type>
+						<stepentry>
+							<name>Etape 1</name>
+							<address>SemAut_GA_s07_Exercice001/part02/sol1/Step1</address>
+							<type name="null"></type>
+							<solentry>
+								<name>Solution</name>
+								<address>SemAut_GA_s07_Exercice001/part02/sol1/Step1/sol.pdf</address>
+								<type name="Pdf"></type>
+							</solentry>
+						</stepentry>
+						<stepentry>
+							<name>Etape 2</name>
+							<address>SemAut_GA_s07_Exercice001/part02/sol1/Step2</address>
+							<type name="null"></type>
+							<solentry>
+								<name>Solution</name>
+								<address>SemAut_GA_s07_Exercice001/part02/sol1/Step2/sol.pdf</address>
+								<type name="Pdf"></type>
+							</solentry>
+						</stepentry>
+					</methodentry>
+					<methodentry>
+						<name>Méthode 2</name>
+						<address>SemAut_GA_s07_Exercice001/part02/choix2/choix.pdf</address>
+						<type name="Pdf"></type>
+						<stepentry>
+							<name>Etape 1</name>
+							<address>SemAut_GA_s07_Exercice001/part02/sol2/Step1</address>
+							<type name="null"></type>
+							<solentry>
+								<name>Solution</name>
+								<address>SemAut_GA_s07_Exercice001/part02/sol2/Step1/sol.pdf</address>
+								<type name="Pdf"></type>
+							</solentry>
+						</stepentry>
+						<stepentry>
+							<name>Etape 2</name>
+							<address>SemAut_GA_s07_Exercice001/part02/sol2/Step2</address>
+							<type name="null"></type>
+							<solentry>
+								<name>Solution</name>
+								<address>SemAut_GA_s07_Exercice001/part02/sol2/Step2/sol.pdf</address>
+								<type name="Pdf"></type>
+							</solentry>
+						</stepentry>
+					</methodentry>
+				</partieentry>
+				</exerciceentry>
+			</seriesentry>
+		</lectureentry>
+		<lectureentry>
+			<name>Physique</name>
+			<address></address>
+			<type name=""></type>
+			<seriesentry>
+				<name>Série 2</name>
+				<address></address>
+				<type name=""></type>
+				<exerciceentry>
+					<name>Exercice 8</name>
+					<address>SemAut_PH_s02_Exercice008/donnee/donnee.pdf</address>
+					<type name="Pdf"></type>
+					<complemententry>
+								<name>Complément</name>
+								<address>SemAut_PH_s02_Exercice008/donneecomplementaire/donnee.pdf</address>
+								<type name="Pdf"></type>
+							</complemententry>
+							<partieentry>
+					<name>Partie 1</name>
+					<address></address>
+					<type name="null"></type>
+					<methodentry>
+						<name>Méthode 1</name>
+						<address>SemAut_PH_s02_Exercice008/part01/choix1/choix.pdf</address>
+						<type name="Pdf"></type>
+						<stepentry>
+							<name>Etape 1</name>
+							<address>SemAut_PH_s02_Exercice008/part01/sol1/Step1</address>
+							<type name="null"></type>
+							<solentry>
+								<name>Solution</name>
+								<address>SemAut_PH_s02_Exercice008/part01/sol1/Step1/sol.pdf</address>
+								<type name="Pdf"></type>
+							</solentry>
+						</stepentry>
+						<stepentry>
+							<name>Etape 2</name>
+							<address>SemAut_PH_s02_Exercice008/part01/sol1/Step2</address>
+							<type name="null"></type>
+							<solentry>
+								<name>Solution</name>
+								<address>SemAut_PH_s02_Exercice008/part01/sol1/Step2/sol.pdf</address>
+								<type name="Pdf"></type>
+							</solentry>
+						</stepentry>
+					</methodentry>
+				</partieentry>
+				<partieentry>
+					<name>Partie 2</name>
+					<address></address>
+					<type name="null"></type>
+					<methodentry>
+						<name>Méthode 1</name>
+						<address>SemAut_PH_s02_Exercice008/part02/choix1/choix.pdf</address>
+						<type name="Pdf"></type>
+						<stepentry>
+							<name>Etape 1</name>
+							<address>SemAut_PH_s02_Exercice008/part02/sol1/Step1</address>
+							<type name="null"></type>
+							<solentry>
+								<name>Solution</name>
+								<address>SemAut_PH_s02_Exercice008/part02/sol1/Step1/sol.pdf</address>
+								<type name="Pdf"></type>
+							</solentry>
+						</stepentry>
+					</methodentry>
+				</partieentry>
+				<partieentry>
+					<name>Partie 3</name>
+					<address></address>
+					<type name="null"></type>
+					<methodentry>
+						<name>Méthode 1</name>
+						<address>SemAut_PH_s02_Exercice008/part03/choix1/choix.pdf</address>
+						<type name="Pdf"></type>
+						<stepentry>
+							<name>Etape 1</name>
+							<address>SemAut_PH_s02_Exercice008/part03/sol1/Step1</address>
+							<type name="null"></type>
+							<solentry>
+								<name>Solution</name>
+								<address>SemAut_PH_s02_Exercice008/part03/sol1/Step1/sol.pdf</address>
+								<type name="Pdf"></type>
+							</solentry>
+						</stepentry>
+					</methodentry>
+				</partieentry>
+				</exerciceentry>
+			</seriesentry>
+			<seriesentry>
+				<name>Série 4</name>
+				<address></address>
+				<type name=""></type>
+				<exerciceentry>
+					<name>Exercice 7</name>
+					<address>SemAut_PH_s04_Exercice007/donnee/donnee.pdf</address>
+					<type name="Pdf"></type>
+					<methodentry>
+						<name>Méthode 1</name>
+						<address>SemAut_PH_s04_Exercice007/choix1/methode.pdf</address>
+						<type name="Pdf"></type>
+						<stepentry>
+							<name>Etape 1</name>
+							<address>SemAut_PH_s04_Exercice007/sol1/Step1</address>
+							<type name="null"></type>
+							<solentry>
+								<name>Solution</name>
+								<address>SemAut_PH_s04_Exercice007/sol1/Step1/sol.pdf</address>
+								<type name="Pdf"></type>
+							</solentry>
+							<rementry>
+								<name>REMARQUE</name>
+								<address>SemAut_PH_s04_Exercice007/sol1/Step1/rem1.pdf</address>
+								<type name="Pdf"></type>
+							</rementry>
+						</stepentry>
+						<stepentry>
+							<name>Etape 2</name>
+							<address>SemAut_PH_s04_Exercice007/sol1/Step2</address>
+							<type name="null"></type>
+							<solentry>
+								<name>Solution</name>
+								<address>SemAut_PH_s04_Exercice007/sol1/Step2/sol.pdf</address>
+								<type name="Pdf"></type>
+							</solentry>
+							<rementry>
+								<name>REMARQUE</name>
+								<address>SemAut_PH_s04_Exercice007/sol1/Step2/rem1.pdf</address>
+								<type name="Pdf"></type>
+							</rementry>
+						</stepentry>
+						<stepentry>
+							<name>Etape 3</name>
+							<address>SemAut_PH_s04_Exercice007/sol1/Step3</address>
+							<type name="null"></type>
+							<solentry>
+								<name>Solution</name>
+								<address>SemAut_PH_s04_Exercice007/sol1/Step3/sol.pdf</address>
+								<type name="Pdf"></type>
+							</solentry>
+							<rementry>
+								<name>REMARQUE</name>
+								<address>SemAut_PH_s04_Exercice007/sol1/Step3/rem1.pdf</address>
+								<type name="Pdf"></type>
+							</rementry>
+						</stepentry>
+					</methodentry>
+				</exerciceentry>
+				<exerciceentry>
+					<name>Exercice 8</name>
+					<address>SemAut_PH_s04_Exercice008/donnee/donnee.pdf</address>
+					<type name="Pdf"></type>
+					<methodentry>
+						<name>Méthode 1</name>
+						<address>SemAut_PH_s04_Exercice008/choix1/choix.pdf</address>
+						<type name="Pdf"></type>
+						<stepentry>
+							<name>Etape 1</name>
+							<address>SemAut_PH_s04_Exercice008/sol1/Step1</address>
+							<type name="null"></type>
+							<solentry>
+								<name>Solution</name>
+								<address>SemAut_PH_s04_Exercice008/sol1/Step1/sol.pdf</address>
+								<type name="Pdf"></type>
+							</solentry>
+						</stepentry>
+						<stepentry>
+							<name>Etape 2</name>
+							<address>SemAut_PH_s04_Exercice008/sol1/Step2</address>
+							<type name="null"></type>
+							<solentry>
+								<name>Solution</name>
+								<address>SemAut_PH_s04_Exercice008/sol1/Step2/sol.pdf</address>
+								<type name="Pdf"></type>
+							</solentry>
+						</stepentry>
+						<stepentry>
+							<name>Etape 3</name>
+							<address>SemAut_PH_s04_Exercice008/sol1/Step3</address>
+							<type name="null"></type>
+							<solentry>
+								<name>Solution</name>
+								<address>SemAut_PH_s04_Exercice008/sol1/Step3/sol.pdf</address>
+								<type name="Pdf"></type>
+							</solentry>
+							<rementry>
+								<name>REMARQUE</name>
+								<address>SemAut_PH_s04_Exercice008/sol1/Step3/rem.pdf</address>
+								<type name="Pdf"></type>
+							</rementry>
+						</stepentry>
+					</methodentry>
+				</exerciceentry>
+			</seriesentry>
+		</lectureentry>
+	</semesterentry>
+</semesters>

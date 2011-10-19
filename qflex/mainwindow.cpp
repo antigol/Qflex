@@ -7,6 +7,14 @@ MainWindow::MainWindow(QWidget *parent) :
 {
     ui->setupUi(this);
 
+    ui->actionMettre_jour->setShortcut(QKeySequence("Ctrl+U"));
+    ui->action_Suivant->setShortcut(QKeySequence("Ctrl+K"));
+    ui->action_Pr_c_dant->setShortcut(QKeySequence("Ctrl+J"));
+
+    connect(ui->actionMettre_jour, SIGNAL(triggered()), this, SLOT(update()));
+    connect(ui->action_Suivant, SIGNAL(triggered()), this, SLOT(nextDocument()));
+    connect(ui->action_Pr_c_dant, SIGNAL(triggered()), this, SLOT(previousDocument()));
+    connect(ui->treeWidget, SIGNAL(itemSelectionChanged()), this, SLOT(itemChanged()));
     connect(&qnam, SIGNAL(finished(QNetworkReply*)), SLOT(replyFinished(QNetworkReply*)));
 }
 
@@ -15,134 +23,31 @@ MainWindow::~MainWindow()
     delete ui;
 }
 
-void MainWindow::on_actionMettre_jour_triggered()
+void MainWindow::update()
 {
     qnam.get(QNetworkRequest(QUrl("http://cmspc46.epfl.ch/20112012Data/Exercices/20112012semesters.xml")));
-}
+    /*
+    QFile file("20112012semesters.xml");
+    file.open(QIODevice::ReadOnly);
+    xml.addData(file.readAll());
 
-void MainWindow::readSemesters()
-{
-    Q_ASSERT(xml.isStartElement() && xml.name() == "semesters");
-
-    // balise principale
-    while (xml.readNextStartElement()) {
-        if (xml.name() == "semesterentry") {
-            readSemesterentry(0);
+    if (xml.readNextStartElement()) {
+        if (xml.name() == "semesters") {
+            readSemesters();
         }
     }
+*/
 }
 
-void MainWindow::readSemesterentry(QTreeWidgetItem *item)
+void MainWindow::replyFinished(QNetworkReply *reply)
 {
-    Q_ASSERT(xml.isStartElement() && xml.name() == "semesterentry");
+    xml.addData(reply->readAll());
 
-    QTreeWidgetItem *semester = createChildItem(item);
-
-    ui->treeWidget->setItemExpanded(semester, true);
-
-    while (xml.readNextStartElement()) {
-        if (xml.name() == "name") {
-            // lire le nom du semetre
-            QString textName = xml.readElementText();
-            semester->setText(0, textName);
-        } else if (xml.name() == "lectureentry") {
-            // création d'un enfant
-            readLectureentry(semester);
-        } else {
-            xml.skipCurrentElement();
+    if (xml.readNextStartElement()) {
+        if (xml.name() == "semesters") {
+            readSemesters();
         }
     }
-}
-
-void MainWindow::readLectureentry(QTreeWidgetItem *item)
-{
-    Q_ASSERT(xml.isStartElement() && xml.name() == "lectureentry");
-
-    QTreeWidgetItem *lecture = createChildItem(item);
-
-    while (xml.readNextStartElement()) {
-        if (xml.name() == "name") {
-            // lire le nom de la lecture
-            QString textName = xml.readElementText();
-            lecture->setText(0, textName);
-        } else if (xml.name() == "seriesentry") {
-            readSeriesentry(lecture);
-        } else {
-            xml.skipCurrentElement();
-        }
-    }
-}
-
-void MainWindow::readSeriesentry(QTreeWidgetItem *item)
-{
-    Q_ASSERT(xml.isStartElement() && xml.name() == "seriesentry");
-
-    QTreeWidgetItem *series = createChildItem(item);
-
-    while (xml.readNextStartElement()) {
-        if (xml.name() == "name") {
-            // lire le nom de la serie
-            QString textName = xml.readElementText();
-            series->setText(0, textName);
-        } else if (xml.name() == "exerciceentry") {
-            readExercice(series);
-        } else {
-            xml.skipCurrentElement();
-        }
-    }
-}
-
-void MainWindow::readExercice(QTreeWidgetItem *item)
-{
-    Q_ASSERT(xml.isStartElement() && xml.name() == "exerciceentry");
-
-    QTreeWidgetItem *exercice = createChildItem(item);
-
-    while (xml.readNextStartElement()) {
-        if (xml.name() == "name") {
-            QString textName = xml.readElementText();
-            exercice->setText(0, textName);
-        } else if (xml.name() == "address") {
-            exercice->setData(1, Qt::UserRole, xml.readElementText());
-        } else if (xml.name() == "type") {
-            exercice->setData(2, Qt::UserRole, xml.readElementText());
-        } else if (xml.name() == "methodentry") {
-            readMethod(exercice);
-        } else {
-            xml.skipCurrentElement();
-        }
-    }
-
-}
-
-void MainWindow::readMethod(QTreeWidgetItem *item)
-{
-    Q_ASSERT(xml.isStartElement() && xml.name() == "methodentry");
-
-    QTreeWidgetItem *method = createChildItem(item);
-
-    while (xml.readNextStartElement()) {
-        if (xml.name() == "name") {
-            QString textName = xml.readElementText();
-            method->setText(0, textName);
-        } else if (xml.name() == "address") {
-            method->setData(1, Qt::UserRole, xml.readElementText());
-        } else if (xml.name() == "type") {
-            method->setData(2, Qt::UserRole, xml.readElementText());
-        } else if (xml.name() == "stepentry") {
-            //! FIXME : suite avec readStep
-            xml.skipCurrentElement();
-        } else {
-            xml.skipCurrentElement();
-        }
-    }
-
-}
-
-void MainWindow::on_treeWidget_itemClicked(QTreeWidgetItem *item, int column)
-{
-    Q_UNUSED(column);
-    ui->labelAddress->setText(item->data(1, Qt::UserRole).toString());
 }
 
 QTreeWidgetItem *MainWindow::createChildItem(QTreeWidgetItem *item)
@@ -157,13 +62,94 @@ QTreeWidgetItem *MainWindow::createChildItem(QTreeWidgetItem *item)
     return childItem;
 }
 
-void MainWindow::replyFinished(QNetworkReply *reply)
+void MainWindow::readSemesters()
 {
-    xml.addData(reply->readAll());
+    Q_ASSERT(xml.isStartElement() && xml.name() == "semesters");
 
-    if (xml.readNextStartElement()) {
-        if (xml.name() == "semesters") {
-            readSemesters();
+    // balise principale
+    while (xml.readNextStartElement()) {
+        if (xml.name() == "semesterentry") {
+            readAll(0);
         }
     }
 }
+
+void MainWindow::readAll(QTreeWidgetItem *item)
+{
+    QTreeWidgetItem *branch = createChildItem(item);
+
+    if (xml.name() == "semesterentry") {
+        ui->treeWidget->setItemExpanded(branch, true);
+    }
+
+    while (xml.readNextStartElement()) {
+        if (xml.name() == "name") {
+            QString textName = xml.readElementText();
+            branch->setText(0, textName);
+        } else if (xml.name() == "address") {
+            branch->setData(0, Qt::UserRole + 1, xml.readElementText());
+        } else if (xml.name() == "type") {
+            branch->setData(0, Qt::UserRole + 2, xml.readElementText()); //! FIXME : UserRole + 2 ne fonctionne pas
+        } else {
+            readAll(branch);
+        }
+    }
+}
+
+void MainWindow::itemChanged()
+{
+    QTreeWidgetItem *item = ui->treeWidget->currentItem();
+    ui->labelAddress->setText(item->data(0, Qt::UserRole + 1).toString());
+}
+
+void MainWindow::nextDocument()
+{
+    QTreeWidgetItem *item = ui->treeWidget->currentItem();
+    if (item == 0)
+        return;
+
+    if (item->childCount() != 0)
+        item = item->child(0);
+    else
+        item = ui->treeWidget->itemBelow(item);
+
+    while (item != 0) {
+        if (!item->data(0, Qt::UserRole + 1).isNull()) {
+            ui->treeWidget->setCurrentItem(item);
+            return;
+        }
+
+        if (item->childCount() != 0)
+            item = item->child(0);
+        else
+            item = ui->treeWidget->itemBelow(item);
+    }
+}
+
+void MainWindow::previousDocument()
+{
+    QTreeWidgetItem *item = ui->treeWidget->currentItem();
+    if (item == 0)
+        return;
+
+    QTreeWidgetItem *above = ui->treeWidget->itemAbove(item);
+    if (above != 0 && item->parent() != above && above->childCount() != 0) {
+        item = above->child(above->childCount() - 1);
+    } else {
+        item = above;
+    }
+
+    while (item != 0) {
+        if (!item->data(0, Qt::UserRole + 1).isNull()) {
+            ui->treeWidget->setCurrentItem(item);
+            return;
+        }
+
+        if (above != 0 && item->parent() != above && above->childCount() != 0) {
+            item = above->child(above->childCount() - 1);
+        } else {
+            item = above;
+        }
+    }
+}
+
