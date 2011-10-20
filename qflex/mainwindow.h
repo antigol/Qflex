@@ -5,6 +5,7 @@
 #include <QtXml>
 #include <QtNetwork>
 #include <QTreeWidget>
+#include <QTimer>
 
 namespace Ui {
     class MainWindow;
@@ -28,16 +29,21 @@ private slots:
     void documentDownloaded(QNetworkReply*);
     void nextDocument();
     void previousDocument();
+    void downloadError();
+    void refreshDocument();
 
 private:
+    void resizeEvent(QResizeEvent *);
     QTreeWidgetItem *createChildItem(QTreeWidgetItem *item);
     void readXmlBlock(QTreeWidgetItem *item);
 
     Ui::MainWindow *ui;
-
     QNetworkAccessManager qnam;
     QXmlStreamReader xml;
     QImage image;
+    QByteArray pdfdata;
+    QTimer timer;
+
 };
 
 #endif // MAINWINDOW_H

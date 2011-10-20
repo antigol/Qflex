@@ -1,7 +1,0 @@
-Pour compiler le projet Qt
-
-installer g++ (yaourt -S gcc)
-installer QtCreator (yaourt -S qtcreator)
-lancer : qtcreator progcpp.pro
-une foit QtCreator lancé : crtl+r pour compiler
-

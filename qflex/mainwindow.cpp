@@ -2,6 +2,8 @@
 #include "ui_mainwindow.h"
 #include <QDesktopServices>
 #include <poppler-qt4.h>
+#include <QMessageBox>
+#include <QDebug>
 
 MainWindow::MainWindow(QWidget *parent) :
     QMainWindow(parent),
@@ -9,10 +11,13 @@ MainWindow::MainWindow(QWidget *parent) :
 {
     ui->setupUi(this);
 
-    ui->actionMettre_jour->setShortcut(QKeySequence("Ctrl+U"));
-    ui->action_Suivant->setShortcut(QKeySequence("Ctrl+K"));
-    ui->action_Pr_c_dant->setShortcut(QKeySequence("Ctrl+J"));
+    ui->actionMettre_jour->setShortcut(QKeySequence("F5"));
+    ui->action_Suivant->setShortcut(QKeySequence("K"));
+    ui->action_Pr_c_dant->setShortcut(QKeySequence("J"));
 
+    timer.setInterval(100);
+    timer.setSingleShot(true);
+    connect(&timer, SIGNAL(timeout()), this, SLOT(refreshDocument()));
     connect(ui->actionMettre_jour, SIGNAL(triggered()), this, SLOT(updateXml()));
     connect(ui->action_Suivant, SIGNAL(triggered()), this, SLOT(nextDocument()));
     connect(ui->action_Pr_c_dant, SIGNAL(triggered()), this, SLOT(previousDocument()));
@@ -47,8 +52,15 @@ void MainWindow::updateXml()
 
 void MainWindow::xmlFileDownloaded(QNetworkReply *reply)
 {
+    qDebug("refresh");
+
     disconnect(&qnam, SIGNAL(finished(QNetworkReply*)), this, SLOT(xmlFileDownloaded(QNetworkReply*)));
     connect(&qnam, SIGNAL(finished(QNetworkReply*)), this, SLOT(documentDownloaded(QNetworkReply*)));
+
+    if (reply->error() != QNetworkReply::NoError) {
+        QMessageBox::warning(this, "Erreur de Réseau bolosse", reply->errorString());
+        return;
+    }
 
     xml.addData(reply->readAll());
 
@@ -60,6 +72,7 @@ void MainWindow::xmlFileDownloaded(QNetworkReply *reply)
                 }
             }
         }
+        ui->treeWidget->setCurrentItem(ui->treeWidget->itemAt(0,0));
     }
 }
 
@@ -97,9 +110,12 @@ void MainWindow::readXmlBlock(QTreeWidgetItem *item)
 
         } else if (xml.name() == "type") {
             // O récupère l'attribut de la balise type, puis on saute </skip>
-            branch->setData(0, Qt::UserRole + 2, xml.attributes().value("name").toString());
-            xml.skipCurrentElement();
+            QString type = xml.attributes().value("name").toString();
+            if (!type.isEmpty() && type != "null") {
+                branch->setData(0, Qt::UserRole + 2, type);
+            }
 
+            xml.skipCurrentElement();
         } else {
             // Si c'est une autre balise, on relance récusivement la méthode
             readXmlBlock(branch);
@@ -111,30 +127,30 @@ void MainWindow::itemSelected()
 {
     QTreeWidgetItem *item = ui->treeWidget->currentItem();
 
-    QUrl url("http://cmspc46.epfl.ch/20112012Data/Exercices/" + item->data(0, Qt::UserRole + 1).toString());
-    qnam.get(QNetworkRequest(url));
-    //! FIXME: manque SLOT d'erreur
+    if (!item->data(0, Qt::UserRole + 2).isNull()) {
+        QUrl url("http://cmspc46.epfl.ch/20112012Data/Exercices/" + item->data(0, Qt::UserRole + 1).toString());
+        qnam.get(QNetworkRequest(url));
+    }
 }
 
 void MainWindow::documentDownloaded(QNetworkReply *reply)
 {
+    if (reply->error() != QNetworkReply::NoError)  QMessageBox::warning(this, "Erreur !", reply->errorString());
     QString extention = reply->url().toString().section('.', -1);
 
     qDebug("Download finished : %s", reply->url().toString().toAscii().data());
 
+    pdfdata.clear();
+
     if (extention.compare("pdf", Qt::CaseInsensitive) == 0) {
-        Poppler::Document *doc = Poppler::Document::loadFromData(reply->readAll());
-        image = doc->page(0)->renderToImage(
-                    1.0 * physicalDpiX(),
-                    1.0 * physicalDpiY());
-        ui->label->setPixmap(QPixmap::fromImage(image));
+        pdfdata = reply->readAll();
+
     } else if (extention.compare("html", Qt::CaseInsensitive) == 0) {
 
     } else {
         image.load(reply, extention.toAscii().data());
-
-        ui->label->setPixmap(QPixmap::fromImage(image));
     }
+    refreshDocument();
 }
 
 void MainWindow::itemDoubleClick(QTreeWidgetItem *item,int)
@@ -154,7 +170,7 @@ void MainWindow::nextDocument()
         item = ui->treeWidget->itemBelow(item);
 
     while (item != 0) {
-        if (!item->data(0, Qt::UserRole + 1).isNull()) {
+        if (!item->data(0, Qt::UserRole + 2).isNull()) {
             ui->treeWidget->setCurrentItem(item);
             return;
         }
@@ -183,7 +199,7 @@ void MainWindow::previousDocument()
     }
 
     while (item != 0) {
-        if (!item->data(0, Qt::UserRole + 1).isNull()) {
+        if (!item->data(0, Qt::UserRole + 2).isNull()) {
             ui->treeWidget->setCurrentItem(item);
             return;
         }
@@ -199,5 +215,35 @@ void MainWindow::previousDocument()
         }
 
     }
+}
+
+void MainWindow::downloadError()
+{
+}
+
+void MainWindow::resizeEvent(QResizeEvent *e)
+{
+    timer.start();
+    QMainWindow::resizeEvent(e);
+}
+
+void MainWindow::refreshDocument()
+{
+    if (!pdfdata.isEmpty()) {
+        Poppler::Document *doc = Poppler::Document::loadFromData(pdfdata);
+        doc->setRenderHint(Poppler::Document::TextAntialiasing);
+        doc->setRenderHint(Poppler::Document::TextHinting);
+        doc->setRenderHint(Poppler::Document::Antialiasing);
+        qDebug() << doc->page(0)->pageSizeF();
+        double ratio = (double)ui->scrollArea->width() / doc->page(0)->pageSizeF().width();
+        ratio *= 0.7;
+
+        image = doc->page(0)->renderToImage(
+                    ratio * physicalDpiX(),
+                    ratio * physicalDpiY());
+    }
+
+    QPixmap pixmap = QPixmap::fromImage(image);
+    ui->label->setPixmap(pixmap);
 }
 
