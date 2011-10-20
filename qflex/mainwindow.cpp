@@ -4,6 +4,8 @@
 #include <poppler-qt4.h>
 #include <QMessageBox>
 #include <QDebug>
+#include <QHash>
+#include <QString>
 
 MainWindow::MainWindow(QWidget *parent) :
     QMainWindow(parent),
@@ -40,7 +42,8 @@ void MainWindow::updateXml()
     disconnect(&qnam, SIGNAL(finished(QNetworkReply*)), this, SLOT(documentDownloaded(QNetworkReply*)));
     connect(&qnam, SIGNAL(finished(QNetworkReply*)), this, SLOT(xmlFileDownloaded(QNetworkReply*)));
     qnam.get(QNetworkRequest(QUrl("http://cmspc46.epfl.ch/20112012Data/Exercices/20112012semesters.xml")));
-    //! FIXME: Créer slot pour une éventuelle erreur de téléchargement
+
+    statusBar()->showMessage("downloading xml...");
     /*
     QFile file("20112012semesters.xml");
     file.open(QIODevice::ReadOnly);
@@ -56,27 +59,25 @@ void MainWindow::updateXml()
 
 void MainWindow::xmlFileDownloaded(QNetworkReply *reply)
 {
-    qDebug("refresh");
-
     disconnect(&qnam, SIGNAL(finished(QNetworkReply*)), this, SLOT(xmlFileDownloaded(QNetworkReply*)));
     connect(&qnam, SIGNAL(finished(QNetworkReply*)), this, SLOT(documentDownloaded(QNetworkReply*)));
 
+    QString key = urlToKey(reply->url().toString());
+    QByteArray data;
+
     if (reply->error() != QNetworkReply::NoError) {
-        QMessageBox::warning(this, "Erreur de Réseau bolosse", reply->errorString());
-        return;
-    }
-
-    xml.addData(reply->readAll());
-
-    if (xml.readNextStartElement()) {
-        if (xml.name() == "semesters") {
-            while (xml.readNextStartElement()) {
-                if (xml.name() == "semesterentry") {
-                    readXmlBlock(0);
-                }
-            }
+        if (set.contains(key)) {
+            data = set.value(key).toByteArray();
+            readXmlFile(data);
+            statusBar()->showMessage("xml loaded from local...", 1000);
+        } else {
+            QMessageBox::warning(this, "Erreur de Réseau bolosse", reply->errorString());
         }
-        ui->treeWidget->setCurrentItem(ui->treeWidget->itemAt(0,0));
+    } else {
+        data = reply->readAll();
+        readXmlFile(data);
+        set.setValue(key, data);
+        statusBar()->showMessage("xml file downloaded...", 1000);
     }
 }
 
@@ -90,6 +91,23 @@ QTreeWidgetItem *MainWindow::createChildItem(QTreeWidgetItem *item)
     }
     childItem->setData(0, Qt::UserRole, xml.name().toString());
     return childItem;
+}
+
+void MainWindow::readXmlFile(const QByteArray &data)
+{
+    xml.addData(data);
+
+    if (xml.readNextStartElement()) {
+        if (xml.name() == "semesters") {
+            while (xml.readNextStartElement()) {
+                if (xml.name() == "semesterentry") {
+                    readXmlBlock(0);
+                }
+            }
+        }
+        ui->treeWidget->setCurrentItem(ui->treeWidget->itemAt(0,0));
+    }
+    statusBar()->showMessage("xml file loaded", 1000);
 }
 
 void MainWindow::readXmlBlock(QTreeWidgetItem *item)
@@ -133,27 +151,48 @@ void MainWindow::itemSelected()
 
     if (!item->data(0, Qt::UserRole + 2).isNull()) {
         QUrl url("http://cmspc46.epfl.ch/20112012Data/Exercices/" + item->data(0, Qt::UserRole + 1).toString());
-        qnam.get(QNetworkRequest(url));
+
+        QString key = urlToKey(url.toString());
+        if (set.contains(key)) {
+            QByteArray data = set.value(key).toByteArray();
+            loadDocument(data, url.toString());
+            statusBar()->showMessage(QString("Loaded from local %1...").arg(url.toString()), 1000);
+        } else {
+            qnam.get(QNetworkRequest(url));
+            statusBar()->showMessage(QString("Downloading %1...").arg(url.toString()));
+        }
     }
 }
 
 void MainWindow::documentDownloaded(QNetworkReply *reply)
 {
-    if (reply->error() != QNetworkReply::NoError)  QMessageBox::warning(this, "Erreur !", reply->errorString());
-    QString extention = reply->url().toString().section('.', -1);
+    if (reply->error() != QNetworkReply::NoError) {
+        statusBar()->clearMessage();
+        QMessageBox::warning(this, "Erreur !", reply->errorString());
+        return;
+    }
 
-    qDebug("Download finished : %s", reply->url().toString().toAscii().data());
+    QByteArray data = reply->readAll();
+    QString url = reply->url().toString();
 
+    set.setValue(urlToKey(url), data);
+    loadDocument(data, url);
+    statusBar()->showMessage(QString("file donwloaded %1...").arg(url), 1000);
+}
+
+void MainWindow::loadDocument(const QByteArray &data, const QString &url)
+{
+    QString extention = url.section('.', -1);
     pdfdata.clear();
 
     if (extention.compare("pdf", Qt::CaseInsensitive) == 0) {
-        pdfdata = reply->readAll();
-
+        pdfdata = data;
     } else if (extention.compare("html", Qt::CaseInsensitive) == 0) {
 
     } else {
-        image.load(reply, extention.toAscii().data());
+        image.load(data, extention.toAscii().data());
     }
+
     refreshDocument();
 }
 
@@ -260,5 +299,10 @@ void MainWindow::refreshDocument()
 void MainWindow::fullscreen()
 {
     setWindowState(windowState() ^ Qt::WindowFullScreen);
+}
+
+QString MainWindow::urlToKey(const QString &url) const
+{
+    return QString::number(qHash(url), 16);
 }
 

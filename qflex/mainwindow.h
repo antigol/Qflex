@@ -6,6 +6,7 @@
 #include <QtNetwork>
 #include <QTreeWidget>
 #include <QTimer>
+#include <QSettings>
 
 namespace Ui {
     class MainWindow;
@@ -34,8 +35,11 @@ private slots:
     void fullscreen();
 
 private:
+    void loadDocument(const QByteArray &data, const QString &url);
+    QString urlToKey(const QString &url) const;
     void resizeEvent(QResizeEvent *);
     QTreeWidgetItem *createChildItem(QTreeWidgetItem *item);
+    void readXmlFile(const QByteArray &data);
     void readXmlBlock(QTreeWidgetItem *item);
 
     Ui::MainWindow *ui;
@@ -44,6 +48,7 @@ private:
     QImage image;
     QByteArray pdfdata;
     QTimer timer;
+    QSettings set;
 
 };
 
