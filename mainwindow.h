@@ -38,6 +38,7 @@ private:
     void loadDocument(const QByteArray &data, const QString &url);
     QString urlToKey(const QString &url) const;
     void resizeEvent(QResizeEvent *);
+    void keyPressEvent(QKeyEvent *);
     QTreeWidgetItem *createChildItem(QTreeWidgetItem *item);
     void readXmlFile(const QByteArray &data);
     void readXmlBlock(QTreeWidgetItem *item);

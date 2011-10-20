@@ -6,11 +6,12 @@
 #include <QDebug>
 #include <QHash>
 #include <QString>
+#include <QKeyEvent>
 
 MainWindow::MainWindow(QWidget *parent) :
     QMainWindow(parent),
     ui(new Ui::MainWindow)
-{
+{    
     ui->setupUi(this);
 
     ui->actionMettre_jour->setShortcut(QKeySequence("F5"));
@@ -44,17 +45,6 @@ void MainWindow::updateXml()
     qnam.get(QNetworkRequest(QUrl("http://cmspc46.epfl.ch/20112012Data/Exercices/20112012semesters.xml")));
 
     statusBar()->showMessage("downloading xml...");
-    /*
-    QFile file("20112012semesters.xml");
-    file.open(QIODevice::ReadOnly);
-    xml.addData(file.readAll());
-
-    if (xml.readNextStartElement()) {
-        if (xml.name() == "semesters") {
-            readSemesters();
-        }
-    }
-*/
 }
 
 void MainWindow::xmlFileDownloaded(QNetworkReply *reply)
@@ -270,6 +260,22 @@ void MainWindow::resizeEvent(QResizeEvent *e)
     QMainWindow::resizeEvent(e);
 }
 
+void MainWindow::keyPressEvent(QKeyEvent *e)
+{
+    qDebug() << e->text() << e->key();
+    switch (e->key()) {
+    case 16777313: // touche précédent suivant Thinkpad
+        previousDocument();
+        break;
+    case 16777314: // touche document suivant Thinkpad
+    case 16777220: // touche retour à la ligne
+        nextDocument();
+        break;
+    }
+
+    QMainWindow::keyPressEvent(e);
+}
+
 void MainWindow::refreshDocument()
 {
     if (!pdfdata.isEmpty()) {
@@ -277,7 +283,7 @@ void MainWindow::refreshDocument()
         doc->setRenderHint(Poppler::Document::TextAntialiasing);
         doc->setRenderHint(Poppler::Document::TextHinting);
         doc->setRenderHint(Poppler::Document::Antialiasing);
-        qDebug() << doc->page(0)->pageSizeF();
+
         double ratioX = (double)ui->scrollArea->width() / doc->page(0)->pageSizeF().width();
         double ratioY = (double)ui->scrollArea->height() / doc->page(0)->pageSizeF().height();
         double ratio;
