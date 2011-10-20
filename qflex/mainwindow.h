@@ -18,19 +18,20 @@ public:
     explicit MainWindow(QWidget *parent = 0);
     ~MainWindow();
 
+public slots:
+    void updateXml();
+
 private slots:
-    void update();
-    void itemChanged();
+    void itemSelected();
     void itemDoubleClick(QTreeWidgetItem*,int);
-    void replyFinished(QNetworkReply*);
+    void xmlFileDownloaded(QNetworkReply*);
     void documentDownloaded(QNetworkReply*);
     void nextDocument();
     void previousDocument();
 
 private:
     QTreeWidgetItem *createChildItem(QTreeWidgetItem *item);
-    void readSemesters();
-    void readAll(QTreeWidgetItem *item);
+    void readXmlBlock(QTreeWidgetItem *item);
 
     Ui::MainWindow *ui;
 

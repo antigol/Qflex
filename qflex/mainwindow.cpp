@@ -13,14 +13,12 @@ MainWindow::MainWindow(QWidget *parent) :
     ui->action_Suivant->setShortcut(QKeySequence("Ctrl+K"));
     ui->action_Pr_c_dant->setShortcut(QKeySequence("Ctrl+J"));
 
-    connect(ui->actionMettre_jour, SIGNAL(triggered()), this, SLOT(update()));
+    connect(ui->actionMettre_jour, SIGNAL(triggered()), this, SLOT(updateXml()));
     connect(ui->action_Suivant, SIGNAL(triggered()), this, SLOT(nextDocument()));
     connect(ui->action_Pr_c_dant, SIGNAL(triggered()), this, SLOT(previousDocument()));
-    connect(ui->treeWidget, SIGNAL(itemSelectionChanged()), this, SLOT(itemChanged()));
+    connect(ui->treeWidget, SIGNAL(itemSelectionChanged()), this, SLOT(itemSelected()));
     connect(ui->treeWidget, SIGNAL(itemDoubleClicked(QTreeWidgetItem*,int)), this, SLOT(itemDoubleClick(QTreeWidgetItem*,int)));
     connect(&qnam, SIGNAL(finished(QNetworkReply*)), this, SLOT(documentDownloaded(QNetworkReply*)));
-
-    update();
 }
 
 MainWindow::~MainWindow()
@@ -28,11 +26,12 @@ MainWindow::~MainWindow()
     delete ui;
 }
 
-void MainWindow::update()
+void MainWindow::updateXml()
 {
     disconnect(&qnam, SIGNAL(finished(QNetworkReply*)), this, SLOT(documentDownloaded(QNetworkReply*)));
-    connect(&qnam, SIGNAL(finished(QNetworkReply*)), this, SLOT(replyFinished(QNetworkReply*)));
+    connect(&qnam, SIGNAL(finished(QNetworkReply*)), this, SLOT(xmlFileDownloaded(QNetworkReply*)));
     qnam.get(QNetworkRequest(QUrl("http://cmspc46.epfl.ch/20112012Data/Exercices/20112012semesters.xml")));
+    //! FIXME: Créer slot pour une éventuelle erreur de téléchargement
     /*
     QFile file("20112012semesters.xml");
     file.open(QIODevice::ReadOnly);
@@ -46,16 +45,20 @@ void MainWindow::update()
 */
 }
 
-void MainWindow::replyFinished(QNetworkReply *reply)
+void MainWindow::xmlFileDownloaded(QNetworkReply *reply)
 {
-    disconnect(&qnam, SIGNAL(finished(QNetworkReply*)), this, SLOT(replyFinished(QNetworkReply*)));
+    disconnect(&qnam, SIGNAL(finished(QNetworkReply*)), this, SLOT(xmlFileDownloaded(QNetworkReply*)));
     connect(&qnam, SIGNAL(finished(QNetworkReply*)), this, SLOT(documentDownloaded(QNetworkReply*)));
 
     xml.addData(reply->readAll());
 
     if (xml.readNextStartElement()) {
         if (xml.name() == "semesters") {
-            readSemesters();
+            while (xml.readNextStartElement()) {
+                if (xml.name() == "semesterentry") {
+                    readXmlBlock(0);
+                }
+            }
         }
     }
 }
@@ -72,19 +75,7 @@ QTreeWidgetItem *MainWindow::createChildItem(QTreeWidgetItem *item)
     return childItem;
 }
 
-void MainWindow::readSemesters()
-{
-    Q_ASSERT(xml.isStartElement() && xml.name() == "semesters");
-
-    // balise principale
-    while (xml.readNextStartElement()) {
-        if (xml.name() == "semesterentry") {
-            readAll(0);
-        }
-    }
-}
-
-void MainWindow::readAll(QTreeWidgetItem *item)
+void MainWindow::readXmlBlock(QTreeWidgetItem *item)
 {
     QTreeWidgetItem *branch = createChildItem(item);
 
@@ -92,28 +83,37 @@ void MainWindow::readAll(QTreeWidgetItem *item)
         ui->treeWidget->setItemExpanded(branch, true);
     }
 
+    // Quand il tombe sur une balise fermée, readNextStartElement retourne false
     while (xml.readNextStartElement()) {
+
         if (xml.name() == "name") {
+            // Si on tombe sur la balise name on lit son contenu, dufait, on se retrouve sur </name>
             QString textName = xml.readElementText();
             branch->setText(0, textName);
+
         } else if (xml.name() == "address") {
+            // Idem que <name>
             branch->setData(0, Qt::UserRole + 1, xml.readElementText());
+
         } else if (xml.name() == "type") {
+            // O récupère l'attribut de la balise type, puis on saute </skip>
             branch->setData(0, Qt::UserRole + 2, xml.attributes().value("name").toString());
             xml.skipCurrentElement();
+
         } else {
-            readAll(branch);
+            // Si c'est une autre balise, on relance récusivement la méthode
+            readXmlBlock(branch);
         }
     }
 }
 
-void MainWindow::itemChanged()
+void MainWindow::itemSelected()
 {
     QTreeWidgetItem *item = ui->treeWidget->currentItem();
-    //ui->label->setText(item->data(0, Qt::UserRole + 1).toString() + "(" + item->data(0, Qt::UserRole + 2).toString() + ")");
 
     QUrl url("http://cmspc46.epfl.ch/20112012Data/Exercices/" + item->data(0, Qt::UserRole + 1).toString());
     qnam.get(QNetworkRequest(url));
+    //! FIXME: manque SLOT d'erreur
 }
 
 void MainWindow::documentDownloaded(QNetworkReply *reply)
@@ -124,15 +124,17 @@ void MainWindow::documentDownloaded(QNetworkReply *reply)
 
     if (extention.compare("pdf", Qt::CaseInsensitive) == 0) {
         QFile file(QDir::homePath() + "/.qflex.pdf");
-        if (file.open(QIODevice::ReadWrite)) {
+        if (file.open(QIODevice::ReadWrite | QIODevice::Truncate)) {
             file.write(reply->readAll());
             file.close();
+
             Poppler::Document *doc = Poppler::Document::load(QDir::homePath() + "/.qflex.pdf");
                 image = doc->page(0)->renderToImage(
                             1.0 * physicalDpiX(),
                             1.0 * physicalDpiY());
                 ui->label->setPixmap(QPixmap::fromImage(image));
         }
+        //! FIXME : afficher l'erreur
     } else if (extention.compare("html", Qt::CaseInsensitive) == 0) {
 
     } else {
