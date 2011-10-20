@@ -81,6 +81,7 @@
      <string>&amp;Fichier</string>
     </property>
     <addaction name="actionMettre_jour"/>
+    <addaction name="action_Quitter"/>
    </widget>
    <widget class="QMenu" name="menu_Navigation">
     <property name="title">
@@ -89,7 +90,14 @@
     <addaction name="action_Suivant"/>
     <addaction name="action_Pr_c_dant"/>
    </widget>
+   <widget class="QMenu" name="menu_Affichage">
+    <property name="title">
+     <string>&amp;Affichage</string>
+    </property>
+    <addaction name="action_Plein_cran"/>
+   </widget>
    <addaction name="menu_Fichier"/>
+   <addaction name="menu_Affichage"/>
    <addaction name="menu_Navigation"/>
   </widget>
   <widget class="QToolBar" name="mainToolBar">
@@ -114,6 +122,16 @@
   <action name="action_Pr_c_dant">
    <property name="text">
     <string>&amp;Précédant</string>
+   </property>
+  </action>
+  <action name="action_Plein_cran">
+   <property name="text">
+    <string>&amp;Plein écran</string>
+   </property>
+  </action>
+  <action name="action_Quitter">
+   <property name="text">
+    <string>&amp;Quitter</string>
    </property>
   </action>
  </widget>

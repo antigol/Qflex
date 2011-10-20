@@ -12,8 +12,10 @@ MainWindow::MainWindow(QWidget *parent) :
     ui->setupUi(this);
 
     ui->actionMettre_jour->setShortcut(QKeySequence("F5"));
+    ui->action_Plein_cran->setShortcut(QKeySequence("F11"));
     ui->action_Suivant->setShortcut(QKeySequence("K"));
     ui->action_Pr_c_dant->setShortcut(QKeySequence("J"));
+    ui->action_Quitter->setShortcut(QKeySequence("Ctrl+Q"));
 
     timer.setInterval(100);
     timer.setSingleShot(true);
@@ -21,6 +23,8 @@ MainWindow::MainWindow(QWidget *parent) :
     connect(ui->actionMettre_jour, SIGNAL(triggered()), this, SLOT(updateXml()));
     connect(ui->action_Suivant, SIGNAL(triggered()), this, SLOT(nextDocument()));
     connect(ui->action_Pr_c_dant, SIGNAL(triggered()), this, SLOT(previousDocument()));
+    connect(ui->action_Plein_cran, SIGNAL(triggered()), this, SLOT(fullscreen()));
+    connect(ui->action_Quitter, SIGNAL(triggered()), qApp, SLOT(quit()));
     connect(ui->treeWidget, SIGNAL(itemSelectionChanged()), this, SLOT(itemSelected()));
     connect(ui->treeWidget, SIGNAL(itemDoubleClicked(QTreeWidgetItem*,int)), this, SLOT(itemDoubleClick(QTreeWidgetItem*,int)));
     connect(&qnam, SIGNAL(finished(QNetworkReply*)), this, SLOT(documentDownloaded(QNetworkReply*)));
@@ -235,9 +239,15 @@ void MainWindow::refreshDocument()
         doc->setRenderHint(Poppler::Document::TextHinting);
         doc->setRenderHint(Poppler::Document::Antialiasing);
         qDebug() << doc->page(0)->pageSizeF();
-        double ratio = (double)ui->scrollArea->width() / doc->page(0)->pageSizeF().width();
+        double ratioX = (double)ui->scrollArea->width() / doc->page(0)->pageSizeF().width();
+        double ratioY = (double)ui->scrollArea->height() / doc->page(0)->pageSizeF().height();
+        double ratio;
+        if (ratioX < ratioY || ratioY < 1.3) {
+            ratio = ratioX;
+        } else {
+            ratio = ratioY;
+        }
         ratio *= 0.7;
-
         image = doc->page(0)->renderToImage(
                     ratio * physicalDpiX(),
                     ratio * physicalDpiY());
@@ -245,5 +255,10 @@ void MainWindow::refreshDocument()
 
     QPixmap pixmap = QPixmap::fromImage(image);
     ui->label->setPixmap(pixmap);
+}
+
+void MainWindow::fullscreen()
+{
+    setWindowState(windowState() ^ Qt::WindowFullScreen);
 }
 

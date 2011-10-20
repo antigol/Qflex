@@ -31,6 +31,7 @@ private slots:
     void previousDocument();
     void downloadError();
     void refreshDocument();
+    void fullscreen();
 
 private:
     void resizeEvent(QResizeEvent *);
