@@ -1,0 +1,10 @@
+dépendances :
+
+Qt (http://qt.nokia.com/)
+Poppler pour lire les pdf (http://poppler.freedesktop.org/)
+
+
+plate-formes :
+
+Qt est multi-plateformes (X11, mac, windows)
+Poppler je sais pas s'il est disponibles sur mac et windows mais normalement oui
