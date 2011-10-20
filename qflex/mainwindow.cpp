@@ -120,21 +120,14 @@ void MainWindow::documentDownloaded(QNetworkReply *reply)
 {
     QString extention = reply->url().toString().section('.', -1);
 
-    qDebug("Download finished, extention = %s", extention.toAscii().data());
+    qDebug("Download finished : %s", reply->url().toString().toAscii().data());
 
     if (extention.compare("pdf", Qt::CaseInsensitive) == 0) {
-        QFile file(QDir::homePath() + "/.qflex.pdf");
-        if (file.open(QIODevice::ReadWrite | QIODevice::Truncate)) {
-            file.write(reply->readAll());
-            file.close();
-
-            Poppler::Document *doc = Poppler::Document::load(QDir::homePath() + "/.qflex.pdf");
-                image = doc->page(0)->renderToImage(
-                            1.0 * physicalDpiX(),
-                            1.0 * physicalDpiY());
-                ui->label->setPixmap(QPixmap::fromImage(image));
-        }
-        //! FIXME : afficher l'erreur
+        Poppler::Document *doc = Poppler::Document::loadFromData(reply->readAll());
+        image = doc->page(0)->renderToImage(
+                    1.0 * physicalDpiX(),
+                    1.0 * physicalDpiY());
+        ui->label->setPixmap(QPixmap::fromImage(image));
     } else if (extention.compare("html", Qt::CaseInsensitive) == 0) {
 
     } else {
