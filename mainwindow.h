@@ -29,10 +29,11 @@ private slots:
     void documentDownloaded(QNetworkReply*);
     void nextDocument();
     void previousDocument();
-    void downloadError();
     void refreshDocument();
     void fullscreen();
     void downloadAll();
+    void collapseAll();
+
 private:
     void startDownload(QTreeWidgetItem *item);
     void loadDocument(const QByteArray &data, const QString &url);
@@ -47,6 +48,7 @@ private:
     QNetworkAccessManager qnam;
     QNetworkReply *reply;
     QXmlStreamReader xml;
+    QTreeWidgetItem *lastSemester;
     QImage image;
     QByteArray pdfdata;
     QTimer timer;

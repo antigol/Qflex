@@ -93,6 +93,7 @@
     <property name="title">
      <string>&amp;Navigation</string>
     </property>
+    <addaction name="action_Tout_r_duire"/>
     <addaction name="action_Suivant"/>
     <addaction name="action_Pr_c_dant"/>
    </widget>
@@ -146,6 +147,11 @@
    </property>
    <property name="text">
     <string>Tout télécharger à la maj</string>
+   </property>
+  </action>
+  <action name="action_Tout_r_duire">
+   <property name="text">
+    <string>&amp;Tout réduire</string>
    </property>
   </action>
  </widget>

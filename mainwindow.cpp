@@ -16,6 +16,9 @@ MainWindow::MainWindow(QWidget *parent) :
 {    
     ui->setupUi(this);
 
+    ui->treeWidget->setExpandsOnDoubleClick(true);
+
+    ui->action_Tout_r_duire->setShortcut(QKeySequence("Ctrl+W"));
     ui->actionMettre_jour->setShortcut(QKeySequence("F5"));
     ui->action_Plein_cran->setShortcut(QKeySequence("F11"));
     ui->action_Suivant->setShortcut(QKeySequence("K"));
@@ -25,6 +28,7 @@ MainWindow::MainWindow(QWidget *parent) :
     timer.setInterval(100);
     timer.setSingleShot(true);
     connect(&timer, SIGNAL(timeout()), this, SLOT(refreshDocument()));
+    connect(ui->action_Tout_r_duire, SIGNAL(triggered()), this, SLOT(collapseAll()));
     connect(ui->actionMettre_jour, SIGNAL(triggered()), this, SLOT(updateXml()));
     connect(ui->action_Suivant, SIGNAL(triggered()), this, SLOT(nextDocument()));
     connect(ui->action_Pr_c_dant, SIGNAL(triggered()), this, SLOT(previousDocument()));
@@ -110,7 +114,8 @@ void MainWindow::readXmlFile(const QByteArray &data)
                 }
             }
         }
-        ui->treeWidget->setCurrentItem(ui->treeWidget->itemAt(0,0));
+        ui->treeWidget->setItemExpanded(lastSemester, true);
+        ui->treeWidget->setCurrentItem(lastSemester);
     }
     statusBar()->showMessage(QString::fromUtf8("Fichier xml déchifré"), 4000);
 }
@@ -120,7 +125,7 @@ void MainWindow::readXmlBlock(QTreeWidgetItem *item)
     QTreeWidgetItem *branch = createChildItem(item);
 
     if (xml.name() == "semesterentry") {
-        ui->treeWidget->setItemExpanded(branch, true);
+        lastSemester = branch;
     }
 
     // Quand il tombe sur une balise fermée, readNextStartElement retourne false
@@ -265,21 +270,19 @@ void MainWindow::nextDocument()
     if (item == 0)
         return;
 
-    if (item->childCount() != 0)
-        item = item->child(0);
-    else
-        item = ui->treeWidget->itemBelow(item);
-
-    while (item != 0) {
-        if (!item->data(0, Qt::UserRole + 2).isNull()) {
-            ui->treeWidget->setCurrentItem(item);
-            return;
-        }
-
+    while (true) {
         if (item->childCount() != 0)
             item = item->child(0);
         else
             item = ui->treeWidget->itemBelow(item);
+
+        if (item == 0)
+            break;
+
+        if (!item->data(0, Qt::UserRole + 2).isNull()) {
+            ui->treeWidget->setCurrentItem(item);
+            return;
+        }
     }
 }
 
@@ -289,22 +292,7 @@ void MainWindow::previousDocument()
     if (item == 0)
         return;
 
-    QTreeWidgetItem *above = ui->treeWidget->itemAbove(item);
-    if (above != 0 && item->parent() != above && above->childCount() != 0) {
-        while (above->childCount() != 0) {
-            above = above->child(above->childCount() - 1);
-        }
-        item = above;
-    } else {
-        item = above;
-    }
-
-    while (item != 0) {
-        if (!item->data(0, Qt::UserRole + 2).isNull()) {
-            ui->treeWidget->setCurrentItem(item);
-            return;
-        }
-
+    while (true) {
         QTreeWidgetItem *above = ui->treeWidget->itemAbove(item);
         if (above != 0 && item->parent() != above && above->childCount() != 0) {
             while (above->childCount() != 0) {
@@ -315,11 +303,14 @@ void MainWindow::previousDocument()
             item = above;
         }
 
-    }
-}
+        if (item == 0)
+            break;
 
-void MainWindow::downloadError()
-{
+        if (!item->data(0, Qt::UserRole + 2).isNull()) {
+            ui->treeWidget->setCurrentItem(item);
+            return;
+        }
+    }
 }
 
 void MainWindow::resizeEvent(QResizeEvent *e)
@@ -356,5 +347,12 @@ QString MainWindow::urlToKey(const QString &url) const
 
 void MainWindow::downloadAll()
 {
+}
+
+void MainWindow::collapseAll()
+{
+    ui->treeWidget->collapseAll();
+    ui->treeWidget->setItemExpanded(lastSemester, true);
+    ui->treeWidget->setCurrentItem(lastSemester);
 }
 
