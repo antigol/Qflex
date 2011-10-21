@@ -51,6 +51,12 @@
         </rect>
        </property>
        <layout class="QVBoxLayout" name="verticalLayout">
+        <property name="spacing">
+         <number>0</number>
+        </property>
+        <property name="margin">
+         <number>0</number>
+        </property>
         <item>
          <widget class="QLabel" name="label">
           <property name="text">
@@ -96,9 +102,16 @@
     </property>
     <addaction name="action_Plein_cran"/>
    </widget>
+   <widget class="QMenu" name="menuOption">
+    <property name="title">
+     <string>&amp;Option</string>
+    </property>
+    <addaction name="actionTout_t_l_charger_la_maj"/>
+   </widget>
    <addaction name="menu_Fichier"/>
    <addaction name="menu_Affichage"/>
    <addaction name="menu_Navigation"/>
+   <addaction name="menuOption"/>
   </widget>
   <widget class="QToolBar" name="mainToolBar">
    <attribute name="toolBarArea">
@@ -132,6 +145,14 @@
   <action name="action_Quitter">
    <property name="text">
     <string>&amp;Quitter</string>
+   </property>
+  </action>
+  <action name="actionTout_t_l_charger_la_maj">
+   <property name="checkable">
+    <bool>true</bool>
+   </property>
+   <property name="text">
+    <string>Tout télécharger à la maj</string>
    </property>
   </action>
  </widget>

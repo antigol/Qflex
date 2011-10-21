@@ -33,8 +33,9 @@ private slots:
     void downloadError();
     void refreshDocument();
     void fullscreen();
-
+    void downloadAll();
 private:
+    void startDownload(QTreeWidgetItem *item);
     void loadDocument(const QByteArray &data, const QString &url);
     QString urlToKey(const QString &url) const;
     void resizeEvent(QResizeEvent *);
@@ -50,7 +51,7 @@ private:
     QByteArray pdfdata;
     QTimer timer;
     QSettings set;
-
+    bool showDocuments;
 };
 
 #endif // MAINWINDOW_H

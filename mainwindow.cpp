@@ -31,6 +31,8 @@ MainWindow::MainWindow(QWidget *parent) :
     connect(ui->treeWidget, SIGNAL(itemSelectionChanged()), this, SLOT(itemSelected()));
     connect(ui->treeWidget, SIGNAL(itemDoubleClicked(QTreeWidgetItem*,int)), this, SLOT(itemDoubleClick(QTreeWidgetItem*,int)));
     connect(&qnam, SIGNAL(finished(QNetworkReply*)), this, SLOT(documentDownloaded(QNetworkReply*)));
+
+    showDocuments = true;
 }
 
 MainWindow::~MainWindow()
@@ -44,7 +46,7 @@ void MainWindow::updateXml()
     connect(&qnam, SIGNAL(finished(QNetworkReply*)), this, SLOT(xmlFileDownloaded(QNetworkReply*)));
     qnam.get(QNetworkRequest(QUrl("http://cmspc46.epfl.ch/20112012Data/Exercices/20112012semesters.xml")));
 
-    statusBar()->showMessage("downloading xml...");
+    statusBar()->showMessage("Downloading xml...");
 }
 
 void MainWindow::xmlFileDownloaded(QNetworkReply *reply)
@@ -59,7 +61,7 @@ void MainWindow::xmlFileDownloaded(QNetworkReply *reply)
         if (set.contains(key)) {
             data = set.value(key).toByteArray();
             readXmlFile(data);
-            statusBar()->showMessage("xml loaded from local...", 1000);
+            statusBar()->showMessage("XML loaded from local", 1000);
         } else {
             QMessageBox::warning(this, "Erreur de Réseau bolosse", reply->errorString());
         }
@@ -67,7 +69,7 @@ void MainWindow::xmlFileDownloaded(QNetworkReply *reply)
         data = reply->readAll();
         readXmlFile(data);
         set.setValue(key, data);
-        statusBar()->showMessage("xml file downloaded...", 1000);
+        statusBar()->showMessage("XML file downloaded", 1000);
     }
 }
 
@@ -85,7 +87,14 @@ QTreeWidgetItem *MainWindow::createChildItem(QTreeWidgetItem *item)
 
 void MainWindow::readXmlFile(const QByteArray &data)
 {
+    ui->treeWidget->clear();
+    xml.clear();
     xml.addData(data);
+
+    if (ui->actionTout_t_l_charger_la_maj->isChecked()) {
+        showDocuments = false;
+        QMessageBox::information(this,"Note aux utilisateurs", QString::fromUtf8("Le téléchargement intégral ralentit l'application pendant qu'il s'effectue. De plus il s'effectue en parti en arrière plan, donc si vous souhaitez le finir totalement, attendez quelque temps selon votre connection"));
+    }
 
     if (xml.readNextStartElement()) {
         if (xml.name() == "semesters") {
@@ -97,7 +106,7 @@ void MainWindow::readXmlFile(const QByteArray &data)
         }
         ui->treeWidget->setCurrentItem(ui->treeWidget->itemAt(0,0));
     }
-    statusBar()->showMessage("xml file loaded", 1000);
+    statusBar()->showMessage("XML file loaded", 1000);
 }
 
 void MainWindow::readXmlBlock(QTreeWidgetItem *item)
@@ -119,7 +128,6 @@ void MainWindow::readXmlBlock(QTreeWidgetItem *item)
         } else if (xml.name() == "address") {
             // Idem que <name>
             branch->setData(0, Qt::UserRole + 1, xml.readElementText());
-
         } else if (xml.name() == "type") {
             // O récupère l'attribut de la balise type, puis on saute </skip>
             QString type = xml.attributes().value("name").toString();
@@ -133,23 +141,38 @@ void MainWindow::readXmlBlock(QTreeWidgetItem *item)
             readXmlBlock(branch);
         }
     }
+
+    if (ui->actionTout_t_l_charger_la_maj->isChecked() && item != 0) {
+        startDownload(item);
+    }
 }
 
 void MainWindow::itemSelected()
 {
     QTreeWidgetItem *item = ui->treeWidget->currentItem();
 
+    if (item != 0) {
+        showDocuments = true;
+    }
+    startDownload(item);
+
+}
+
+void MainWindow::startDownload(QTreeWidgetItem *item)
+{
     if (!item->data(0, Qt::UserRole + 2).isNull()) {
         QUrl url("http://cmspc46.epfl.ch/20112012Data/Exercices/" + item->data(0, Qt::UserRole + 1).toString());
 
         QString key = urlToKey(url.toString());
         if (set.contains(key)) {
-            QByteArray data = set.value(key).toByteArray();
-            loadDocument(data, url.toString());
-            statusBar()->showMessage(QString("Loaded from local %1...").arg(url.toString()), 1000);
+            if (showDocuments) {
+                QByteArray data = set.value(key).toByteArray();
+                loadDocument(data, url.toString());
+                statusBar()->showMessage(QString("Loaded from local %1").arg(url.toString().section('/', -1)), 1000);
+            }
         } else {
             qnam.get(QNetworkRequest(url));
-            statusBar()->showMessage(QString("Downloading %1...").arg(url.toString()));
+            statusBar()->showMessage(QString("Downloading %1...").arg(url.toString().section('/', -1)));
         }
     }
 }
@@ -158,7 +181,7 @@ void MainWindow::documentDownloaded(QNetworkReply *reply)
 {
     if (reply->error() != QNetworkReply::NoError) {
         statusBar()->clearMessage();
-        QMessageBox::warning(this, "Erreur !", reply->errorString());
+        statusBar()->showMessage("Download error : "+reply->errorString(), 2000);
         return;
     }
 
@@ -166,8 +189,11 @@ void MainWindow::documentDownloaded(QNetworkReply *reply)
     QString url = reply->url().toString();
 
     set.setValue(urlToKey(url), data);
-    loadDocument(data, url);
-    statusBar()->showMessage(QString("file donwloaded %1...").arg(url), 1000);
+
+    if (showDocuments)
+        loadDocument(data, url);
+
+    statusBar()->showMessage(QString("File donwloaded %1").arg(url.section('/', -1)), 1000);
 }
 
 void MainWindow::loadDocument(const QByteArray &data, const QString &url)
@@ -188,7 +214,7 @@ void MainWindow::loadDocument(const QByteArray &data, const QString &url)
 
 void MainWindow::itemDoubleClick(QTreeWidgetItem *item,int)
 {
-    QDesktopServices::openUrl(QUrl(QString("http://cmspc46.epfl.ch/20112012Data/Exercices/%1").arg(item->data(0, Qt::UserRole + 1).toString())));
+//    QDesktopServices::openUrl(QUrl(QString("http://cmspc46.epfl.ch/20112012Data/Exercices/%1").arg(item->data(0, Qt::UserRole + 1).toString())));
 }
 
 void MainWindow::nextDocument()
@@ -262,7 +288,7 @@ void MainWindow::resizeEvent(QResizeEvent *e)
 
 void MainWindow::keyPressEvent(QKeyEvent *e)
 {
-    qDebug() << e->text() << e->key();
+    //    qDebug() << e->text() << e->key();
     switch (e->key()) {
     case 16777313: // touche précédent suivant Thinkpad
         previousDocument();
@@ -284,18 +310,18 @@ void MainWindow::refreshDocument()
         doc->setRenderHint(Poppler::Document::TextHinting);
         doc->setRenderHint(Poppler::Document::Antialiasing);
 
-        double ratioX = (double)ui->scrollArea->width() / doc->page(0)->pageSizeF().width();
-        double ratioY = (double)ui->scrollArea->height() / doc->page(0)->pageSizeF().height();
+        double ratioX = ((double)ui->scrollArea->width() - 22) / doc->page(0)->pageSizeF().width();
+        double ratioY = ((double)ui->scrollArea->height() - 22) / doc->page(0)->pageSizeF().height();
         double ratio;
         if (ratioX < ratioY || ratioY < 1.3) {
             ratio = ratioX;
         } else {
             ratio = ratioY;
         }
-        ratio *= 0.7;
+        ratio *= 72.0;
         image = doc->page(0)->renderToImage(
-                    ratio * physicalDpiX(),
-                    ratio * physicalDpiY());
+                    ratio /* physicalDpiX()*/,
+                    ratio /* physicalDpiY()*/);
     }
 
     QPixmap pixmap = QPixmap::fromImage(image);
@@ -310,5 +336,9 @@ void MainWindow::fullscreen()
 QString MainWindow::urlToKey(const QString &url) const
 {
     return QString::number(qHash(url), 16);
+}
+
+void MainWindow::downloadAll()
+{
 }
 
