@@ -247,20 +247,26 @@ void MainWindow::refreshDocument()
         ui->scrollArea->setVisible(true);
 
         Poppler::Document *doc = Poppler::Document::loadFromData(documentData);
-        doc->setRenderHint(Poppler::Document::TextAntialiasing);
-        doc->setRenderHint(Poppler::Document::TextHinting);
-        doc->setRenderHint(Poppler::Document::Antialiasing);
+        if (doc != 0) {
+            doc->setRenderHint(Poppler::Document::TextAntialiasing);
+            doc->setRenderHint(Poppler::Document::TextHinting);
+            doc->setRenderHint(Poppler::Document::Antialiasing);
 
-        double ratioX = ((double)ui->scrollArea->width() - 22) / doc->page(0)->pageSizeF().width();
-        double ratioY = ((double)ui->scrollArea->height() - 22) / doc->page(0)->pageSizeF().height();
-        double ratio;
-        if (ratioX < ratioY || ratioY < 1.3) {
-            ratio = ratioX;
+            double ratioX = ((double)ui->scrollArea->width() - 22) / doc->page(0)->pageSizeF().width();
+            double ratioY = ((double)ui->scrollArea->height() - 22) / doc->page(0)->pageSizeF().height();
+            double ratio;
+            if (ratioX < ratioY || ratioY < 1.3) {
+                ratio = ratioX;
+            } else {
+                ratio = ratioY;
+            }
+            ratio *= 72.0;
+            image = doc->page(0)->renderToImage(ratio, ratio);
+
+            delete doc;
         } else {
-            ratio = ratioY;
+            statusBar()->showMessage(QString("Erreur d'affiche pdf du fichier %1").arg(documentUrl.toString().section('/', -1)));
         }
-        ratio *= 72.0;
-        image = doc->page(0)->renderToImage(ratio, ratio);
     }
 
     if ((documentType == Pdf) || (documentType == Other)) {
