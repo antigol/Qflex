@@ -11,7 +11,8 @@
 MainWindow::MainWindow(QWidget *parent) :
     QMainWindow(parent),
     ui(new Ui::MainWindow),
-    reply(0)
+    reply(0),
+    documentType(None)
 {    
     ui->setupUi(this);
 
@@ -32,7 +33,7 @@ MainWindow::MainWindow(QWidget *parent) :
     connect(ui->treeWidget, SIGNAL(itemSelectionChanged()), this, SLOT(itemSelected()));
     connect(&qnam, SIGNAL(finished(QNetworkReply*)), this, SLOT(documentDownloaded(QNetworkReply*)));
 
-//    showDocuments = true;
+    //    showDocuments = true;
 }
 
 MainWindow::~MainWindow()
@@ -156,15 +157,18 @@ void MainWindow::itemSelected()
 {
     QTreeWidgetItem *item = ui->treeWidget->currentItem();
 
+    ui->label->clear();
     //    if (item != 0) {
     //        showDocuments = true;
     //    }
     startDownload(item);
-
 }
 
 void MainWindow::startDownload(QTreeWidgetItem *item)
 {
+    if (reply != 0)
+        reply->abort();
+
     if (!item->data(0, Qt::UserRole + 2).isNull()) {
         QUrl url("http://cmspc46.epfl.ch/20112012Data/Exercices/" + item->data(0, Qt::UserRole + 1).toString());
 
@@ -172,16 +176,15 @@ void MainWindow::startDownload(QTreeWidgetItem *item)
         if (set.contains(key)) {
             //            if (showDocuments) {
             QByteArray data = set.value(key).toByteArray();
-            loadDocument(data, url.toString());
             statusBar()->showMessage(QString::fromUtf8("Document locale %1").arg(url.toString().section('/', -1)), 4000);
+            loadDocument(data, url.toString());
             //            }
         } else {
-            if (reply != 0)
-                reply->abort();
-
             reply = qnam.get(QNetworkRequest(url));
             statusBar()->showMessage(QString::fromUtf8("Téléchargement de %1...").arg(url.toString().section('/', -1)));
         }
+    } else {
+        statusBar()->clearMessage();
     }
 }
 
@@ -190,7 +193,7 @@ void MainWindow::documentDownloaded(QNetworkReply *reply)
     if (reply->error() != QNetworkReply::NoError) {
         statusBar()->clearMessage();
         statusBar()->showMessage(QString::fromUtf8("Erreur de téléchargement : %1").arg(reply->errorString()), 4000);
-        ui->label->setText(QString::fromUtf8("Erreur de téléchangement"));
+        ui->label->clear();
         return;
     }
 
@@ -199,26 +202,61 @@ void MainWindow::documentDownloaded(QNetworkReply *reply)
 
     set.setValue(urlToKey(url), data);
 
+    statusBar()->showMessage(QString::fromUtf8("Document téléchangé %1").arg(url.section('/', -1)), 4000);
     //    if (showDocuments)
     loadDocument(data, url);
-
-    statusBar()->showMessage(QString::fromUtf8("Document téléchangé %1").arg(url.section('/', -1)), 4000);
 }
 
 void MainWindow::loadDocument(const QByteArray &data, const QString &url)
 {
     QString extention = url.section('.', -1);
-    pdfdata.clear();
 
     if (extention.compare("pdf", Qt::CaseInsensitive) == 0) {
         pdfdata = data;
+        documentType = Pdf;
     } else if (extention.compare("html", Qt::CaseInsensitive) == 0) {
-
+        statusBar()->showMessage(QString::fromUtf8("Pas de prise en chage du html, %1").arg(url.section('/', -1)), 4000);
+        documentType = Html;
     } else {
-        image.load(data, extention.toAscii().data());
+        if (!image.loadFromData(data, extention.toAscii().data())) {
+            statusBar()->showMessage(QString::fromUtf8("Erreur d'affichage de %1").arg(url.section('/', -1)), 4000);
+        }
+        documentType = Other;
     }
 
     refreshDocument();
+}
+
+void MainWindow::refreshDocument()
+{
+    ui->label->clear();
+
+    if (documentType == None) {
+        return;
+    }
+
+    if (documentType == Pdf) {
+        Poppler::Document *doc = Poppler::Document::loadFromData(pdfdata);
+        doc->setRenderHint(Poppler::Document::TextAntialiasing);
+        doc->setRenderHint(Poppler::Document::TextHinting);
+        doc->setRenderHint(Poppler::Document::Antialiasing);
+
+        double ratioX = ((double)ui->scrollArea->width() - 22) / doc->page(0)->pageSizeF().width();
+        double ratioY = ((double)ui->scrollArea->height() - 22) / doc->page(0)->pageSizeF().height();
+        double ratio;
+        if (ratioX < ratioY || ratioY < 1.3) {
+            ratio = ratioX;
+        } else {
+            ratio = ratioY;
+        }
+        ratio *= 72.0;
+        image = doc->page(0)->renderToImage(ratio, ratio);
+    }
+
+    if ((documentType == Pdf) || (documentType == Other)) {
+        QPixmap pixmap = QPixmap::fromImage(image);
+        ui->label->setPixmap(pixmap);
+    }
 }
 
 void MainWindow::nextDocument()
@@ -304,32 +342,6 @@ void MainWindow::keyPressEvent(QKeyEvent *e)
     }
 
     QMainWindow::keyPressEvent(e);
-}
-
-void MainWindow::refreshDocument()
-{
-    if (!pdfdata.isEmpty()) {
-        Poppler::Document *doc = Poppler::Document::loadFromData(pdfdata);
-        doc->setRenderHint(Poppler::Document::TextAntialiasing);
-        doc->setRenderHint(Poppler::Document::TextHinting);
-        doc->setRenderHint(Poppler::Document::Antialiasing);
-
-        double ratioX = ((double)ui->scrollArea->width() - 22) / doc->page(0)->pageSizeF().width();
-        double ratioY = ((double)ui->scrollArea->height() - 22) / doc->page(0)->pageSizeF().height();
-        double ratio;
-        if (ratioX < ratioY || ratioY < 1.3) {
-            ratio = ratioX;
-        } else {
-            ratio = ratioY;
-        }
-        ratio *= 72.0;
-        image = doc->page(0)->renderToImage(
-                    ratio /* physicalDpiX()*/,
-                    ratio /* physicalDpiY()*/);
-    }
-
-    QPixmap pixmap = QPixmap::fromImage(image);
-    ui->label->setPixmap(pixmap);
 }
 
 void MainWindow::fullscreen()

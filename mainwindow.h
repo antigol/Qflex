@@ -51,6 +51,12 @@ private:
     QByteArray pdfdata;
     QTimer timer;
     QSettings set;
+    enum {
+        None,
+        Pdf,
+        Html,
+        Other
+    } documentType;
 //    bool showDocuments;
 };
 
