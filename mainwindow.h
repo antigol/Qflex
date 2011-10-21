@@ -25,7 +25,6 @@ public slots:
 
 private slots:
     void itemSelected();
-    void itemDoubleClick(QTreeWidgetItem*,int);
     void xmlFileDownloaded(QNetworkReply*);
     void documentDownloaded(QNetworkReply*);
     void nextDocument();
@@ -46,12 +45,13 @@ private:
 
     Ui::MainWindow *ui;
     QNetworkAccessManager qnam;
+    QNetworkReply *reply;
     QXmlStreamReader xml;
     QImage image;
     QByteArray pdfdata;
     QTimer timer;
     QSettings set;
-    bool showDocuments;
+//    bool showDocuments;
 };
 
 #endif // MAINWINDOW_H

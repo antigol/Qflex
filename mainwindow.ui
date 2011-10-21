@@ -102,16 +102,9 @@
     </property>
     <addaction name="action_Plein_cran"/>
    </widget>
-   <widget class="QMenu" name="menuOption">
-    <property name="title">
-     <string>&amp;Option</string>
-    </property>
-    <addaction name="actionTout_t_l_charger_la_maj"/>
-   </widget>
    <addaction name="menu_Fichier"/>
    <addaction name="menu_Affichage"/>
    <addaction name="menu_Navigation"/>
-   <addaction name="menuOption"/>
   </widget>
   <widget class="QToolBar" name="mainToolBar">
    <attribute name="toolBarArea">

@@ -10,7 +10,8 @@
 
 MainWindow::MainWindow(QWidget *parent) :
     QMainWindow(parent),
-    ui(new Ui::MainWindow)
+    ui(new Ui::MainWindow),
+    reply(0)
 {    
     ui->setupUi(this);
 
@@ -29,10 +30,9 @@ MainWindow::MainWindow(QWidget *parent) :
     connect(ui->action_Plein_cran, SIGNAL(triggered()), this, SLOT(fullscreen()));
     connect(ui->action_Quitter, SIGNAL(triggered()), qApp, SLOT(quit()));
     connect(ui->treeWidget, SIGNAL(itemSelectionChanged()), this, SLOT(itemSelected()));
-    connect(ui->treeWidget, SIGNAL(itemDoubleClicked(QTreeWidgetItem*,int)), this, SLOT(itemDoubleClick(QTreeWidgetItem*,int)));
     connect(&qnam, SIGNAL(finished(QNetworkReply*)), this, SLOT(documentDownloaded(QNetworkReply*)));
 
-    showDocuments = true;
+//    showDocuments = true;
 }
 
 MainWindow::~MainWindow()
@@ -42,11 +42,16 @@ MainWindow::~MainWindow()
 
 void MainWindow::updateXml()
 {
+    if (reply != 0) {
+        reply->abort();
+    }
+
     disconnect(&qnam, SIGNAL(finished(QNetworkReply*)), this, SLOT(documentDownloaded(QNetworkReply*)));
     connect(&qnam, SIGNAL(finished(QNetworkReply*)), this, SLOT(xmlFileDownloaded(QNetworkReply*)));
-    qnam.get(QNetworkRequest(QUrl("http://cmspc46.epfl.ch/20112012Data/Exercices/20112012semesters.xml")));
 
-    statusBar()->showMessage("Downloading xml...");
+    reply = qnam.get(QNetworkRequest(QUrl("http://cmspc46.epfl.ch/20112012Data/Exercices/20112012semesters.xml")));
+
+    statusBar()->showMessage(QString::fromUtf8("Téléchargement du fichier xml"));
 }
 
 void MainWindow::xmlFileDownloaded(QNetworkReply *reply)
@@ -61,15 +66,15 @@ void MainWindow::xmlFileDownloaded(QNetworkReply *reply)
         if (set.contains(key)) {
             data = set.value(key).toByteArray();
             readXmlFile(data);
-            statusBar()->showMessage("XML loaded from local", 1000);
+            statusBar()->showMessage(QString::fromUtf8("Pas de connexion au réseau. Récuperation du fichier xml locale"), 4000);
         } else {
-            QMessageBox::warning(this, "Erreur de Réseau bolosse", reply->errorString());
+            QMessageBox::warning(this, QString::fromUtf8("Erreur de réseau"), QString::fromUtf8("Erreur de téléchagement %1").arg(reply->errorString()));
         }
     } else {
         data = reply->readAll();
         readXmlFile(data);
         set.setValue(key, data);
-        statusBar()->showMessage("XML file downloaded", 1000);
+        statusBar()->showMessage(QString::fromUtf8("Fichier xml téléchargé"), 4000);
     }
 }
 
@@ -91,10 +96,10 @@ void MainWindow::readXmlFile(const QByteArray &data)
     xml.clear();
     xml.addData(data);
 
-    if (ui->actionTout_t_l_charger_la_maj->isChecked()) {
-        showDocuments = false;
-        QMessageBox::information(this,"Note aux utilisateurs", QString::fromUtf8("Le téléchargement intégral ralentit l'application pendant qu'il s'effectue. De plus il s'effectue en parti en arrière plan, donc si vous souhaitez le finir totalement, attendez quelque temps selon votre connection"));
-    }
+    //    if (ui->actionTout_t_l_charger_la_maj->isChecked()) {
+    //        showDocuments = false;
+    //        QMessageBox::information(this,"Note aux utilisateurs", QString::fromUtf8("Le téléchargement intégral ralentit l'application pendant qu'il s'effectue. De plus il s'effectue en parti en arrière plan, donc si vous souhaitez le finir totalement, attendez quelque temps selon votre connection"));
+    //    }
 
     if (xml.readNextStartElement()) {
         if (xml.name() == "semesters") {
@@ -106,7 +111,7 @@ void MainWindow::readXmlFile(const QByteArray &data)
         }
         ui->treeWidget->setCurrentItem(ui->treeWidget->itemAt(0,0));
     }
-    statusBar()->showMessage("XML file loaded", 1000);
+    statusBar()->showMessage(QString::fromUtf8("Fichier xml déchifré"), 4000);
 }
 
 void MainWindow::readXmlBlock(QTreeWidgetItem *item)
@@ -142,18 +147,18 @@ void MainWindow::readXmlBlock(QTreeWidgetItem *item)
         }
     }
 
-    if (ui->actionTout_t_l_charger_la_maj->isChecked() && item != 0) {
-        startDownload(item);
-    }
+    //    if (ui->actionTout_t_l_charger_la_maj->isChecked() && item != 0) {
+    //        startDownload(item);
+    //    }
 }
 
 void MainWindow::itemSelected()
 {
     QTreeWidgetItem *item = ui->treeWidget->currentItem();
 
-    if (item != 0) {
-        showDocuments = true;
-    }
+    //    if (item != 0) {
+    //        showDocuments = true;
+    //    }
     startDownload(item);
 
 }
@@ -165,14 +170,17 @@ void MainWindow::startDownload(QTreeWidgetItem *item)
 
         QString key = urlToKey(url.toString());
         if (set.contains(key)) {
-            if (showDocuments) {
-                QByteArray data = set.value(key).toByteArray();
-                loadDocument(data, url.toString());
-                statusBar()->showMessage(QString("Loaded from local %1").arg(url.toString().section('/', -1)), 1000);
-            }
+            //            if (showDocuments) {
+            QByteArray data = set.value(key).toByteArray();
+            loadDocument(data, url.toString());
+            statusBar()->showMessage(QString::fromUtf8("Document locale %1").arg(url.toString().section('/', -1)), 4000);
+            //            }
         } else {
-            qnam.get(QNetworkRequest(url));
-            statusBar()->showMessage(QString("Downloading %1...").arg(url.toString().section('/', -1)));
+            if (reply != 0)
+                reply->abort();
+
+            reply = qnam.get(QNetworkRequest(url));
+            statusBar()->showMessage(QString::fromUtf8("Téléchargement de %1...").arg(url.toString().section('/', -1)));
         }
     }
 }
@@ -181,7 +189,8 @@ void MainWindow::documentDownloaded(QNetworkReply *reply)
 {
     if (reply->error() != QNetworkReply::NoError) {
         statusBar()->clearMessage();
-        statusBar()->showMessage("Download error : "+reply->errorString(), 2000);
+        statusBar()->showMessage(QString::fromUtf8("Erreur de téléchargement : %1").arg(reply->errorString()), 4000);
+        ui->label->setText(QString::fromUtf8("Erreur de téléchangement"));
         return;
     }
 
@@ -190,10 +199,10 @@ void MainWindow::documentDownloaded(QNetworkReply *reply)
 
     set.setValue(urlToKey(url), data);
 
-    if (showDocuments)
-        loadDocument(data, url);
+    //    if (showDocuments)
+    loadDocument(data, url);
 
-    statusBar()->showMessage(QString("File donwloaded %1").arg(url.section('/', -1)), 1000);
+    statusBar()->showMessage(QString::fromUtf8("Document téléchangé %1").arg(url.section('/', -1)), 4000);
 }
 
 void MainWindow::loadDocument(const QByteArray &data, const QString &url)
@@ -210,11 +219,6 @@ void MainWindow::loadDocument(const QByteArray &data, const QString &url)
     }
 
     refreshDocument();
-}
-
-void MainWindow::itemDoubleClick(QTreeWidgetItem *item,int)
-{
-//    QDesktopServices::openUrl(QUrl(QString("http://cmspc46.epfl.ch/20112012Data/Exercices/%1").arg(item->data(0, Qt::UserRole + 1).toString())));
 }
 
 void MainWindow::nextDocument()
