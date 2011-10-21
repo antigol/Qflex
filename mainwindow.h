@@ -7,6 +7,7 @@
 #include <QTreeWidget>
 #include <QTimer>
 #include <QSettings>
+#include <QtWebKit>
 
 namespace Ui {
     class MainWindow;
@@ -50,7 +51,10 @@ private:
     QXmlStreamReader xml;
     QTreeWidgetItem *lastSemester;
     QImage image;
-    QByteArray pdfdata;
+
+    QByteArray documentData;
+    QUrl documentUrl;
+
     QTimer timer;
     QSettings set;
     enum {

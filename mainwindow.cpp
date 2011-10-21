@@ -16,6 +16,7 @@ MainWindow::MainWindow(QWidget *parent) :
 {    
     ui->setupUi(this);
 
+    ui->webView->setVisible(false);
     ui->treeWidget->setExpandsOnDoubleClick(true);
 
     ui->action_Tout_r_duire->setShortcut(QKeySequence("Ctrl+W"));
@@ -217,10 +218,11 @@ void MainWindow::loadDocument(const QByteArray &data, const QString &url)
     QString extention = url.section('.', -1);
 
     if (extention.compare("pdf", Qt::CaseInsensitive) == 0) {
-        pdfdata = data;
+        documentData = data;
         documentType = Pdf;
     } else if (extention.compare("html", Qt::CaseInsensitive) == 0) {
-        statusBar()->showMessage(QString::fromUtf8("Pas de prise en chage du html, %1").arg(url.section('/', -1)), 4000);
+        documentData = data;
+        documentUrl = url;
         documentType = Html;
     } else {
         if (!image.loadFromData(data, extention.toAscii().data())) {
@@ -241,7 +243,10 @@ void MainWindow::refreshDocument()
     }
 
     if (documentType == Pdf) {
-        Poppler::Document *doc = Poppler::Document::loadFromData(pdfdata);
+        ui->webView->setVisible(false);
+        ui->scrollArea->setVisible(true);
+
+        Poppler::Document *doc = Poppler::Document::loadFromData(documentData);
         doc->setRenderHint(Poppler::Document::TextAntialiasing);
         doc->setRenderHint(Poppler::Document::TextHinting);
         doc->setRenderHint(Poppler::Document::Antialiasing);
@@ -259,8 +264,18 @@ void MainWindow::refreshDocument()
     }
 
     if ((documentType == Pdf) || (documentType == Other)) {
+        ui->webView->setVisible(false);
+        ui->scrollArea->setVisible(true);
+
         QPixmap pixmap = QPixmap::fromImage(image);
         ui->label->setPixmap(pixmap);
+    }
+
+    if (documentType == Html) {
+        ui->webView->setVisible(true);
+        ui->scrollArea->setVisible(false);
+
+        ui->webView->load(documentUrl);
     }
 }
 
