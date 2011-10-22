@@ -38,8 +38,6 @@ MainWindow::MainWindow(QWidget *parent) :
     connect(ui->action_Quitter, SIGNAL(triggered()), qApp, SLOT(quit()));
     connect(ui->treeWidget, SIGNAL(itemSelectionChanged()), this, SLOT(itemSelected()));
     connect(&qnam, SIGNAL(finished(QNetworkReply*)), this, SLOT(documentDownloaded(QNetworkReply*)));
-
-    //    showDocuments = true;
 }
 
 MainWindow::~MainWindow()
@@ -105,11 +103,6 @@ void MainWindow::readXmlFile(const QByteArray &data)
 
     xml.addData(data);
 
-    //    if (ui->actionTout_t_l_charger_la_maj->isChecked()) {
-    //        showDocuments = false;
-    //        QMessageBox::information(this,"Note aux utilisateurs", QString::fromUtf8("Le téléchargement intégral ralentit l'application pendant qu'il s'effectue. De plus il s'effectue en parti en arrière plan, donc si vous souhaitez le finir totalement, attendez quelque temps selon votre connection"));
-    //    }
-
     if (xml.readNextStartElement()) {
         if (xml.name() == "semesters") {
             while (xml.readNextStartElement()) {
@@ -158,10 +151,6 @@ void MainWindow::readXmlBlock(QTreeWidgetItem *item)
             readXmlBlock(branch);
         }
     }
-
-    //    if (ui->actionTout_t_l_charger_la_maj->isChecked() && item != 0) {
-    //        startDownload(item);
-    //    }
 }
 
 void MainWindow::itemSelected()
@@ -169,9 +158,6 @@ void MainWindow::itemSelected()
     QTreeWidgetItem *item = ui->treeWidget->currentItem();
 
     ui->label->clear();
-    //    if (item != 0) {
-    //        showDocuments = true;
-    //    }
     startDownload(item);
 }
 
@@ -185,11 +171,9 @@ void MainWindow::startDownload(QTreeWidgetItem *item)
 
         QString key = urlToKey(url.toString());
         if (set.contains(key)) {
-            //            if (showDocuments) {
             QByteArray data = set.value(key).toByteArray();
             statusBar()->showMessage(QString::fromUtf8("Document locale %1").arg(url.toString().section('/', -1)), 4000);
             loadDocument(data, url.toString());
-            //            }
         } else {
             reply = qnam.get(QNetworkRequest(url));
             statusBar()->showMessage(QString::fromUtf8("Téléchargement de %1...").arg(url.toString().section('/', -1)));
@@ -214,7 +198,6 @@ void MainWindow::documentDownloaded(QNetworkReply *reply)
     set.setValue(urlToKey(url), data);
 
     statusBar()->showMessage(QString::fromUtf8("Document téléchangé %1").arg(url.section('/', -1)), 4000);
-    //    if (showDocuments)
     loadDocument(data, url);
 }
 
@@ -377,7 +360,7 @@ void MainWindow::downloadAll()
     for (int i = 0; i < urlList.size(); ++i) {
         if (!urlList[i].isEmpty() && !set.contains(urlToKey(urlList[i].toString()))) {
             qnam.get(QNetworkRequest(urlList[i]));
-            qDebug() << urlList[i];
+//            qDebug() << urlList[i];
         }
     }
 }
