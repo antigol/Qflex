@@ -125,31 +125,34 @@ void MainWindow::readXmlBlock(QTreeWidgetItem *item)
         lastSemester = branch;
     }
 
+    QString branchName;
+    QUrl branchAddress;
+    QString branchType;
+
     // Quand il tombe sur une balise fermée, readNextStartElement retourne false
     while (xml.readNextStartElement()) {
 
         if (xml.name() == "name") {
             // Si on tombe sur la balise name on lit son contenu, dufait, on se retrouve sur </name>
-            QString textName = xml.readElementText();
-            branch->setText(0, textName);
-
+            branchName = xml.readElementText();
         } else if (xml.name() == "address") {
             // Idem que <name>
-            QUrl url = "http://cmspc46.epfl.ch/20112012Data/Exercices/" + xml.readElementText();
-            branch->setData(0, Qt::UserRole + 1, url);
-            urlList << url;
+            branchAddress = "http://cmspc46.epfl.ch/20112012Data/Exercices/" + xml.readElementText();
         } else if (xml.name() == "type") {
             // O récupère l'attribut de la balise type, puis on saute </skip>
-            QString type = xml.attributes().value("name").toString();
-            if (!type.isEmpty() && type != "null") {
-                branch->setData(0, Qt::UserRole + 2, type);
-            }
-
+            branchType = xml.attributes().value("name").toString();
             xml.skipCurrentElement();
         } else {
             // Si c'est une autre balise, on relance récusivement la méthode
             readXmlBlock(branch);
         }
+    }
+
+    branch->setText(0, branchName);
+    if (!branchType.isEmpty() && branchType != "null") {
+        branch->setData(0, Qt::UserRole + 1, branchAddress);
+        branch->setData(0, Qt::UserRole + 2, branchType);
+        urlList << branchAddress;
     }
 }
 
@@ -360,7 +363,7 @@ void MainWindow::downloadAll()
     for (int i = 0; i < urlList.size(); ++i) {
         if (!urlList[i].isEmpty() && !set.contains(urlToKey(urlList[i].toString()))) {
             qnam.get(QNetworkRequest(urlList[i]));
-//            qDebug() << urlList[i];
+            //            qDebug() << urlList[i];
         }
     }
 }
