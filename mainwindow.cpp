@@ -142,7 +142,7 @@ void MainWindow::readXmlBlock(QTreeWidgetItem *item)
 
         } else if (xml.name() == "address") {
             // Idem que <name>
-            QUrl url = xml.readElementText();
+            QUrl url = "http://cmspc46.epfl.ch/20112012Data/Exercices/" + xml.readElementText();
             branch->setData(0, Qt::UserRole + 1, url);
             urlList << url;
         } else if (xml.name() == "type") {
@@ -181,7 +181,7 @@ void MainWindow::startDownload(QTreeWidgetItem *item)
         reply->abort();
 
     if (!item->data(0, Qt::UserRole + 2).isNull()) {
-        QUrl url("http://cmspc46.epfl.ch/20112012Data/Exercices/" + item->data(0, Qt::UserRole + 1).toString());
+        QUrl url(item->data(0, Qt::UserRole + 1).toString());
 
         QString key = urlToKey(url.toString());
         if (set.contains(key)) {
