@@ -13,7 +13,7 @@ MainWindow::MainWindow(QWidget *parent) :
     ui(new Ui::MainWindow),
     reply(0),
     documentType(None)
-{    
+{
     ui->setupUi(this);
 
     ui->webView->setVisible(false);
@@ -34,6 +34,7 @@ MainWindow::MainWindow(QWidget *parent) :
     connect(ui->action_Suivant, SIGNAL(triggered()), this, SLOT(nextDocument()));
     connect(ui->action_Pr_c_dant, SIGNAL(triggered()), this, SLOT(previousDocument()));
     connect(ui->action_Plein_cran, SIGNAL(triggered()), this, SLOT(fullscreen()));
+    connect(ui->actionT_l_charger_tout_les_documents, SIGNAL(triggered()), this, SLOT(downloadAll()));
     connect(ui->action_Quitter, SIGNAL(triggered()), qApp, SLOT(quit()));
     connect(ui->treeWidget, SIGNAL(itemSelectionChanged()), this, SLOT(itemSelected()));
     connect(&qnam, SIGNAL(finished(QNetworkReply*)), this, SLOT(documentDownloaded(QNetworkReply*)));
@@ -99,7 +100,9 @@ QTreeWidgetItem *MainWindow::createChildItem(QTreeWidgetItem *item)
 void MainWindow::readXmlFile(const QByteArray &data)
 {
     ui->treeWidget->clear();
+    urlList.clear();
     xml.clear();
+
     xml.addData(data);
 
     //    if (ui->actionTout_t_l_charger_la_maj->isChecked()) {
@@ -139,7 +142,9 @@ void MainWindow::readXmlBlock(QTreeWidgetItem *item)
 
         } else if (xml.name() == "address") {
             // Idem que <name>
-            branch->setData(0, Qt::UserRole + 1, xml.readElementText());
+            QUrl url = xml.readElementText();
+            branch->setData(0, Qt::UserRole + 1, url);
+            urlList << url;
         } else if (xml.name() == "type") {
             // O récupère l'attribut de la balise type, puis on saute </skip>
             QString type = xml.attributes().value("name").toString();
@@ -225,7 +230,7 @@ void MainWindow::loadDocument(const QByteArray &data, const QString &url)
         documentUrl = url;
         documentType = Html;
     } else {
-        if (!image.loadFromData(data, extention.toAscii().data())) {
+        if (!documentImage.loadFromData(data, extention.toAscii().data())) {
             statusBar()->showMessage(QString::fromUtf8("Erreur d'affichage de %1").arg(url.section('/', -1)), 4000);
         }
         documentType = Other;
@@ -247,27 +252,34 @@ void MainWindow::refreshDocument()
         ui->scrollArea->setVisible(true);
 
         Poppler::Document *doc = Poppler::Document::loadFromData(documentData);
-        doc->setRenderHint(Poppler::Document::TextAntialiasing);
-        doc->setRenderHint(Poppler::Document::TextHinting);
-        doc->setRenderHint(Poppler::Document::Antialiasing);
+        if (doc != 0) {
+            doc->setRenderHint(Poppler::Document::TextAntialiasing);
+            doc->setRenderHint(Poppler::Document::TextHinting);
+            doc->setRenderHint(Poppler::Document::Antialiasing);
 
-        double ratioX = ((double)ui->scrollArea->width() - 22) / doc->page(0)->pageSizeF().width();
-        double ratioY = ((double)ui->scrollArea->height() - 22) / doc->page(0)->pageSizeF().height();
-        double ratio;
-        if (ratioX < ratioY || ratioY < 1.3) {
-            ratio = ratioX;
+            double ratioX = ((double)ui->scrollArea->width() - 22) / doc->page(0)->pageSizeF().width();
+            double ratioY = ((double)ui->scrollArea->height() - 22) / doc->page(0)->pageSizeF().height();
+            double ratio;
+            if (ratioX < ratioY || ratioY < 1.3) {
+                ratio = ratioX;
+            } else {
+                ratio = ratioY;
+            }
+            ratio *= 72.0;
+            documentImage = doc->page(0)->renderToImage(ratio, ratio);
+
+            delete doc;
         } else {
-            ratio = ratioY;
+            statusBar()->showMessage(QString::fromUtf8("Erreur d'affichage du fichier pdf %1").arg(documentUrl.toString().section('/', -1)));
+            return;
         }
-        ratio *= 72.0;
-        image = doc->page(0)->renderToImage(ratio, ratio);
     }
 
     if ((documentType == Pdf) || (documentType == Other)) {
         ui->webView->setVisible(false);
         ui->scrollArea->setVisible(true);
 
-        QPixmap pixmap = QPixmap::fromImage(image);
+        QPixmap pixmap = QPixmap::fromImage(documentImage);
         ui->label->setPixmap(pixmap);
     }
 
@@ -362,6 +374,12 @@ QString MainWindow::urlToKey(const QString &url) const
 
 void MainWindow::downloadAll()
 {
+    for (int i = 0; i < urlList.size(); ++i) {
+        if (!urlList[i].isEmpty() && !set.contains(urlToKey(urlList[i].toString()))) {
+            qnam.get(QNetworkRequest(urlList[i]));
+            qDebug() << urlList[i];
+        }
+    }
 }
 
 void MainWindow::collapseAll()

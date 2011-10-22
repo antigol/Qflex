@@ -96,6 +96,7 @@
      <string>&amp;Fichier</string>
     </property>
     <addaction name="actionMettre_jour"/>
+    <addaction name="actionT_l_charger_tout_les_documents"/>
     <addaction name="action_Quitter"/>
    </widget>
    <widget class="QMenu" name="menu_Navigation">
@@ -150,17 +151,14 @@
     <string>&amp;Quitter</string>
    </property>
   </action>
-  <action name="actionTout_t_l_charger_la_maj">
-   <property name="checkable">
-    <bool>true</bool>
-   </property>
-   <property name="text">
-    <string>Tout télécharger à la maj</string>
-   </property>
-  </action>
   <action name="action_Tout_r_duire">
    <property name="text">
     <string>&amp;Tout réduire</string>
+   </property>
+  </action>
+  <action name="actionT_l_charger_tout_les_documents">
+   <property name="text">
+    <string>Télécharger tout les documents</string>
    </property>
   </action>
  </widget>

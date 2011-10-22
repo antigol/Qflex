@@ -50,7 +50,7 @@ private:
     QNetworkReply *reply;
     QXmlStreamReader xml;
     QTreeWidgetItem *lastSemester;
-    QImage image;
+    QImage documentImage;
 
     QByteArray documentData;
     QUrl documentUrl;
@@ -64,6 +64,8 @@ private:
         Other
     } documentType;
 //    bool showDocuments;
+
+    QList<QUrl> urlList;
 };
 
 #endif // MAINWINDOW_H
