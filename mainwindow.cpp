@@ -11,7 +11,6 @@
 MainWindow::MainWindow(QWidget *parent) :
     QMainWindow(parent),
     ui(new Ui::MainWindow),
-    reply(0),
     documentType(None)
 {
     ui->setupUi(this);
@@ -47,14 +46,13 @@ MainWindow::~MainWindow()
 
 void MainWindow::updateXml()
 {
-    if (reply != 0) {
-        reply->abort();
-    }
+    while (!replys.isEmpty())
+        replys.takeLast()->abort();
 
     disconnect(&qnam, SIGNAL(finished(QNetworkReply*)), this, SLOT(documentDownloaded(QNetworkReply*)));
     connect(&qnam, SIGNAL(finished(QNetworkReply*)), this, SLOT(xmlFileDownloaded(QNetworkReply*)));
 
-    reply = qnam.get(QNetworkRequest(QUrl("http://cmspc46.epfl.ch/20112012Data/Exercices/20112012semesters.xml")));
+    replys << qnam.get(QNetworkRequest(QUrl("http://cmspc46.epfl.ch/20112012Data/Exercices/20112012semesters.xml")));
 
     statusBar()->showMessage(QString::fromUtf8("Téléchargement du fichier xml"));
 }
@@ -158,6 +156,7 @@ void MainWindow::readXmlBlock(QTreeWidgetItem *item)
 
 void MainWindow::itemSelected()
 {
+    downloadingAll = false;
     QTreeWidgetItem *item = ui->treeWidget->currentItem();
 
     ui->label->clear();
@@ -166,8 +165,8 @@ void MainWindow::itemSelected()
 
 void MainWindow::startDownload(QTreeWidgetItem *item)
 {
-    if (reply != 0)
-        reply->abort();
+    while (!replys.isEmpty())
+        replys.takeLast()->abort();
 
     if (!item->data(0, Qt::UserRole + 2).isNull()) {
         QUrl url(item->data(0, Qt::UserRole + 1).toString());
@@ -178,7 +177,7 @@ void MainWindow::startDownload(QTreeWidgetItem *item)
             statusBar()->showMessage(QString::fromUtf8("Document locale %1").arg(url.toString().section('/', -1)), 4000);
             loadDocument(data, url.toString());
         } else {
-            reply = qnam.get(QNetworkRequest(url));
+            replys << qnam.get(QNetworkRequest(url));
             statusBar()->showMessage(QString::fromUtf8("Téléchargement de %1...").arg(url.toString().section('/', -1)));
         }
     } else {
@@ -201,7 +200,12 @@ void MainWindow::documentDownloaded(QNetworkReply *reply)
     set.setValue(urlToKey(url), data);
 
     statusBar()->showMessage(QString::fromUtf8("Document téléchangé %1").arg(url.section('/', -1)), 4000);
-    loadDocument(data, url);
+
+    if (!downloadingAll)
+        loadDocument(data, url);
+    else
+        statusBar()->showMessage(QString::fromUtf8("Document téléchangé %1 (%2 / %3)").arg(url.section('/', -1))
+                                 .arg(++downloaded).arg(amountOfDownload), 4000);
 }
 
 void MainWindow::loadDocument(const QByteArray &data, const QString &url)
@@ -360,10 +364,13 @@ QString MainWindow::urlToKey(const QString &url) const
 
 void MainWindow::downloadAll()
 {
+    downloadingAll = true;
+    amountOfDownload = 0;
+    downloaded = 0;
     for (int i = 0; i < urlList.size(); ++i) {
         if (!urlList[i].isEmpty() && !set.contains(urlToKey(urlList[i].toString()))) {
-            qnam.get(QNetworkRequest(urlList[i]));
-            //            qDebug() << urlList[i];
+            replys << qnam.get(QNetworkRequest(urlList[i]));
+            amountOfDownload++;
         }
     }
 }
