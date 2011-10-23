@@ -373,6 +373,9 @@ void MainWindow::downloadAll()
             amountOfDownload++;
         }
     }
+    if (amountOfDownload == 0) {
+        QMessageBox::information(this, QString::fromUtf8("Tout téléchager"), QString::fromUtf8("Tout les documents sont déjà téléchargé !"));
+    }
 }
 
 void MainWindow::collapseAll()
