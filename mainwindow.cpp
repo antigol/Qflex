@@ -161,6 +161,7 @@ void MainWindow::itemSelected()
     QTreeWidgetItem *item = ui->treeWidget->currentItem();
 
     ui->label->clear();
+    documentType = None;
     startDownload(item);
 }
 
