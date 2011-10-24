@@ -47,7 +47,7 @@ private:
 
     Ui::MainWindow *ui;
     QNetworkAccessManager qnam;
-    QNetworkReply *reply;
+    QList<QNetworkReply *> replys;
     QXmlStreamReader xml;
     QTreeWidgetItem *lastSemester;
     QImage documentImage;
@@ -63,8 +63,10 @@ private:
         Html,
         Other
     } documentType;
-//    bool showDocuments;
 
+    bool downloadingAll;
+    int downloaded;
+    int amountOfDownload;
     QList<QUrl> urlList;
 };
 
