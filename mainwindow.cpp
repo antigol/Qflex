@@ -44,15 +44,25 @@ MainWindow::~MainWindow()
     delete ui;
 }
 
-void MainWindow::updateXml()
+void MainWindow::updateXml(const QStringList &urls)
 {
+    if (!urls.isEmpty() || downloadLinks.isEmpty()) {
+        if (urls.isEmpty())
+            downloadLinks << "http://cmspc46.epfl.ch/20112012Data/Exercices/20112012semesters.xml" << "http://setup.weeb.ch/qflex/data/index.xml";
+        else
+            downloadLinks = urls;
+
+        ui->treeWidget->clear();
+        urlList.clear();
+    }
+
     while (!replys.isEmpty())
         replys.takeLast()->abort();
 
     disconnect(&qnam, SIGNAL(finished(QNetworkReply*)), this, SLOT(documentDownloaded(QNetworkReply*)));
     connect(&qnam, SIGNAL(finished(QNetworkReply*)), this, SLOT(xmlFileDownloaded(QNetworkReply*)));
 
-    replys << qnam.get(QNetworkRequest(QUrl("http://cmspc46.epfl.ch/20112012Data/Exercices/20112012semesters.xml")));
+    replys << qnam.get(QNetworkRequest(QUrl(downloadLinks.takeFirst())));
 
     statusBar()->showMessage(QString::fromUtf8("Téléchargement du fichier xml"));
 }
@@ -63,21 +73,26 @@ void MainWindow::xmlFileDownloaded(QNetworkReply *reply)
     connect(&qnam, SIGNAL(finished(QNetworkReply*)), this, SLOT(documentDownloaded(QNetworkReply*)));
 
     QString key = urlToKey(reply->url().toString());
+    QString urlPrefix = reply->url().toString().section('/', 0, -2);
     QByteArray data;
 
     if (reply->error() != QNetworkReply::NoError) {
         if (set.contains(key)) {
             data = set.value(key).toByteArray();
-            readXmlFile(data);
+            readXmlFile(data, urlPrefix);
             statusBar()->showMessage(QString::fromUtf8("Pas de connexion au réseau. Récuperation du fichier xml locale"), 4000);
         } else {
             QMessageBox::warning(this, QString::fromUtf8("Erreur de réseau"), QString::fromUtf8("Erreur de téléchagement %1").arg(reply->errorString()));
         }
     } else {
         data = reply->readAll();
-        readXmlFile(data);
+        readXmlFile(data, urlPrefix);
         set.setValue(key, data);
         statusBar()->showMessage(QString::fromUtf8("Fichier xml téléchargé"), 4000);
+    }
+
+    if (!downloadLinks.isEmpty()) {
+        updateXml();
     }
 }
 
@@ -93,18 +108,19 @@ QTreeWidgetItem *MainWindow::createChildItem(QTreeWidgetItem *item)
     return childItem;
 }
 
-void MainWindow::readXmlFile(const QByteArray &data)
+void MainWindow::readXmlFile(const QByteArray &data, const QString &urlPrefix)
 {
-    ui->treeWidget->clear();
-    urlList.clear();
-    xml.clear();
+    serverPrefix = urlPrefix;
+    if (!serverPrefix.endsWith('/'))
+        serverPrefix.append('/');
 
+    xml.clear();
     xml.addData(data);
 
     if (xml.readNextStartElement()) {
-        if (xml.name() == "semesters") {
+        if (xml.name() == "semesters" || xml.name() == "others") {
             while (xml.readNextStartElement()) {
-                if (xml.name() == "semesterentry") {
+                if (xml.name() == "semesterentry" || xml.name() == "other") {
                     readXmlBlock(0);
                 }
             }
@@ -135,7 +151,7 @@ void MainWindow::readXmlBlock(QTreeWidgetItem *item)
             branchName = xml.readElementText();
         } else if (xml.name() == "address") {
             // Idem que <name>
-            branchAddress = "http://cmspc46.epfl.ch/20112012Data/Exercices/" + xml.readElementText();
+            branchAddress = serverPrefix + xml.readElementText();
         } else if (xml.name() == "type") {
             // O récupère l'attribut de la balise type, puis on saute </skip>
             branchType = xml.attributes().value("name").toString();

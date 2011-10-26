@@ -22,7 +22,7 @@ public:
     ~MainWindow();
 
 public slots:
-    void updateXml();
+    void updateXml(const QStringList &urls = QStringList());
 
 private slots:
     void itemSelected();
@@ -42,11 +42,14 @@ private:
     void resizeEvent(QResizeEvent *);
     void keyPressEvent(QKeyEvent *);
     QTreeWidgetItem *createChildItem(QTreeWidgetItem *item);
-    void readXmlFile(const QByteArray &data);
+    void readXmlFile(const QByteArray &data, const QString &urlPrefix);
     void readXmlBlock(QTreeWidgetItem *item);
 
     Ui::MainWindow *ui;
     QNetworkAccessManager qnam;
+    QStringList downloadLinks;
+    QString serverPrefix;
+
     QList<QNetworkReply *> replys;
     QXmlStreamReader xml;
     QTreeWidgetItem *lastSemester;
