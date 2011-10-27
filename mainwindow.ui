@@ -23,6 +23,12 @@
         <verstretch>0</verstretch>
        </sizepolicy>
       </property>
+      <property name="minimumSize">
+       <size>
+        <width>220</width>
+        <height>0</height>
+       </size>
+      </property>
       <attribute name="headerVisible">
        <bool>false</bool>
       </attribute>
@@ -96,6 +102,7 @@
      <string>&amp;Fichier</string>
     </property>
     <addaction name="actionMettre_jour"/>
+    <addaction name="action_Exporter"/>
     <addaction name="actionT_l_charger_tout_les_documents"/>
     <addaction name="action_Quitter"/>
    </widget>
@@ -159,6 +166,11 @@
   <action name="actionT_l_charger_tout_les_documents">
    <property name="text">
     <string>Télécharger tout les documents</string>
+   </property>
+  </action>
+  <action name="action_Exporter">
+   <property name="text">
+    <string>&amp;Exporter...</string>
    </property>
   </action>
  </widget>

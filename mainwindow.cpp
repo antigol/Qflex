@@ -8,18 +8,26 @@
 #include <QString>
 #include <QKeyEvent>
 #include <QProgressBar>
+#include <QFileDialog>
+#include <QFile>
 
 MainWindow::MainWindow(QWidget *parent) :
     QMainWindow(parent),
     ui(new Ui::MainWindow),
-    documentType(None)
+    documentType(None),
+    downloadingAll(false)
 {
     ui->setupUi(this);
 
     ui->webView->setVisible(false);
     ui->treeWidget->setExpandsOnDoubleClick(true);
 
+    ui->webView->setMinimumSize(ui->label->minimumSize());
+    ui->webView->setMaximumSize(ui->label->maximumSize());
+    ui->webView->setSizePolicy(ui->label->sizePolicy());
+
     ui->action_Tout_r_duire->setShortcut(QKeySequence("Ctrl+W"));
+    ui->action_Exporter->setShortcut(QKeySequence("Ctrl+S"));
     ui->actionMettre_jour->setShortcut(QKeySequence("F5"));
     ui->action_Plein_cran->setShortcut(QKeySequence("F11"));
     ui->action_Suivant->setShortcut(QKeySequence("K"));
@@ -40,6 +48,7 @@ MainWindow::MainWindow(QWidget *parent) :
     connect(ui->action_Plein_cran, SIGNAL(triggered()), this, SLOT(fullscreen()));
     connect(ui->actionT_l_charger_tout_les_documents, SIGNAL(triggered()), this, SLOT(downloadAll()));
     connect(ui->action_Quitter, SIGNAL(triggered()), qApp, SLOT(quit()));
+    connect(ui->action_Exporter, SIGNAL(triggered()), this, SLOT(exportPdf()));
     connect(ui->treeWidget, SIGNAL(itemSelectionChanged()), this, SLOT(itemSelected()));
     connect(&qnam, SIGNAL(finished(QNetworkReply*)), this, SLOT(documentDownloaded(QNetworkReply*)));
 }
@@ -424,5 +433,26 @@ void MainWindow::collapseAll()
     ui->treeWidget->collapseAll();
     ui->treeWidget->setItemExpanded(lastSemester, true);
     ui->treeWidget->setCurrentItem(lastSemester);
+}
+
+void MainWindow::exportPdf()
+{
+    if (documentType != Pdf) {
+        QMessageBox::warning(this, QString::fromUtf8("Type erreur"), QString::fromUtf8("Ce document n'est pas un pdf !"));
+        return;
+    }
+
+    QString fileName = QFileDialog::getSaveFileName(this, QString::fromUtf8("Sauver le pdf"), QSettings().value("lastpdfdir", QDir::homePath()).toString(), "*.pdf");
+
+    if (!fileName.isEmpty()) {
+        QSettings().setValue("lastpdfdir", fileName);
+        QFile file(fileName);
+        if (file.open(QIODevice::WriteOnly | QIODevice::Truncate)) {
+            file.write(documentData);
+            file.close();
+        } else {
+            QMessageBox::warning(this, QString::fromUtf8("Erreur de fichier"), QString::fromUtf8("Le document n'a pas pu être sauvé : %1").arg(file.errorString()));
+        }
+    }
 }
 

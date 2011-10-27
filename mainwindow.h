@@ -35,6 +35,7 @@ private slots:
     void fullscreen();
     void downloadAll();
     void collapseAll();
+    void exportPdf();
 
 private:
     void startDownload(QTreeWidgetItem *item);
