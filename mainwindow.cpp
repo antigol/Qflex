@@ -7,6 +7,7 @@
 #include <QHash>
 #include <QString>
 #include <QKeyEvent>
+#include <QProgressBar>
 
 MainWindow::MainWindow(QWidget *parent) :
     QMainWindow(parent),
@@ -24,6 +25,10 @@ MainWindow::MainWindow(QWidget *parent) :
     ui->action_Suivant->setShortcut(QKeySequence("K"));
     ui->action_Pr_c_dant->setShortcut(QKeySequence("J"));
     ui->action_Quitter->setShortcut(QKeySequence("Ctrl+Q"));
+
+    progressBar = new QProgressBar(this);
+    statusBar()->addPermanentWidget(progressBar);
+    progressBar->setVisible(false);
 
     timer.setInterval(100);
     timer.setSingleShot(true);
@@ -172,7 +177,21 @@ void MainWindow::readXmlBlock(QTreeWidgetItem *item)
 
 void MainWindow::itemSelected()
 {
-    downloadingAll = false;
+    if (downloadingAll) {
+        downloadingAll = false;
+        progressBar->setVisible(false);
+        QMessageBox *message = new QMessageBox(QMessageBox::Warning, QString::fromUtf8("Téléchagement abandonnée"),
+                                               QString::fromUtf8("Le téléchargement de tout les fichiers a été interrompu !"),
+                                               QMessageBox::Ok, this);
+        message->show();
+        //        if (QMessageBox::warning(this, QString::fromUtf8("Téléchagement abandonnée"), QString::fromUtf8("Voulez-vous interompre le téléchargement ?"),
+        //                                 QMessageBox::Yes | QMessageBox::No, QMessageBox::No) == QMessageBox::Yes) {
+        //            downloadingAll = false;
+        //            progressBar->setVisible(false);
+        //        } else {
+        //            return;
+        //        }
+    }
     QTreeWidgetItem *item = ui->treeWidget->currentItem();
 
     ui->label->clear();
@@ -216,13 +235,18 @@ void MainWindow::documentDownloaded(QNetworkReply *reply)
 
     set.setValue(urlToKey(url), data);
 
-    statusBar()->showMessage(QString::fromUtf8("Document téléchangé %1").arg(url.section('/', -1)), 4000);
+    statusBar()->showMessage(QString::fromUtf8("Document téléchargé %1").arg(url.section('/', -1)), 4000);
 
-    if (!downloadingAll)
+    if (!downloadingAll) {
         loadDocument(data, url);
-    else
+    } else {
         statusBar()->showMessage(QString::fromUtf8("Document téléchangé %1 (%2 / %3)").arg(url.section('/', -1))
                                  .arg(++downloaded).arg(amountOfDownload), 4000);
+        progressBar->setVisible(true);
+        progressBar->setMaximum(amountOfDownload);
+        progressBar->setValue(downloaded);
+    }
+
 }
 
 void MainWindow::loadDocument(const QByteArray &data, const QString &url)

@@ -8,6 +8,7 @@
 #include <QTimer>
 #include <QSettings>
 #include <QtWebKit>
+#include <QProgressBar>
 
 namespace Ui {
     class MainWindow;
@@ -70,6 +71,7 @@ private:
     bool downloadingAll;
     int downloaded;
     int amountOfDownload;
+    QProgressBar *progressBar;
     QList<QUrl> urlList;
 };
 
