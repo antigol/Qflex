@@ -23,5 +23,15 @@ HEADERS  += mainwindow.h \
 FORMS    += mainwindow.ui
 
 INCLUDEPATH  += /usr/include/poppler/qt4
-
 LIBS         += -L/usr/lib -lpoppler-qt4
+
+unix {
+    menu.files = Qflex.desktop
+    menu.path = /usr/share/applications
+
+    share.files = qflex.svg
+    share.path = /usr/share/qflex
+
+    target.path = /usr/local/bin
+    INSTALLS += target menu share
+}

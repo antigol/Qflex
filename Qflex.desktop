@@ -1,0 +1,13 @@
+[Desktop Entry]
+Encoding=UTF-8
+Type=Application
+Name=Qflex
+Comment=Aflex en Qt
+Categories=Qt;Education
+Exec=qflex
+Icon=/usr/share/qflex/qflex.svg
+Terminal=false
+
+# fichier à placer dans ~/.local/share/applications
+#                    ou /usr/share/applications
+
