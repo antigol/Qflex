@@ -10,6 +10,7 @@
 #include <QProgressBar>
 #include <QFileDialog>
 #include <QFile>
+#include <QInputDialog>
 
 MainWindow::MainWindow(QWidget *parent) :
     QMainWindow(parent),
@@ -22,9 +23,9 @@ MainWindow::MainWindow(QWidget *parent) :
     ui->webView->setVisible(false);
     ui->treeWidget->setExpandsOnDoubleClick(true);
 
-    ui->webView->setMinimumSize(ui->label->minimumSize());
-    ui->webView->setMaximumSize(ui->label->maximumSize());
-    ui->webView->setSizePolicy(ui->label->sizePolicy());
+    ui->webView->setMinimumSize(ui->scrollArea->minimumSize());
+    ui->webView->setMaximumSize(ui->scrollArea->maximumSize());
+    ui->webView->setSizePolicy(ui->scrollArea->sizePolicy());
 
     ui->action_Tout_r_duire->setShortcut(QKeySequence("Ctrl+W"));
     ui->action_Exporter->setShortcut(QKeySequence("Ctrl+S"));
@@ -49,8 +50,13 @@ MainWindow::MainWindow(QWidget *parent) :
     connect(ui->actionT_l_charger_tout_les_documents, SIGNAL(triggered()), this, SLOT(downloadAll()));
     connect(ui->action_Quitter, SIGNAL(triggered()), qApp, SLOT(quit()));
     connect(ui->action_Exporter, SIGNAL(triggered()), this, SLOT(exportPdf()));
+    connect(ui->actionModifier_les_sources, SIGNAL(triggered()), this, SLOT(changeSources()));
     connect(ui->treeWidget, SIGNAL(itemSelectionChanged()), this, SLOT(itemSelected()));
     connect(&qnam, SIGNAL(finished(QNetworkReply*)), this, SLOT(documentDownloaded(QNetworkReply*)));
+
+    if (!set.contains("urlList")) {
+        set.setValue("urlList", "http://cmspc46.epfl.ch/20112012Data/Exercices/20112012semesters.xml");
+    }
 }
 
 MainWindow::~MainWindow()
@@ -62,7 +68,8 @@ void MainWindow::updateXml(const QStringList &urls)
 {
     if (!urls.isEmpty() || downloadLinks.isEmpty()) {
         if (urls.isEmpty())
-            downloadLinks << "http://cmspc46.epfl.ch/20112012Data/Exercices/20112012semesters.xml" << "http://setup.weeb.ch/qflex/data/index.xml";
+            //downloadLinks << "http://cmspc46.epfl.ch/20112012Data/Exercices/20112012semesters.xml" << "http://setup.weeb.ch/qflex/data/index.xml";
+            downloadLinks = set.value("urlList").toString().split(" ");
         else
             downloadLinks = urls;
 
@@ -203,7 +210,9 @@ void MainWindow::itemSelected()
     }
     QTreeWidgetItem *item = ui->treeWidget->currentItem();
 
-    ui->label->clear();
+    while (!labels.isEmpty())
+        delete labels.takeLast();
+
     documentType = None;
     startDownload(item);
 }
@@ -235,7 +244,8 @@ void MainWindow::documentDownloaded(QNetworkReply *reply)
     if (reply->error() != QNetworkReply::NoError) {
         statusBar()->clearMessage();
         statusBar()->showMessage(QString::fromUtf8("Erreur de téléchargement : %1").arg(reply->errorString()), 4000);
-        ui->label->clear();
+        while (!labels.isEmpty())
+            delete labels.takeLast();
         return;
     }
 
@@ -281,9 +291,13 @@ void MainWindow::loadDocument(const QByteArray &data, const QString &url)
 
 void MainWindow::refreshDocument()
 {
-    ui->label->clear();
+    while (!labels.isEmpty()) {
+        delete labels.takeLast();
+    }
 
     if (documentType == None) {
+        ui->webView->setVisible(false);
+        ui->scrollArea->setVisible(true);
         return;
     }
 
@@ -297,8 +311,16 @@ void MainWindow::refreshDocument()
             doc->setRenderHint(Poppler::Document::TextHinting);
             doc->setRenderHint(Poppler::Document::Antialiasing);
 
-            double ratioX = ((double)ui->scrollArea->width() - 22) / doc->page(0)->pageSizeF().width();
-            double ratioY = ((double)ui->scrollArea->height() - 22) / doc->page(0)->pageSizeF().height();
+            double width = 0.0;
+            double height = 0.0;
+            for (int i = 0; i < doc->numPages(); ++i) {
+                if (doc->page(i)->pageSizeF().width() > width)
+                    width = doc->page(i)->pageSizeF().width();
+                height += doc->page(i)->pageSizeF().height();
+            }
+
+            double ratioX = ((double)ui->scrollArea->width() - 22) / width;
+            double ratioY = ((double)ui->scrollArea->height() - 22) / height;
             double ratio;
             if (ratioX < ratioY || ratioY < 1.3) {
                 ratio = ratioX;
@@ -306,9 +328,23 @@ void MainWindow::refreshDocument()
                 ratio = ratioY;
             }
             ratio *= 72.0;
-            documentImage = doc->page(0)->renderToImage(ratio, ratio);
 
+            ui->webView->setVisible(false);
+            ui->scrollArea->setVisible(true);
+
+            for (int i = 0; i < doc->numPages(); ++i) {
+                labels << new QLabel(this);
+                labels.last()->setAlignment(Qt::AlignHCenter);
+
+                documentImage = doc->page(i)->renderToImage(ratio, ratio);
+                QPixmap pixmap = QPixmap::fromImage(documentImage);
+
+                labels.last()->setPixmap(pixmap);
+                ui->labelsLayout->addWidget(labels.last());
+            }
             delete doc;
+
+            return;
         } else {
             statusBar()->showMessage(QString::fromUtf8("Erreur d'affichage du fichier pdf %1").arg(documentUrl.toString().section('/', -1)));
             return;
@@ -320,7 +356,11 @@ void MainWindow::refreshDocument()
         ui->scrollArea->setVisible(true);
 
         QPixmap pixmap = QPixmap::fromImage(documentImage);
-        ui->label->setPixmap(pixmap);
+
+        labels << new QLabel(this);
+        labels.last()->setAlignment(Qt::AlignHCenter);
+        labels.last()->setPixmap(pixmap);
+        ui->labelsLayout->addWidget(labels.last());
     }
 
     if (documentType == Html) {
@@ -424,6 +464,7 @@ void MainWindow::downloadAll()
         }
     }
     if (amountOfDownload == 0) {
+        downloadingAll = false;
         QMessageBox::information(this, QString::fromUtf8("Tout téléchager"), QString::fromUtf8("Tout les documents sont déjà téléchargé !"));
     }
 }
@@ -453,6 +494,18 @@ void MainWindow::exportPdf()
         } else {
             QMessageBox::warning(this, QString::fromUtf8("Erreur de fichier"), QString::fromUtf8("Le document n'a pas pu être sauvé : %1").arg(file.errorString()));
         }
+    }
+}
+
+void MainWindow::changeSources()
+{
+    bool ok;
+    QString list = QInputDialog::getText(this, QString::fromUtf8("Sources"),
+                                         QString::fromUtf8("Séparez les liens vers les fichiers xml par le caractère espace"),
+                                         QLineEdit::Normal, set.value("urlList").toString(), &ok);
+
+    if (ok) {
+        set.setValue("urlList", list);
     }
 }
 

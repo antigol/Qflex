@@ -1,29 +1,16 @@
 #ifndef DOCUMENT_H
 #define DOCUMENT_H
 
-#include <QObject>
+#include <QTreeWidgetItem>
 #include <QUrl>
-#include <QSizeF>
-#include <QPixmap>
 #include <QDate>
-#include <QByteArray>
 
-class Document : public QObject
+class Document : public QTreeWidgetItem
 {
-    Q_OBJECT
 public:
-    explicit Document(QObject *parent = 0);
+    explicit Document(QTreeWidget *parent, int type = Type);
 
-    QPixmap display(const QSizeF &outputSize);
-    bool load();
-    void startDownload();
-    void save();
-
-signals:
-    void downloadFinished(bool error);
-
-private slots:
-    void privateDownloadFinished();
+protected:
 
 private:
     QByteArray data;

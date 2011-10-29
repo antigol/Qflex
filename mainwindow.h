@@ -9,6 +9,7 @@
 #include <QSettings>
 #include <QtWebKit>
 #include <QProgressBar>
+#include <QLabel>
 
 namespace Ui {
     class MainWindow;
@@ -36,6 +37,7 @@ private slots:
     void downloadAll();
     void collapseAll();
     void exportPdf();
+    void changeSources();
 
 private:
     void startDownload(QTreeWidgetItem *item);
@@ -48,6 +50,7 @@ private:
     void readXmlBlock(QTreeWidgetItem *item);
 
     Ui::MainWindow *ui;
+    QList<QLabel *> labels;
     QNetworkAccessManager qnam;
     QStringList downloadLinks;
     QString serverPrefix;

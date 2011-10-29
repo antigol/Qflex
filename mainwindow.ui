@@ -56,12 +56,12 @@
       <property name="widgetResizable">
        <bool>true</bool>
       </property>
-      <widget class="QWidget" name="scrollAreaWidgetContents">
+      <widget class="QWidget" name="scrollLayout">
        <property name="geometry">
         <rect>
          <x>0</x>
          <y>0</y>
-         <width>160</width>
+         <width>82</width>
          <height>399</height>
         </rect>
        </property>
@@ -73,14 +73,7 @@
          <number>0</number>
         </property>
         <item>
-         <widget class="QLabel" name="label">
-          <property name="text">
-           <string>Aucun document ouvert</string>
-          </property>
-          <property name="alignment">
-           <set>Qt::AlignCenter</set>
-          </property>
-         </widget>
+         <layout class="QVBoxLayout" name="labelsLayout"/>
         </item>
        </layout>
       </widget>
@@ -120,9 +113,16 @@
     </property>
     <addaction name="action_Plein_cran"/>
    </widget>
+   <widget class="QMenu" name="menu_Option">
+    <property name="title">
+     <string>&amp;Option</string>
+    </property>
+    <addaction name="actionModifier_les_sources"/>
+   </widget>
    <addaction name="menu_Fichier"/>
    <addaction name="menu_Affichage"/>
    <addaction name="menu_Navigation"/>
+   <addaction name="menu_Option"/>
   </widget>
   <widget class="QToolBar" name="mainToolBar">
    <attribute name="toolBarArea">
@@ -171,6 +171,11 @@
   <action name="action_Exporter">
    <property name="text">
     <string>&amp;Exporter...</string>
+   </property>
+  </action>
+  <action name="actionModifier_les_sources">
+   <property name="text">
+    <string>Modifier les &amp;sources...</string>
    </property>
   </action>
  </widget>
