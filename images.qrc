@@ -1,0 +1,7 @@
+<RCC>
+    <qresource prefix="/ico">
+        <file>clear.png</file>
+        <file>qflex.svg</file>
+        <file>qflex.png</file>
+    </qresource>
+</RCC>

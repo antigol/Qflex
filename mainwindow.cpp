@@ -11,6 +11,7 @@
 #include <QFileDialog>
 #include <QFile>
 #include <QInputDialog>
+#include "optiondialog.h"
 
 MainWindow::MainWindow(QWidget *parent) :
     QMainWindow(parent),
@@ -31,8 +32,6 @@ MainWindow::MainWindow(QWidget *parent) :
     ui->action_Exporter->setShortcut(QKeySequence("Ctrl+S"));
     ui->actionMettre_jour->setShortcut(QKeySequence("F5"));
     ui->action_Plein_cran->setShortcut(QKeySequence("F11"));
-    ui->action_Suivant->setShortcut(QKeySequence("K"));
-    ui->action_Pr_c_dant->setShortcut(QKeySequence("J"));
     ui->action_Quitter->setShortcut(QKeySequence("Ctrl+Q"));
 
     progressBar = new QProgressBar(this);
@@ -41,6 +40,7 @@ MainWindow::MainWindow(QWidget *parent) :
 
     timer.setInterval(100);
     timer.setSingleShot(true);
+
     connect(&timer, SIGNAL(timeout()), this, SLOT(refreshDocument()));
     connect(ui->action_Tout_r_duire, SIGNAL(triggered()), this, SLOT(collapseAll()));
     connect(ui->actionMettre_jour, SIGNAL(triggered()), this, SLOT(updateXml()));
@@ -51,6 +51,7 @@ MainWindow::MainWindow(QWidget *parent) :
     connect(ui->action_Quitter, SIGNAL(triggered()), qApp, SLOT(quit()));
     connect(ui->action_Exporter, SIGNAL(triggered()), this, SLOT(exportPdf()));
     connect(ui->actionModifier_les_sources, SIGNAL(triggered()), this, SLOT(changeSources()));
+    connect(ui->actionParam_tres, SIGNAL(triggered()), this, SLOT(parameters()));
     connect(ui->treeWidget, SIGNAL(itemSelectionChanged()), this, SLOT(itemSelected()));
     connect(&qnam, SIGNAL(finished(QNetworkReply*)), this, SLOT(documentDownloaded(QNetworkReply*)));
 
@@ -428,16 +429,14 @@ void MainWindow::resizeEvent(QResizeEvent *e)
 
 void MainWindow::keyPressEvent(QKeyEvent *e)
 {
-    //    qDebug() << e->text() << e->key();
-    switch (e->key()) {
-    case 16777313: // touche précédent suivant Thinkpad
-        previousDocument();
-        break;
-    case 16777314: // touche document suivant Thinkpad
-    case 16777220: // touche retour à la ligne
+    QKeySequence key = QKeySequence(e->modifiers() | e->key());
+    qDebug() << key.toString();
+
+    if (nextDocumentKeys.contains(key))
         nextDocument();
-        break;
-    }
+
+    if (previousDocumentKeys.contains(key))
+        previousDocument();
 
     QMainWindow::keyPressEvent(e);
 }
@@ -506,6 +505,24 @@ void MainWindow::changeSources()
 
     if (ok) {
         set.setValue("urlList", list);
+    }
+}
+
+void MainWindow::parameters()
+{
+    OptionDialog dialog(this);
+
+    if (dialog.exec() == QDialog::Accepted) {
+         nextDocumentKeys = dialog.nextDocument();
+         previousDocumentKeys = dialog.previousDocument();
+         nextPageKeys = dialog.nextPage();
+         previousPageKeys = dialog.previousPage();
+
+         QStringList list;
+
+         for (int i = 0; i < nextDocumentKeys.size(); ++i)
+             list.append(nextDocumentKeys[i].toString());
+         set.setValue("nextDocumentKeys", list);
     }
 }
 

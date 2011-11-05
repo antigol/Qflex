@@ -10,6 +10,7 @@
 #include <QtWebKit>
 #include <QProgressBar>
 #include <QLabel>
+#include <QKeySequence>
 
 namespace Ui {
     class MainWindow;
@@ -38,6 +39,7 @@ private slots:
     void collapseAll();
     void exportPdf();
     void changeSources();
+    void parameters();
 
 private:
     void startDownload(QTreeWidgetItem *item);
@@ -77,6 +79,11 @@ private:
     int amountOfDownload;
     QProgressBar *progressBar;
     QList<QUrl> urlList;
+
+    QList<QKeySequence> nextDocumentKeys;
+    QList<QKeySequence> previousDocumentKeys;
+    QList<QKeySequence> nextPageKeys;
+    QList<QKeySequence> previousPageKeys;
 };
 
 #endif // MAINWINDOW_H

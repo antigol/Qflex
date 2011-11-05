@@ -15,12 +15,17 @@ TEMPLATE = app
 
 SOURCES += main.cpp\
         mainwindow.cpp \
-    document.cpp
+    document.cpp \
+    keylineedit.cpp \
+    optiondialog.cpp
 
 HEADERS  += mainwindow.h \
-    document.h
+    document.h \
+    keylineedit.h \
+    optiondialog.h
 
-FORMS    += mainwindow.ui
+FORMS    += mainwindow.ui \
+    optiondialog.ui
 
 INCLUDEPATH  += /usr/include/poppler/qt4
 LIBS         += -L/usr/lib -lpoppler-qt4
@@ -35,3 +40,6 @@ unix {
     target.path = /usr/local/bin
     INSTALLS += target menu share
 }
+
+RESOURCES += \
+    images.qrc
