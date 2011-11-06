@@ -16,10 +16,15 @@ public:
     explicit OptionDialog(QWidget *parent = 0);
     ~OptionDialog();
 
-    const QList<QKeySequence> &nextDocument();
-    const QList<QKeySequence> &previousDocument();
-    const QList<QKeySequence> &nextPage();
-    const QList<QKeySequence> &previousPage();
+    void setNextDocument(const QList<QKeySequence> &list);
+    void setPreviousDocument(const QList<QKeySequence> &list);
+    void setNextPage(const QList<QKeySequence> &list);
+    void setPreviousPage(const QList<QKeySequence> &list);
+
+    const QList<QKeySequence> &nextDocument() const;
+    const QList<QKeySequence> &previousDocument() const;
+    const QList<QKeySequence> &nextPage() const;
+    const QList<QKeySequence> &previousPage() const;
 
 private:
     Ui::OptionDialog *ui;

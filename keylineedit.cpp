@@ -30,7 +30,20 @@ void KeyLineEdit::keyPressEvent(QKeyEvent *e)
     }
 }
 
-const QList<QKeySequence> &KeyLineEdit::keySequence() const
+void KeyLineEdit::setKeySequences(const QList<QKeySequence> &list)
+{
+    clear();
+
+    ks = list;
+
+    QString str;
+    for (int i = 0; i < ks.size(); ++i) {
+        str += (str.isEmpty()) ? ks[i].toString() : ", "+ks[i].toString();
+    }
+    setText(str);
+}
+
+const QList<QKeySequence> &KeyLineEdit::keySequences() const
 {
     return ks;
 }
@@ -40,3 +53,4 @@ void KeyLineEdit::clear()
     ks.clear();
     QLineEdit::clear();
 }
+

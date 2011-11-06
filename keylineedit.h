@@ -10,7 +10,8 @@ class KeyLineEdit : public QLineEdit
 public:
     explicit KeyLineEdit(QWidget *parent = 0);
 
-    const QList<QKeySequence> &keySequence() const;
+    void setKeySequences(const QList<QKeySequence> &list);
+    const QList<QKeySequence> &keySequences() const;
 
 public slots:
     void clear();

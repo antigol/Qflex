@@ -33,6 +33,7 @@ MainWindow::MainWindow(QWidget *parent) :
     ui->actionMettre_jour->setShortcut(QKeySequence("F5"));
     ui->action_Plein_cran->setShortcut(QKeySequence("F11"));
     ui->action_Quitter->setShortcut(QKeySequence("Ctrl+Q"));
+    ui->actionParam_tres->setShortcut(QKeySequence(QKeySequence::Preferences));
 
     progressBar = new QProgressBar(this);
     statusBar()->addPermanentWidget(progressBar);
@@ -58,6 +59,20 @@ MainWindow::MainWindow(QWidget *parent) :
     if (!set.contains("urlList")) {
         set.setValue("urlList", "http://cmspc46.epfl.ch/20112012Data/Exercices/20112012semesters.xml");
     }
+
+    QStringList list;
+    list = set.value("nextDocumentKeys").toStringList();
+    for (int i = 0; i < list.size(); ++i)
+        nextDocumentKeys.append(QKeySequence(list[i]));
+    list = set.value("previousDocumentKeys").toStringList();
+    for (int i = 0; i < list.size(); ++i)
+        previousDocumentKeys.append(QKeySequence(list[i]));
+    list = set.value("nextPageKeys").toStringList();
+    for (int i = 0; i < list.size(); ++i)
+        nextPageKeys.append(QKeySequence(list[i]));
+    list = set.value("previousPageKeys").toStringList();
+    for (int i = 0; i < list.size(); ++i)
+        previousPageKeys.append(QKeySequence(list[i]));
 }
 
 MainWindow::~MainWindow()
@@ -432,11 +447,15 @@ void MainWindow::keyPressEvent(QKeyEvent *e)
     QKeySequence key = QKeySequence(e->modifiers() | e->key());
     qDebug() << key.toString();
 
-    if (nextDocumentKeys.contains(key))
-        nextDocument();
+    e->accept();
 
-    if (previousDocumentKeys.contains(key))
+    if (nextDocumentKeys.contains(key)) {
+        nextDocument();
+    } else if (previousDocumentKeys.contains(key)) {
         previousDocument();
+    } else {
+        e->ignore();
+    }
 
     QMainWindow::keyPressEvent(e);
 }
@@ -512,17 +531,37 @@ void MainWindow::parameters()
 {
     OptionDialog dialog(this);
 
+    dialog.setNextDocument(nextDocumentKeys);
+    dialog.setPreviousDocument(previousDocumentKeys);
+    dialog.setNextPage(nextPageKeys);
+    dialog.setPreviousPage(previousPageKeys);
+
     if (dialog.exec() == QDialog::Accepted) {
-         nextDocumentKeys = dialog.nextDocument();
-         previousDocumentKeys = dialog.previousDocument();
-         nextPageKeys = dialog.nextPage();
-         previousPageKeys = dialog.previousPage();
+        nextDocumentKeys = dialog.nextDocument();
+        previousDocumentKeys = dialog.previousDocument();
+        nextPageKeys = dialog.nextPage();
+        previousPageKeys = dialog.previousPage();
 
-         QStringList list;
+        QStringList list;
 
-         for (int i = 0; i < nextDocumentKeys.size(); ++i)
-             list.append(nextDocumentKeys[i].toString());
-         set.setValue("nextDocumentKeys", list);
+        for (int i = 0; i < nextDocumentKeys.size(); ++i)
+            list.append(nextDocumentKeys[i].toString());
+        set.setValue("nextDocumentKeys", list);
+
+        list.clear();
+        for (int i = 0; i < previousDocumentKeys.size(); ++i)
+            list.append(previousDocumentKeys[i].toString());
+        set.setValue("previousDocumentKeys", list);
+
+        list.clear();
+        for (int i = 0; i < nextPageKeys.size(); ++i)
+            list.append(nextPageKeys[i].toString());
+        set.setValue("nextPageKeys", list);
+
+        list.clear();
+        for (int i = 0; i < previousPageKeys.size(); ++i)
+            list.append(previousPageKeys[i].toString());
+        set.setValue("previousPageKeys", list);
     }
 }
 
