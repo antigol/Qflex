@@ -289,6 +289,7 @@ void MainWindow::loadDocument(const QByteArray &data, const QString &url)
     QString extention = url.section('.', -1);
 
     if (extention.compare("pdf", Qt::CaseInsensitive) == 0) {
+        currentPage = 0;
         documentData = data;
         documentType = Pdf;
     } else if (extention.compare("html", Qt::CaseInsensitive) == 0) {
@@ -327,13 +328,18 @@ void MainWindow::refreshDocument()
             doc->setRenderHint(Poppler::Document::TextHinting);
             doc->setRenderHint(Poppler::Document::Antialiasing);
 
-            double width = 0.0;
-            double height = 0.0;
-            for (int i = 0; i < doc->numPages(); ++i) {
-                if (doc->page(i)->pageSizeF().width() > width)
-                    width = doc->page(i)->pageSizeF().width();
-                height += doc->page(i)->pageSizeF().height();
+            double width = doc->page(currentPage)->pageSizeF().width();
+            double height = doc->page(currentPage)->pageSizeF().height();
+            pageCount = doc->numPages();
+
+            if (pageCount > 1) {
+                statusBar()->showMessage(QString::fromUtf8("page %1/%2").arg(currentPage + 1).arg(pageCount));
             }
+//            for (int i = 0; i < doc->numPages(); ++i) {
+//                if (doc->page(i)->pageSizeF().width() > width)
+//                    width = doc->page(i)->pageSizeF().width();
+//                height += doc->page(i)->pageSizeF().height();
+//            }
 
             double ratioX = ((double)ui->scrollArea->width() - 22) / width;
             double ratioY = ((double)ui->scrollArea->height() - 22) / height;
@@ -348,16 +354,16 @@ void MainWindow::refreshDocument()
             ui->webView->setVisible(false);
             ui->scrollArea->setVisible(true);
 
-            for (int i = 0; i < doc->numPages(); ++i) {
+//            for (int i = 0; i < doc->numPages(); ++i) {
                 labels << new QLabel(this);
                 labels.last()->setAlignment(Qt::AlignHCenter);
 
-                documentImage = doc->page(i)->renderToImage(ratio, ratio);
+                documentImage = doc->page(currentPage)->renderToImage(ratio, ratio);
                 QPixmap pixmap = QPixmap::fromImage(documentImage);
 
                 labels.last()->setPixmap(pixmap);
                 ui->labelsLayout->addWidget(labels.last());
-            }
+//            }
             delete doc;
 
             return;
@@ -436,6 +442,22 @@ void MainWindow::previousDocument()
     }
 }
 
+void MainWindow::nextPage()
+{
+    if (currentPage + 1 < pageCount) {
+        currentPage++;
+        refreshDocument();
+    }
+}
+
+void MainWindow::previousPage()
+{
+    if (currentPage > 0) {
+        currentPage--;
+        refreshDocument();
+    }
+}
+
 void MainWindow::resizeEvent(QResizeEvent *e)
 {
     timer.start();
@@ -453,6 +475,10 @@ void MainWindow::keyPressEvent(QKeyEvent *e)
         nextDocument();
     } else if (previousDocumentKeys.contains(key)) {
         previousDocument();
+    } else if (nextPageKeys.contains(key)) {
+        nextPage();
+    } else if (previousPageKeys.contains(key)) {
+        previousPage();
     } else {
         e->ignore();
     }

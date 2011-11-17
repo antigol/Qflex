@@ -33,6 +33,8 @@ private slots:
     void documentDownloaded(QNetworkReply*);
     void nextDocument();
     void previousDocument();
+    void nextPage();
+    void previousPage();
     void refreshDocument();
     void fullscreen();
     void downloadAll();
@@ -64,6 +66,8 @@ private:
 
     QByteArray documentData;
     QUrl documentUrl;
+    int currentPage;
+    int pageCount;
 
     QTimer timer;
     QSettings set;

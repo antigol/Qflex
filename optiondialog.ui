@@ -26,34 +26,6 @@
      <property name="fieldGrowthPolicy">
       <enum>QFormLayout::AllNonFixedFieldsGrow</enum>
      </property>
-     <item row="1" column="0">
-      <widget class="QLabel" name="label">
-       <property name="text">
-        <string>Document suivant</string>
-       </property>
-      </widget>
-     </item>
-     <item row="2" column="0">
-      <widget class="QLabel" name="label_2">
-       <property name="text">
-        <string>Document précédent</string>
-       </property>
-      </widget>
-     </item>
-     <item row="4" column="0">
-      <widget class="QLabel" name="label_3">
-       <property name="text">
-        <string>Page suivante</string>
-       </property>
-      </widget>
-     </item>
-     <item row="5" column="0">
-      <widget class="QLabel" name="label_4">
-       <property name="text">
-        <string>Page précédente</string>
-       </property>
-      </widget>
-     </item>
      <item row="3" column="0">
       <spacer name="verticalSpacer">
        <property name="orientation">
@@ -67,25 +39,21 @@
        </property>
       </spacer>
      </item>
-     <item row="1" column="1">
-      <layout class="QHBoxLayout" name="horizontalLayout">
-       <item>
-        <widget class="KeyLineEdit" name="lineEdit_ds"/>
-       </item>
-       <item>
-        <widget class="QToolButton" name="toolButton">
-         <property name="text">
-          <string>clear</string>
-         </property>
-         <property name="icon">
-          <iconset resource="images.qrc">
-           <normaloff>:/ico/clear.png</normaloff>:/ico/clear.png</iconset>
-         </property>
-        </widget>
-       </item>
-      </layout>
+     <item row="1" column="0">
+      <widget class="QLabel" name="label_2">
+       <property name="text">
+        <string>Document précédent</string>
+       </property>
+      </widget>
      </item>
-     <item row="2" column="1">
+     <item row="2" column="0">
+      <widget class="QLabel" name="label">
+       <property name="text">
+        <string>Document suivant</string>
+       </property>
+      </widget>
+     </item>
+     <item row="1" column="1">
       <layout class="QHBoxLayout" name="horizontalLayout_2">
        <item>
         <widget class="KeyLineEdit" name="lineEdit_dp"/>
@@ -103,13 +71,45 @@
        </item>
       </layout>
      </item>
-     <item row="4" column="1">
-      <layout class="QHBoxLayout" name="horizontalLayout_3">
+     <item row="2" column="1">
+      <layout class="QHBoxLayout" name="horizontalLayout">
        <item>
-        <widget class="KeyLineEdit" name="lineEdit_ps"/>
+        <widget class="KeyLineEdit" name="lineEdit_ds"/>
        </item>
        <item>
-        <widget class="QToolButton" name="toolButton_3">
+        <widget class="QToolButton" name="toolButton">
+         <property name="text">
+          <string>clear</string>
+         </property>
+         <property name="icon">
+          <iconset resource="images.qrc">
+           <normaloff>:/ico/clear.png</normaloff>:/ico/clear.png</iconset>
+         </property>
+        </widget>
+       </item>
+      </layout>
+     </item>
+     <item row="4" column="0">
+      <widget class="QLabel" name="label_4">
+       <property name="text">
+        <string>Page précédente</string>
+       </property>
+      </widget>
+     </item>
+     <item row="5" column="0">
+      <widget class="QLabel" name="label_3">
+       <property name="text">
+        <string>Page suivante</string>
+       </property>
+      </widget>
+     </item>
+     <item row="4" column="1">
+      <layout class="QHBoxLayout" name="horizontalLayout_4">
+       <item>
+        <widget class="KeyLineEdit" name="lineEdit_pp"/>
+       </item>
+       <item>
+        <widget class="QToolButton" name="toolButton_4">
          <property name="text">
           <string>clear</string>
          </property>
@@ -122,12 +122,12 @@
       </layout>
      </item>
      <item row="5" column="1">
-      <layout class="QHBoxLayout" name="horizontalLayout_4">
+      <layout class="QHBoxLayout" name="horizontalLayout_3">
        <item>
-        <widget class="KeyLineEdit" name="lineEdit_pp"/>
+        <widget class="KeyLineEdit" name="lineEdit_ps"/>
        </item>
        <item>
-        <widget class="QToolButton" name="toolButton_4">
+        <widget class="QToolButton" name="toolButton_3">
          <property name="text">
           <string>clear</string>
          </property>
