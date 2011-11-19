@@ -44,15 +44,6 @@
      </widget>
     </item>
     <item>
-     <widget class="QWebView" name="webView">
-      <property name="url">
-       <url>
-        <string>about:blank</string>
-       </url>
-      </property>
-     </widget>
-    </item>
-    <item>
      <widget class="QScrollArea" name="scrollArea">
       <property name="horizontalScrollBarPolicy">
        <enum>Qt::ScrollBarAlwaysOff</enum>
@@ -77,10 +68,26 @@
          <number>0</number>
         </property>
         <item>
-         <layout class="QVBoxLayout" name="labelsLayout"/>
+         <widget class="QLabel" name="label">
+          <property name="text">
+           <string/>
+          </property>
+          <property name="alignment">
+           <set>Qt::AlignCenter</set>
+          </property>
+         </widget>
         </item>
        </layout>
       </widget>
+     </widget>
+    </item>
+    <item>
+     <widget class="QWebView" name="webView">
+      <property name="url">
+       <url>
+        <string>about:blank</string>
+       </url>
+      </property>
      </widget>
     </item>
    </layout>
@@ -108,8 +115,10 @@
      <string>&amp;Navigation</string>
     </property>
     <addaction name="action_Tout_r_duire"/>
-    <addaction name="action_Suivant"/>
     <addaction name="action_Pr_c_dant"/>
+    <addaction name="action_Suivant"/>
+    <addaction name="actionPage_suiva_nte"/>
+    <addaction name="actionPage_p_r_c_dante"/>
    </widget>
    <widget class="QMenu" name="menu_Affichage">
     <property name="title">
@@ -186,6 +195,16 @@
   <action name="actionParam_tres">
    <property name="text">
     <string>Paramètres...</string>
+   </property>
+  </action>
+  <action name="actionPage_suiva_nte">
+   <property name="text">
+    <string>Page s&amp;uivante</string>
+   </property>
+  </action>
+  <action name="actionPage_p_r_c_dante">
+   <property name="text">
+    <string>Page p&amp;récédante</string>
    </property>
   </action>
  </widget>

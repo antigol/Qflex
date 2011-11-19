@@ -9,6 +9,17 @@ KeyLineEdit::KeyLineEdit(QWidget *parent) :
 
 void KeyLineEdit::keyPressEvent(QKeyEvent *e)
 {
+    if (e->key() == Qt::Key_Tab) {
+        e->ignore();
+        QLineEdit::keyPressEvent(e);
+        return;
+    }
+    if (e->key() == Qt::Key_Backspace) {
+        e->accept();
+        clear();
+        return;
+    }
+
     QKeySequence key = QKeySequence(e->modifiers() | e->key());
 
     QString str = key.toString();
@@ -28,6 +39,8 @@ void KeyLineEdit::keyPressEvent(QKeyEvent *e)
 
         setText(text() + str);
     }
+
+    e->accept();
 }
 
 void KeyLineEdit::setKeySequences(const QList<QKeySequence> &list)

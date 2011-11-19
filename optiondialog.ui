@@ -58,34 +58,12 @@
        <item>
         <widget class="KeyLineEdit" name="lineEdit_dp"/>
        </item>
-       <item>
-        <widget class="QToolButton" name="toolButton_2">
-         <property name="text">
-          <string>clear</string>
-         </property>
-         <property name="icon">
-          <iconset resource="images.qrc">
-           <normaloff>:/ico/clear.png</normaloff>:/ico/clear.png</iconset>
-         </property>
-        </widget>
-       </item>
       </layout>
      </item>
      <item row="2" column="1">
       <layout class="QHBoxLayout" name="horizontalLayout">
        <item>
         <widget class="KeyLineEdit" name="lineEdit_ds"/>
-       </item>
-       <item>
-        <widget class="QToolButton" name="toolButton">
-         <property name="text">
-          <string>clear</string>
-         </property>
-         <property name="icon">
-          <iconset resource="images.qrc">
-           <normaloff>:/ico/clear.png</normaloff>:/ico/clear.png</iconset>
-         </property>
-        </widget>
        </item>
       </layout>
      </item>
@@ -108,34 +86,12 @@
        <item>
         <widget class="KeyLineEdit" name="lineEdit_pp"/>
        </item>
-       <item>
-        <widget class="QToolButton" name="toolButton_4">
-         <property name="text">
-          <string>clear</string>
-         </property>
-         <property name="icon">
-          <iconset resource="images.qrc">
-           <normaloff>:/ico/clear.png</normaloff>:/ico/clear.png</iconset>
-         </property>
-        </widget>
-       </item>
       </layout>
      </item>
      <item row="5" column="1">
       <layout class="QHBoxLayout" name="horizontalLayout_3">
        <item>
         <widget class="KeyLineEdit" name="lineEdit_ps"/>
-       </item>
-       <item>
-        <widget class="QToolButton" name="toolButton_3">
-         <property name="text">
-          <string>clear</string>
-         </property>
-         <property name="icon">
-          <iconset resource="images.qrc">
-           <normaloff>:/ico/clear.png</normaloff>:/ico/clear.png</iconset>
-         </property>
-        </widget>
        </item>
       </layout>
      </item>
@@ -160,9 +116,7 @@
    <header>keylineedit.h</header>
   </customwidget>
  </customwidgets>
- <resources>
-  <include location="images.qrc"/>
- </resources>
+ <resources/>
  <connections>
   <connection>
    <sender>buttonBox</sender>
@@ -193,70 +147,6 @@
     <hint type="destinationlabel">
      <x>286</x>
      <y>274</y>
-    </hint>
-   </hints>
-  </connection>
-  <connection>
-   <sender>toolButton</sender>
-   <signal>clicked()</signal>
-   <receiver>lineEdit_ds</receiver>
-   <slot>clear()</slot>
-   <hints>
-    <hint type="sourcelabel">
-     <x>291</x>
-     <y>59</y>
-    </hint>
-    <hint type="destinationlabel">
-     <x>251</x>
-     <y>59</y>
-    </hint>
-   </hints>
-  </connection>
-  <connection>
-   <sender>toolButton_2</sender>
-   <signal>clicked()</signal>
-   <receiver>lineEdit_dp</receiver>
-   <slot>clear()</slot>
-   <hints>
-    <hint type="sourcelabel">
-     <x>296</x>
-     <y>101</y>
-    </hint>
-    <hint type="destinationlabel">
-     <x>244</x>
-     <y>97</y>
-    </hint>
-   </hints>
-  </connection>
-  <connection>
-   <sender>toolButton_3</sender>
-   <signal>clicked()</signal>
-   <receiver>lineEdit_ps</receiver>
-   <slot>clear()</slot>
-   <hints>
-    <hint type="sourcelabel">
-     <x>289</x>
-     <y>148</y>
-    </hint>
-    <hint type="destinationlabel">
-     <x>230</x>
-     <y>148</y>
-    </hint>
-   </hints>
-  </connection>
-  <connection>
-   <sender>toolButton_4</sender>
-   <signal>clicked()</signal>
-   <receiver>lineEdit_pp</receiver>
-   <slot>clear()</slot>
-   <hints>
-    <hint type="sourcelabel">
-     <x>290</x>
-     <y>196</y>
-    </hint>
-    <hint type="destinationlabel">
-     <x>235</x>
-     <y>193</y>
     </hint>
    </hints>
   </connection>

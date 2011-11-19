@@ -54,7 +54,6 @@ private:
     void readXmlBlock(QTreeWidgetItem *item);
 
     Ui::MainWindow *ui;
-    QList<QLabel *> labels;
     QNetworkAccessManager qnam;
     QStringList downloadLinks;
     QString serverPrefix;
@@ -82,6 +81,7 @@ private:
     int downloaded;
     int amountOfDownload;
     QProgressBar *progressBar;
+    QLabel *pageLabel;
     QList<QUrl> urlList;
 
     QList<QKeySequence> nextDocumentKeys;

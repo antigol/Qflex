@@ -37,6 +37,8 @@ MainWindow::MainWindow(QWidget *parent) :
 
     progressBar = new QProgressBar(this);
     statusBar()->addPermanentWidget(progressBar);
+    pageLabel = new QLabel(this);
+    statusBar()->addPermanentWidget(pageLabel);
     progressBar->setVisible(false);
 
     timer.setInterval(100);
@@ -47,6 +49,8 @@ MainWindow::MainWindow(QWidget *parent) :
     connect(ui->actionMettre_jour, SIGNAL(triggered()), this, SLOT(updateXml()));
     connect(ui->action_Suivant, SIGNAL(triggered()), this, SLOT(nextDocument()));
     connect(ui->action_Pr_c_dant, SIGNAL(triggered()), this, SLOT(previousDocument()));
+    connect(ui->actionPage_p_r_c_dante, SIGNAL(triggered()), this, SLOT(nextPage()));
+    connect(ui->actionPage_suiva_nte, SIGNAL(triggered()), this, SLOT(previousPage()));
     connect(ui->action_Plein_cran, SIGNAL(triggered()), this, SLOT(fullscreen()));
     connect(ui->actionT_l_charger_tout_les_documents, SIGNAL(triggered()), this, SLOT(downloadAll()));
     connect(ui->action_Quitter, SIGNAL(triggered()), qApp, SLOT(quit()));
@@ -216,18 +220,10 @@ void MainWindow::itemSelected()
                                                QString::fromUtf8("Le téléchargement de tout les fichiers a été interrompu !"),
                                                QMessageBox::Ok, this);
         message->show();
-        //        if (QMessageBox::warning(this, QString::fromUtf8("Téléchagement abandonnée"), QString::fromUtf8("Voulez-vous interompre le téléchargement ?"),
-        //                                 QMessageBox::Yes | QMessageBox::No, QMessageBox::No) == QMessageBox::Yes) {
-        //            downloadingAll = false;
-        //            progressBar->setVisible(false);
-        //        } else {
-        //            return;
-        //        }
     }
     QTreeWidgetItem *item = ui->treeWidget->currentItem();
 
-    while (!labels.isEmpty())
-        delete labels.takeLast();
+    ui->label->clear();
 
     documentType = None;
     startDownload(item);
@@ -260,8 +256,7 @@ void MainWindow::documentDownloaded(QNetworkReply *reply)
     if (reply->error() != QNetworkReply::NoError) {
         statusBar()->clearMessage();
         statusBar()->showMessage(QString::fromUtf8("Erreur de téléchargement : %1").arg(reply->errorString()), 4000);
-        while (!labels.isEmpty())
-            delete labels.takeLast();
+        ui->label->clear();
         return;
     }
 
@@ -280,6 +275,10 @@ void MainWindow::documentDownloaded(QNetworkReply *reply)
         progressBar->setVisible(true);
         progressBar->setMaximum(amountOfDownload);
         progressBar->setValue(downloaded);
+        if (downloaded == amountOfDownload) {
+            downloadingAll = false;
+            progressBar->setVisible(false);
+        }
     }
 
 }
@@ -308,9 +307,8 @@ void MainWindow::loadDocument(const QByteArray &data, const QString &url)
 
 void MainWindow::refreshDocument()
 {
-    while (!labels.isEmpty()) {
-        delete labels.takeLast();
-    }
+    ui->label->clear();
+    pageLabel->clear();
 
     if (documentType == None) {
         ui->webView->setVisible(false);
@@ -333,13 +331,8 @@ void MainWindow::refreshDocument()
             pageCount = doc->numPages();
 
             if (pageCount > 1) {
-                statusBar()->showMessage(QString::fromUtf8("page %1/%2").arg(currentPage + 1).arg(pageCount));
+                pageLabel->setText(QString::fromUtf8("page %1/%2").arg(currentPage + 1).arg(pageCount));
             }
-//            for (int i = 0; i < doc->numPages(); ++i) {
-//                if (doc->page(i)->pageSizeF().width() > width)
-//                    width = doc->page(i)->pageSizeF().width();
-//                height += doc->page(i)->pageSizeF().height();
-//            }
 
             double ratioX = ((double)ui->scrollArea->width() - 22) / width;
             double ratioY = ((double)ui->scrollArea->height() - 22) / height;
@@ -354,16 +347,10 @@ void MainWindow::refreshDocument()
             ui->webView->setVisible(false);
             ui->scrollArea->setVisible(true);
 
-//            for (int i = 0; i < doc->numPages(); ++i) {
-                labels << new QLabel(this);
-                labels.last()->setAlignment(Qt::AlignHCenter);
+            documentImage = doc->page(currentPage)->renderToImage(ratio, ratio);
+            QPixmap pixmap = QPixmap::fromImage(documentImage);
 
-                documentImage = doc->page(currentPage)->renderToImage(ratio, ratio);
-                QPixmap pixmap = QPixmap::fromImage(documentImage);
-
-                labels.last()->setPixmap(pixmap);
-                ui->labelsLayout->addWidget(labels.last());
-//            }
+            ui->label->setPixmap(pixmap);
             delete doc;
 
             return;
@@ -379,10 +366,7 @@ void MainWindow::refreshDocument()
 
         QPixmap pixmap = QPixmap::fromImage(documentImage);
 
-        labels << new QLabel(this);
-        labels.last()->setAlignment(Qt::AlignHCenter);
-        labels.last()->setPixmap(pixmap);
-        ui->labelsLayout->addWidget(labels.last());
+        ui->label->setPixmap(pixmap);
     }
 
     if (documentType == Html) {
@@ -467,7 +451,7 @@ void MainWindow::resizeEvent(QResizeEvent *e)
 void MainWindow::keyPressEvent(QKeyEvent *e)
 {
     QKeySequence key = QKeySequence(e->modifiers() | e->key());
-    qDebug() << key.toString();
+    //qDebug() << key.toString();
 
     e->accept();
 
