@@ -103,6 +103,9 @@ void MainWindow::updateXml(const QStringList &urls)
     disconnect(&qnam, SIGNAL(finished(QNetworkReply*)), this, SLOT(documentDownloaded(QNetworkReply*)));
     connect(&qnam, SIGNAL(finished(QNetworkReply*)), this, SLOT(xmlFileDownloaded(QNetworkReply*)));
 
+    if (downloadLinks.isEmpty())
+        return;
+
     replys << qnam.get(QNetworkRequest(QUrl(downloadLinks.takeFirst())));
 
     statusBar()->showMessage(QString::fromUtf8("Téléchargement du fichier xml"));
