@@ -20,7 +20,7 @@
   <widget class="QWidget" name="centralWidget">
    <layout class="QHBoxLayout" name="horizontalLayout">
     <item>
-     <widget class="QTreeWidget" name="treeWidget">
+     <widget class="Tree" name="treeWidget">
       <property name="sizePolicy">
        <sizepolicy hsizetype="Maximum" vsizetype="Expanding">
         <horstretch>0</horstretch>
@@ -56,7 +56,7 @@
         <rect>
          <x>0</x>
          <y>0</y>
-         <width>82</width>
+         <width>76</width>
          <height>399</height>
         </rect>
        </property>
@@ -214,6 +214,11 @@
    <class>QWebView</class>
    <extends>QWidget</extends>
    <header>QtWebKit/QWebView</header>
+  </customwidget>
+  <customwidget>
+   <class>Tree</class>
+   <extends>QTreeWidget</extends>
+   <header>tree.h</header>
   </customwidget>
  </customwidgets>
  <resources>

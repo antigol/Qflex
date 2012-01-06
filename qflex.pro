@@ -17,12 +17,14 @@ SOURCES += main.cpp\
         mainwindow.cpp \
     document.cpp \
     keylineedit.cpp \
-    optiondialog.cpp
+    optiondialog.cpp \
+    tree.cpp
 
 HEADERS  += mainwindow.h \
     document.h \
     keylineedit.h \
-    optiondialog.h
+    optiondialog.h \
+    tree.h
 
 FORMS    += mainwindow.ui \
     optiondialog.ui
