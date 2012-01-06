@@ -94,6 +94,7 @@ void MainWindow::updateXml(const QStringList &urls)
             downloadLinks = urls;
 
         ui->treeWidget->clear();
+        ui->treeWidget->hide();
         urlList.clear();
     }
 
@@ -108,7 +109,7 @@ void MainWindow::updateXml(const QStringList &urls)
 
     replys << qnam.get(QNetworkRequest(QUrl(downloadLinks.takeFirst())));
 
-    statusBar()->showMessage(QString::fromUtf8("Téléchargement du fichier xml"));
+    statusBar()->showMessage(QString::fromUtf8("Mise à jour des fichiers xml..."));
 }
 
 void MainWindow::xmlFileDownloaded(QNetworkReply *reply)
@@ -132,11 +133,13 @@ void MainWindow::xmlFileDownloaded(QNetworkReply *reply)
         data = reply->readAll();
         readXmlFile(data, urlPrefix);
         set.setValue(key, data);
-        statusBar()->showMessage(QString::fromUtf8("Fichier xml téléchargé"), 4000);
     }
 
     if (!downloadLinks.isEmpty()) {
         updateXml();
+    } else {
+        ui->treeWidget->show();
+        statusBar()->showMessage(QString::fromUtf8("Prêt !"), 4000);
     }
 }
 
@@ -451,12 +454,12 @@ void MainWindow::resizeEvent(QResizeEvent *e)
     QMainWindow::resizeEvent(e);
 }
 
-void MainWindow::keyPressEvent(QKeyEvent *e)
-{
-    QKeySequence key = QKeySequence(e->modifiers() | e->key());
+void MainWindow::keyPressEvent(QKeyEvent *event)
+{    
+    QKeySequence key = QKeySequence(event->modifiers() | event->key());
     //qDebug() << key.toString();
 
-    e->accept();
+    event->accept();
 
     if (nextDocumentKeys.contains(key)) {
         nextDocument();
@@ -467,10 +470,10 @@ void MainWindow::keyPressEvent(QKeyEvent *e)
     } else if (previousPageKeys.contains(key)) {
         previousPage();
     } else {
-        e->ignore();
+        event->ignore();
     }
 
-    QMainWindow::keyPressEvent(e);
+    QMainWindow::keyPressEvent(event);
 }
 
 void MainWindow::fullscreen()

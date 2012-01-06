@@ -20,3 +20,4 @@ void Tree::keyPressEvent(QKeyEvent *event)
         break;
     }
 }
+
