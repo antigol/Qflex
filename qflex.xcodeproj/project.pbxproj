@@ -9,12 +9,43 @@
 /* Begin PBXBuildFile section */
 		1FBEC5F04CD36A072CBDFF0B /* qrc_images.cpp in Build Sources */ = {isa = PBXBuildFile; fileRef = AEDF5D6213366FC9B4765BAC /* qrc_images.cpp */; settings = {ATTRIBUTES = (); }; };
 		202933537A5B91686E2D3816 /* moc_tree.cpp in Build Sources */ = {isa = PBXBuildFile; fileRef = A846CB9867AE8C07C0F9C136 /* moc_tree.cpp */; settings = {ATTRIBUTES = (); }; };
+		216397F914B87EAD0097FBAA /* libQtCore.4.dylib in Frameworks & Libraries */ = {isa = PBXBuildFile; fileRef = 216397DA14B87EAD0097FBAA /* libQtCore.4.dylib */; };
+		216397FB14B87EAD0097FBAA /* libQtGui.4.dylib in Frameworks & Libraries */ = {isa = PBXBuildFile; fileRef = 216397DC14B87EAD0097FBAA /* libQtGui.4.dylib */; };
+		216397FE14B87EAD0097FBAA /* libQtWebKit.4.7.4.dylib in Frameworks & Libraries */ = {isa = PBXBuildFile; fileRef = 216397DF14B87EAD0097FBAA /* libQtWebKit.4.7.4.dylib */; };
+		2163980014B87EAD0097FBAA /* libQtXml.4.7.4.dylib in Frameworks & Libraries */ = {isa = PBXBuildFile; fileRef = 216397E114B87EAD0097FBAA /* libQtXml.4.7.4.dylib */; };
+		2163980614B87EBA0097FBAA /* libbz2.1.0.dylib in CopyFiles */ = {isa = PBXBuildFile; fileRef = 216397C814B87EAD0097FBAA /* libbz2.1.0.dylib */; };
+		2163980714B87EBA0097FBAA /* libcrypto.1.0.0.dylib in CopyFiles */ = {isa = PBXBuildFile; fileRef = 216397C914B87EAD0097FBAA /* libcrypto.1.0.0.dylib */; };
+		2163980814B87EBA0097FBAA /* libcurl.4.dylib in CopyFiles */ = {isa = PBXBuildFile; fileRef = 216397CA14B87EAD0097FBAA /* libcurl.4.dylib */; };
+		2163980914B87EBA0097FBAA /* libexpat.1.dylib in CopyFiles */ = {isa = PBXBuildFile; fileRef = 216397CB14B87EAD0097FBAA /* libexpat.1.dylib */; };
+		2163980A14B87EBA0097FBAA /* libfontconfig.1.dylib in CopyFiles */ = {isa = PBXBuildFile; fileRef = 216397CC14B87EAD0097FBAA /* libfontconfig.1.dylib */; };
+		2163980B14B87EBA0097FBAA /* libfreetype.6.dylib in CopyFiles */ = {isa = PBXBuildFile; fileRef = 216397CD14B87EAD0097FBAA /* libfreetype.6.dylib */; };
+		2163980C14B87EBA0097FBAA /* libiconv.2.dylib in CopyFiles */ = {isa = PBXBuildFile; fileRef = 216397CE14B87EAD0097FBAA /* libiconv.2.dylib */; };
+		2163980D14B87EBA0097FBAA /* libidn.11.dylib in CopyFiles */ = {isa = PBXBuildFile; fileRef = 216397CF14B87EAD0097FBAA /* libidn.11.dylib */; };
+		2163980E14B87EBA0097FBAA /* libintl.8.dylib in CopyFiles */ = {isa = PBXBuildFile; fileRef = 216397D014B87EAD0097FBAA /* libintl.8.dylib */; };
+		2163980F14B87EBA0097FBAA /* libjbig.2.dylib in CopyFiles */ = {isa = PBXBuildFile; fileRef = 216397D114B87EAD0097FBAA /* libjbig.2.dylib */; };
+		2163981014B87EBA0097FBAA /* libjpeg.8.dylib in CopyFiles */ = {isa = PBXBuildFile; fileRef = 216397D214B87EAD0097FBAA /* libjpeg.8.dylib */; };
+		2163981114B87EBA0097FBAA /* liblcms.1.dylib in CopyFiles */ = {isa = PBXBuildFile; fileRef = 216397D314B87EAD0097FBAA /* liblcms.1.dylib */; };
+		2163981214B87EBA0097FBAA /* liblcms2.2.dylib in CopyFiles */ = {isa = PBXBuildFile; fileRef = 216397D414B87EAD0097FBAA /* liblcms2.2.dylib */; };
+		2163981314B87EBA0097FBAA /* libopenjpeg.1.dylib in CopyFiles */ = {isa = PBXBuildFile; fileRef = 216397D514B87EAD0097FBAA /* libopenjpeg.1.dylib */; };
+		2163981414B87EBA0097FBAA /* libpng14.14.dylib in CopyFiles */ = {isa = PBXBuildFile; fileRef = 216397D614B87EAD0097FBAA /* libpng14.14.dylib */; };
+		2163981514B87EBA0097FBAA /* libpoppler-qt4.3.dylib in CopyFiles */ = {isa = PBXBuildFile; fileRef = 216397D714B87EAD0097FBAA /* libpoppler-qt4.3.dylib */; };
+		2163981614B87EBA0097FBAA /* libpoppler.19.dylib in CopyFiles */ = {isa = PBXBuildFile; fileRef = 216397D814B87EAD0097FBAA /* libpoppler.19.dylib */; };
+		2163981714B87EBA0097FBAA /* libQtCore.4.7.4.dylib in CopyFiles */ = {isa = PBXBuildFile; fileRef = 216397D914B87EAD0097FBAA /* libQtCore.4.7.4.dylib */; };
+		2163981814B87EBA0097FBAA /* libQtCore.4.dylib in CopyFiles */ = {isa = PBXBuildFile; fileRef = 216397DA14B87EAD0097FBAA /* libQtCore.4.dylib */; };
+		2163981914B87EBA0097FBAA /* libQtGui.4.7.4.dylib in CopyFiles */ = {isa = PBXBuildFile; fileRef = 216397DB14B87EAD0097FBAA /* libQtGui.4.7.4.dylib */; };
+		2163981A14B87EBA0097FBAA /* libQtGui.4.dylib in CopyFiles */ = {isa = PBXBuildFile; fileRef = 216397DC14B87EAD0097FBAA /* libQtGui.4.dylib */; };
+		2163981B14B87EBA0097FBAA /* libQtNetwork.4.7.4.dylib in CopyFiles */ = {isa = PBXBuildFile; fileRef = 216397DD14B87EAD0097FBAA /* libQtNetwork.4.7.4.dylib */; };
+		2163981C14B87EBA0097FBAA /* libQtNetwork.4.dylib in CopyFiles */ = {isa = PBXBuildFile; fileRef = 216397DE14B87EAD0097FBAA /* libQtNetwork.4.dylib */; };
+		2163981D14B87EBA0097FBAA /* libQtWebKit.4.7.4.dylib in CopyFiles */ = {isa = PBXBuildFile; fileRef = 216397DF14B87EAD0097FBAA /* libQtWebKit.4.7.4.dylib */; };
+		2163981E14B87EBA0097FBAA /* libQtXml.4.7.4.dylib in CopyFiles */ = {isa = PBXBuildFile; fileRef = 216397E114B87EAD0097FBAA /* libQtXml.4.7.4.dylib */; };
+		2163981F14B87EBA0097FBAA /* libsqlite3.0.dylib in CopyFiles */ = {isa = PBXBuildFile; fileRef = 216397E314B87EAD0097FBAA /* libsqlite3.0.dylib */; };
+		2163982014B87EBA0097FBAA /* libssl.1.0.0.dylib in CopyFiles */ = {isa = PBXBuildFile; fileRef = 216397E414B87EAD0097FBAA /* libssl.1.0.0.dylib */; };
+		2163982114B87EBA0097FBAA /* libtiff.3.dylib in CopyFiles */ = {isa = PBXBuildFile; fileRef = 216397E514B87EAD0097FBAA /* libtiff.3.dylib */; };
+		2163982214B87EBA0097FBAA /* libz.1.dylib in CopyFiles */ = {isa = PBXBuildFile; fileRef = 216397E614B87EAD0097FBAA /* libz.1.dylib */; };
+		2163982814B87F4C0097FBAA /* libpoppler-qt4.3.dylib in Frameworks & Libraries */ = {isa = PBXBuildFile; fileRef = 219C959214B7499400B5F3EF /* libpoppler-qt4.3.dylib */; };
+		2163982C14B87FCD0097FBAA /* QtNetwork in Frameworks & Libraries */ = {isa = PBXBuildFile; fileRef = B235A8A774654CA992F5A861 /* QtNetwork */; };
 		219C950814B741E000B5F3EF /* qflex.app in Project Copy */ = {isa = PBXBuildFile; fileRef = 219C950514B741E000B5F3EF /* qflex.app */; };
 		219C95AE14B7542900B5F3EF /* QtWebKit in Frameworks & Libraries */ = {isa = PBXBuildFile; fileRef = FC532010086C7752159A1947 /* QtWebKit */; settings = {ATTRIBUTES = (Required, ); }; };
-		219C95AF14B7543000B5F3EF /* QtNetwork in Frameworks & Libraries */ = {isa = PBXBuildFile; fileRef = B235A8A774654CA992F5A861 /* QtNetwork */; settings = {ATTRIBUTES = (Required, ); }; };
-		219C95B014B7543800B5F3EF /* QtGui in Frameworks & Libraries */ = {isa = PBXBuildFile; fileRef = 6988CE9D964BC66484DA49D5 /* QtGui */; };
-		219C95B114B7543D00B5F3EF /* QtCore in Frameworks & Libraries */ = {isa = PBXBuildFile; fileRef = FC65490F7BEA4427C242848C /* QtCore */; };
-		219C95B214B7544400B5F3EF /* libpoppler-qt4.3.dylib in Frameworks & Libraries */ = {isa = PBXBuildFile; fileRef = 219C959214B7499400B5F3EF /* libpoppler-qt4.3.dylib */; };
 		26C2BED6C570C95F5243C556 /* moc_mainwindow.cpp in Build Sources */ = {isa = PBXBuildFile; fileRef = 336D3C48DD3B44974395C633 /* moc_mainwindow.cpp */; settings = {ATTRIBUTES = (); }; };
 		2B093CA6F071B023A473CED0 /* main.cpp in Build Sources */ = {isa = PBXBuildFile; fileRef = 118FCBAABA162BA17933C789 /* main.cpp */; settings = {ATTRIBUTES = (); }; };
 		3B3534A2BAD3AF02155C5AA1 /* moc_keylineedit.cpp in Build Sources */ = {isa = PBXBuildFile; fileRef = A0712C4AF230BDF559822FEA /* moc_keylineedit.cpp */; settings = {ATTRIBUTES = (); }; };
@@ -28,6 +59,44 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
+		2163972A14B86F350097FBAA /* CopyFiles */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 7;
+			files = (
+				2163980614B87EBA0097FBAA /* libbz2.1.0.dylib in CopyFiles */,
+				2163980714B87EBA0097FBAA /* libcrypto.1.0.0.dylib in CopyFiles */,
+				2163980814B87EBA0097FBAA /* libcurl.4.dylib in CopyFiles */,
+				2163980914B87EBA0097FBAA /* libexpat.1.dylib in CopyFiles */,
+				2163980A14B87EBA0097FBAA /* libfontconfig.1.dylib in CopyFiles */,
+				2163980B14B87EBA0097FBAA /* libfreetype.6.dylib in CopyFiles */,
+				2163980C14B87EBA0097FBAA /* libiconv.2.dylib in CopyFiles */,
+				2163980D14B87EBA0097FBAA /* libidn.11.dylib in CopyFiles */,
+				2163980E14B87EBA0097FBAA /* libintl.8.dylib in CopyFiles */,
+				2163980F14B87EBA0097FBAA /* libjbig.2.dylib in CopyFiles */,
+				2163981014B87EBA0097FBAA /* libjpeg.8.dylib in CopyFiles */,
+				2163981114B87EBA0097FBAA /* liblcms.1.dylib in CopyFiles */,
+				2163981214B87EBA0097FBAA /* liblcms2.2.dylib in CopyFiles */,
+				2163981314B87EBA0097FBAA /* libopenjpeg.1.dylib in CopyFiles */,
+				2163981414B87EBA0097FBAA /* libpng14.14.dylib in CopyFiles */,
+				2163981514B87EBA0097FBAA /* libpoppler-qt4.3.dylib in CopyFiles */,
+				2163981614B87EBA0097FBAA /* libpoppler.19.dylib in CopyFiles */,
+				2163981714B87EBA0097FBAA /* libQtCore.4.7.4.dylib in CopyFiles */,
+				2163981814B87EBA0097FBAA /* libQtCore.4.dylib in CopyFiles */,
+				2163981914B87EBA0097FBAA /* libQtGui.4.7.4.dylib in CopyFiles */,
+				2163981A14B87EBA0097FBAA /* libQtGui.4.dylib in CopyFiles */,
+				2163981B14B87EBA0097FBAA /* libQtNetwork.4.7.4.dylib in CopyFiles */,
+				2163981C14B87EBA0097FBAA /* libQtNetwork.4.dylib in CopyFiles */,
+				2163981D14B87EBA0097FBAA /* libQtWebKit.4.7.4.dylib in CopyFiles */,
+				2163981E14B87EBA0097FBAA /* libQtXml.4.7.4.dylib in CopyFiles */,
+				2163981F14B87EBA0097FBAA /* libsqlite3.0.dylib in CopyFiles */,
+				2163982014B87EBA0097FBAA /* libssl.1.0.0.dylib in CopyFiles */,
+				2163982114B87EBA0097FBAA /* libtiff.3.dylib in CopyFiles */,
+				2163982214B87EBA0097FBAA /* libz.1.dylib in CopyFiles */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		F6069D5A5DA8AA28EDB8B3C6 /* Project Copy */ = {
 			isa = PBXCopyFilesBuildPhase;
 			buildActionMask = 2147483647;
@@ -62,6 +131,37 @@
 		210D56D814B7F7BF0030139D /* poppler-private.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "poppler-private.h"; path = "/Volumes/Macintosh HDD/Users/quentintalon/Downloads/poppler-0.18.1/qt4/src/poppler-private.h"; sourceTree = "<absolute>"; };
 		210D56D914B7F7BF0030139D /* poppler-qiodeviceoutstream-private.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "poppler-qiodeviceoutstream-private.h"; path = "/Volumes/Macintosh HDD/Users/quentintalon/Downloads/poppler-0.18.1/qt4/src/poppler-qiodeviceoutstream-private.h"; sourceTree = "<absolute>"; };
 		210D56DA14B7F7BF0030139D /* poppler-qt4.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "poppler-qt4.h"; path = "/Volumes/Macintosh HDD/Users/quentintalon/Downloads/poppler-0.18.1/qt4/src/poppler-qt4.h"; sourceTree = "<absolute>"; };
+		216397C814B87EAD0097FBAA /* libbz2.1.0.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; path = libbz2.1.0.dylib; sourceTree = "<group>"; };
+		216397C914B87EAD0097FBAA /* libcrypto.1.0.0.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; path = libcrypto.1.0.0.dylib; sourceTree = "<group>"; };
+		216397CA14B87EAD0097FBAA /* libcurl.4.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; path = libcurl.4.dylib; sourceTree = "<group>"; };
+		216397CB14B87EAD0097FBAA /* libexpat.1.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; path = libexpat.1.dylib; sourceTree = "<group>"; };
+		216397CC14B87EAD0097FBAA /* libfontconfig.1.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; path = libfontconfig.1.dylib; sourceTree = "<group>"; };
+		216397CD14B87EAD0097FBAA /* libfreetype.6.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; path = libfreetype.6.dylib; sourceTree = "<group>"; };
+		216397CE14B87EAD0097FBAA /* libiconv.2.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; path = libiconv.2.dylib; sourceTree = "<group>"; };
+		216397CF14B87EAD0097FBAA /* libidn.11.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; path = libidn.11.dylib; sourceTree = "<group>"; };
+		216397D014B87EAD0097FBAA /* libintl.8.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; path = libintl.8.dylib; sourceTree = "<group>"; };
+		216397D114B87EAD0097FBAA /* libjbig.2.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; path = libjbig.2.dylib; sourceTree = "<group>"; };
+		216397D214B87EAD0097FBAA /* libjpeg.8.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; path = libjpeg.8.dylib; sourceTree = "<group>"; };
+		216397D314B87EAD0097FBAA /* liblcms.1.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; path = liblcms.1.dylib; sourceTree = "<group>"; };
+		216397D414B87EAD0097FBAA /* liblcms2.2.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; path = liblcms2.2.dylib; sourceTree = "<group>"; };
+		216397D514B87EAD0097FBAA /* libopenjpeg.1.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; path = libopenjpeg.1.dylib; sourceTree = "<group>"; };
+		216397D614B87EAD0097FBAA /* libpng14.14.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; path = libpng14.14.dylib; sourceTree = "<group>"; };
+		216397D714B87EAD0097FBAA /* libpoppler-qt4.3.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; path = "libpoppler-qt4.3.dylib"; sourceTree = "<group>"; };
+		216397D814B87EAD0097FBAA /* libpoppler.19.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; path = libpoppler.19.dylib; sourceTree = "<group>"; };
+		216397D914B87EAD0097FBAA /* libQtCore.4.7.4.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; path = libQtCore.4.7.4.dylib; sourceTree = "<group>"; };
+		216397DA14B87EAD0097FBAA /* libQtCore.4.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; path = libQtCore.4.dylib; sourceTree = "<group>"; };
+		216397DB14B87EAD0097FBAA /* libQtGui.4.7.4.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; path = libQtGui.4.7.4.dylib; sourceTree = "<group>"; };
+		216397DC14B87EAD0097FBAA /* libQtGui.4.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; path = libQtGui.4.dylib; sourceTree = "<group>"; };
+		216397DD14B87EAD0097FBAA /* libQtNetwork.4.7.4.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; path = libQtNetwork.4.7.4.dylib; sourceTree = "<group>"; };
+		216397DE14B87EAD0097FBAA /* libQtNetwork.4.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; path = libQtNetwork.4.dylib; sourceTree = "<group>"; };
+		216397DF14B87EAD0097FBAA /* libQtWebKit.4.7.4.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; path = libQtWebKit.4.7.4.dylib; sourceTree = "<group>"; };
+		216397E014B87EAD0097FBAA /* libQtWebKit.4.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; path = libQtWebKit.4.dylib; sourceTree = "<group>"; };
+		216397E114B87EAD0097FBAA /* libQtXml.4.7.4.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; path = libQtXml.4.7.4.dylib; sourceTree = "<group>"; };
+		216397E214B87EAD0097FBAA /* libQtXml.4.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; path = libQtXml.4.dylib; sourceTree = "<group>"; };
+		216397E314B87EAD0097FBAA /* libsqlite3.0.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; path = libsqlite3.0.dylib; sourceTree = "<group>"; };
+		216397E414B87EAD0097FBAA /* libssl.1.0.0.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; path = libssl.1.0.0.dylib; sourceTree = "<group>"; };
+		216397E514B87EAD0097FBAA /* libtiff.3.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; path = libtiff.3.dylib; sourceTree = "<group>"; };
+		216397E614B87EAD0097FBAA /* libz.1.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; path = libz.1.dylib; sourceTree = "<group>"; };
 		219C950514B741E000B5F3EF /* qflex.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = qflex.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		219C959214B7499400B5F3EF /* libpoppler-qt4.3.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = "libpoppler-qt4.3.dylib"; path = "/opt/local/lib/libpoppler-qt4.3.dylib"; sourceTree = "<absolute>"; };
 		336D3C48DD3B44974395C633 /* moc_mainwindow.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = moc_mainwindow.cpp; sourceTree = "<group>"; };
@@ -95,12 +195,14 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				219C95B214B7544400B5F3EF /* libpoppler-qt4.3.dylib in Frameworks & Libraries */,
-				219C95B114B7543D00B5F3EF /* QtCore in Frameworks & Libraries */,
-				219C95B014B7543800B5F3EF /* QtGui in Frameworks & Libraries */,
-				219C95AF14B7543000B5F3EF /* QtNetwork in Frameworks & Libraries */,
+				2163982C14B87FCD0097FBAA /* QtNetwork in Frameworks & Libraries */,
+				2163982814B87F4C0097FBAA /* libpoppler-qt4.3.dylib in Frameworks & Libraries */,
 				219C95AE14B7542900B5F3EF /* QtWebKit in Frameworks & Libraries */,
 				5AFE1D7BFC442D886A97FF55 /* QtXml in Frameworks & Libraries */,
+				216397F914B87EAD0097FBAA /* libQtCore.4.dylib in Frameworks & Libraries */,
+				216397FB14B87EAD0097FBAA /* libQtGui.4.dylib in Frameworks & Libraries */,
+				216397FE14B87EAD0097FBAA /* libQtWebKit.4.7.4.dylib in Frameworks & Libraries */,
+				2163980014B87EAD0097FBAA /* libQtXml.4.7.4.dylib in Frameworks & Libraries */,
 			);
 			name = "Frameworks & Libraries";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -111,6 +213,7 @@
 		05596AB53D8D521C69802C27 /* qflex */ = {
 			isa = PBXGroup;
 			children = (
+				216397C714B87EAD0097FBAA /* LibrairiesMac-copie2 */,
 				FB61758D0F0FDA4BA867C3D5 /* Sources */,
 				46E892BBB6BB6952967E0561 /* Temporary Sources */,
 				883D7615C4D2DE3FA1218F12 /* Headers */,
@@ -121,6 +224,44 @@
 				219C950614B741E000B5F3EF /* Products */,
 			);
 			name = qflex;
+			sourceTree = "<group>";
+		};
+		216397C714B87EAD0097FBAA /* LibrairiesMac-copie2 */ = {
+			isa = PBXGroup;
+			children = (
+				216397C814B87EAD0097FBAA /* libbz2.1.0.dylib */,
+				216397C914B87EAD0097FBAA /* libcrypto.1.0.0.dylib */,
+				216397CA14B87EAD0097FBAA /* libcurl.4.dylib */,
+				216397CB14B87EAD0097FBAA /* libexpat.1.dylib */,
+				216397CC14B87EAD0097FBAA /* libfontconfig.1.dylib */,
+				216397CD14B87EAD0097FBAA /* libfreetype.6.dylib */,
+				216397CE14B87EAD0097FBAA /* libiconv.2.dylib */,
+				216397CF14B87EAD0097FBAA /* libidn.11.dylib */,
+				216397D014B87EAD0097FBAA /* libintl.8.dylib */,
+				216397D114B87EAD0097FBAA /* libjbig.2.dylib */,
+				216397D214B87EAD0097FBAA /* libjpeg.8.dylib */,
+				216397D314B87EAD0097FBAA /* liblcms.1.dylib */,
+				216397D414B87EAD0097FBAA /* liblcms2.2.dylib */,
+				216397D514B87EAD0097FBAA /* libopenjpeg.1.dylib */,
+				216397D614B87EAD0097FBAA /* libpng14.14.dylib */,
+				216397D714B87EAD0097FBAA /* libpoppler-qt4.3.dylib */,
+				216397D814B87EAD0097FBAA /* libpoppler.19.dylib */,
+				216397D914B87EAD0097FBAA /* libQtCore.4.7.4.dylib */,
+				216397DA14B87EAD0097FBAA /* libQtCore.4.dylib */,
+				216397DB14B87EAD0097FBAA /* libQtGui.4.7.4.dylib */,
+				216397DC14B87EAD0097FBAA /* libQtGui.4.dylib */,
+				216397DD14B87EAD0097FBAA /* libQtNetwork.4.7.4.dylib */,
+				216397DE14B87EAD0097FBAA /* libQtNetwork.4.dylib */,
+				216397DF14B87EAD0097FBAA /* libQtWebKit.4.7.4.dylib */,
+				216397E014B87EAD0097FBAA /* libQtWebKit.4.dylib */,
+				216397E114B87EAD0097FBAA /* libQtXml.4.7.4.dylib */,
+				216397E214B87EAD0097FBAA /* libQtXml.4.dylib */,
+				216397E314B87EAD0097FBAA /* libsqlite3.0.dylib */,
+				216397E414B87EAD0097FBAA /* libssl.1.0.0.dylib */,
+				216397E514B87EAD0097FBAA /* libtiff.3.dylib */,
+				216397E614B87EAD0097FBAA /* libz.1.dylib */,
+			);
+			path = "LibrairiesMac-copie2";
 			sourceTree = "<group>";
 		};
 		219C950614B741E000B5F3EF /* Products */ = {
@@ -236,6 +377,7 @@
 				F6069D5A5DA8AA28EDB8B3C6 /* Project Copy */,
 				C29B8785722055ED95EF7B57 /* Build Sources */,
 				2A1043669E6E5A7426EA502A /* Frameworks & Libraries */,
+				2163972A14B86F350097FBAA /* CopyFiles */,
 			);
 			buildRules = (
 			);
@@ -337,6 +479,7 @@
 					/usr/lib,
 					/opt/local/lib,
 					"\"$(SRCROOT)/LibrairiesMac\"",
+					"\"$(SRCROOT)/LibrairiesMac-copie2\"",
 				);
 				MACOSX_DEPLOYMENT_TARGET = 10.6;
 				OTHER_CFLAGS = (
@@ -410,6 +553,7 @@
 					/usr/lib,
 					/opt/local/lib,
 					"\"$(SRCROOT)/LibrairiesMac\"",
+					"\"$(SRCROOT)/LibrairiesMac-copie2\"",
 				);
 				MACOSX_DEPLOYMENT_TARGET = 10.6;
 				OTHER_CFLAGS = (
@@ -480,6 +624,7 @@
 					/usr/lib,
 					/opt/local/lib,
 					"\"$(SRCROOT)/LibrairiesMac\"",
+					"\"$(SRCROOT)/LibrairiesMac-copie2\"",
 				);
 				MACOSX_DEPLOYMENT_TARGET = 10.6;
 				OTHER_CFLAGS = (
