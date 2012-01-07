@@ -45,3 +45,7 @@ unix {
 
 RESOURCES += \
     images.qrc
+
+OTHER_FILES += \
+    ../../../../../../opt/local/lib/libpoppler-qt4.3.dylib
+
