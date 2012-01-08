@@ -1,7 +1,11 @@
 #include "mainwindow.h"
+#include "optiondialog.h"
 #include "ui_mainwindow.h"
-#include <QDesktopServices>
+
+// include du header du wrapper qt4 de la libraire poppler
 #include <poppler-qt4.h>
+
+#include <QDesktopServices>
 #include <QMessageBox>
 #include <QDebug>
 #include <QHash>
@@ -11,7 +15,6 @@
 #include <QFileDialog>
 #include <QFile>
 #include <QInputDialog>
-#include "optiondialog.h"
 
 MainWindow::MainWindow(QWidget *parent) :
     QMainWindow(parent),

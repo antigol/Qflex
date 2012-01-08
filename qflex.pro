@@ -4,32 +4,39 @@
 #
 #-------------------------------------------------
 
-QT       += core gui
-QT       += xml
-QT       += network
-QT       += webkit
+QT        += core gui
+QT        += xml
+QT        += network
+QT        += webkit
 
-TARGET = qflex
-TEMPLATE = app
+TARGET     = qflex
+TEMPLATE   = app
 
 
-SOURCES += main.cpp\
-        mainwindow.cpp \
+SOURCES   += main.cpp\
+    mainwindow.cpp \
     document.cpp \
     keylineedit.cpp \
     optiondialog.cpp \
     tree.cpp
 
-HEADERS  += mainwindow.h \
+HEADERS   += mainwindow.h \
     document.h \
     keylineedit.h \
     optiondialog.h \
     tree.h
 
-FORMS    += mainwindow.ui \
+FORMS     += mainwindow.ui \
     optiondialog.ui
 
+
+RESOURCES += \
+    images.qrc
+
+# chemin vers le dossier contenant le header : "poppler-qt4.h"
 INCLUDEPATH  += /usr/include/poppler/qt4
+
+# option pour le linkage de la libraire poppler
 LIBS         += -L/usr/lib -lpoppler-qt4
 
 unix {
@@ -42,6 +49,3 @@ unix {
     target.path = /usr/local/bin
     INSTALLS += target menu share
 }
-
-RESOURCES += \
-    images.qrc
