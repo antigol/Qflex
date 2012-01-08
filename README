@@ -8,3 +8,16 @@ plate-formes :
 
 Qt est multi-plateformes (X11, mac, windows)
 Poppler je sais pas s'il est disponibles sur mac et windows mais normalement oui
+
+
+= COMPILATION SUR LINUX =
+Le projet qflex est basé sur la libraire Qt et sur le wrapper qt4 de poppler.
+Il faut donc tout dabors installer ces deux libraires.
+Sur ubuntu les paquets sont : libqt4-dev et libpoppler-qt4-dev
+Un projet Qt repose sur le fichier *.pro.
+Dans le fichier qflex.pro une ligne indique l'enplacement du header du wrapper poppler-qt4
+
+Pour compiler le projet, ouvrez un terminal dans le dossier contenant le fichier "qflex.pro"
+Puis lancez les commandes :   qmake
+                              make
+                              make install
