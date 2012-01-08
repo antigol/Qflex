@@ -49,3 +49,8 @@ unix {
     target.path = /usr/local/bin
     INSTALLS += target menu share
 }
+
+mac {
+    OTHER_FILES += \
+        ../../../../../../opt/local/lib/libpoppler-qt4.3.dylib
+}
