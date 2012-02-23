@@ -3,7 +3,8 @@
 #include "ui_mainwindow.h"
 
 // include du header du wrapper qt4 de la libraire poppler
-#include <poppler-qt4.h>
+// #include <poppler-qt4.h>
+#include <poppler/qt4/poppler-qt4.h>
 
 #include <QDesktopServices>
 #include <QMessageBox>

@@ -34,10 +34,10 @@ RESOURCES += \
     images.qrc
 
 # chemin vers le dossier contenant le header : "poppler-qt4.h"
-INCLUDEPATH  += /usr/include/poppler/qt4
+# INCLUDEPATH  += /usr/include/poppler/qt4
 
 # option pour le linkage de la libraire poppler
-LIBS         += -L/usr/lib -lpoppler-qt4
+LIBS         += -lpoppler-qt4 # -L/usr/lib
 
 unix {
     menu.files = Qflex.desktop
