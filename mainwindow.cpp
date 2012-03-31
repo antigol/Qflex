@@ -169,15 +169,9 @@ void MainWindow::readXmlFile(const QByteArray &data, const QString &urlPrefix)
     xml.addData(data);
 
     if (xml.readNextStartElement()) {
-        if (xml.name() == "semesters" || xml.name() == "others") {
-            while (xml.readNextStartElement()) {
-                if (xml.name() == "semesterentry" || xml.name() == "other") {
-                    readXmlBlock(0);
-                }
-            }
+        while (xml.readNextStartElement()) {
+            readXmlBlock(0);
         }
-        ui->treeWidget->setItemExpanded(lastSemester, true);
-        ui->treeWidget->setCurrentItem(lastSemester);
     }
     statusBar()->showMessage(QString::fromUtf8("Fichier xml déchifré"), 4000);
 }
